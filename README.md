@@ -12,7 +12,7 @@ V každém podadresáři je připravený soubor `README.md` pro vložení odkazu
    - **Folder:** `/ (root)`
 3. Klikněte na **Save**.
 4. Losovátko pak najdete na adrese ve tvaru:
-   - `https://<owner>.github.io/<repo>/losovatko.html`
+   - `https://OWNER.github.io/REPO/losovatko.html`
 5. Pro aktuální repozitář `motol2/Prog3` tedy vychází adresa:
    - `https://motol2.github.io/Prog3/losovatko.html`
 6. Pokud se někdy změní owner nebo název repozitáře, GitHub po publikaci ukáže přesnou aktuální URL přímo v nastavení **Pages**.
