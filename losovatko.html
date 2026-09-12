@@ -88,7 +88,37 @@
       return [...new Set(polozky)];
     }
 
+    function maOcekavanaData(rows) {
+      const hlavicka = (rows[0] || []).map(text);
+      const maJmenoAPrijmeni =
+        /jméno/i.test(hlavicka[1] || "") && /příjmen/i.test(hlavicka[2] || "");
+
+      if (maJmenoAPrijmeni) {
+        return true;
+      }
+
+      const maDataVMimoPrvniSloupec = rows.some((row) =>
+        row.slice(1).some((hodnota) => text(hodnota))
+      );
+
+      if (maDataVMimoPrvniSloupec) {
+        return false;
+      }
+
+      const prvniSloupec = rows.map((row) => text(row[0])).filter(Boolean);
+      if (prvniSloupec.length === 0) {
+        return false;
+      }
+
+      const maHlavickuVPrvnimSloupci = /jméno|student/i.test(prvniSloupec[0] || "");
+      return maHlavickuVPrvnimSloupci ? prvniSloupec.length > 1 : true;
+    }
+
     function nactiStudentyZRadku(rows) {
+      if (!maOcekavanaData(rows)) {
+        return [];
+      }
+
       const hlavicka = (rows[0] || []).map(text);
       const maJmenoAPrijmeni =
         /jméno/i.test(hlavicka[1] || "") && /příjmen/i.test(hlavicka[2] || "");
@@ -127,7 +157,7 @@
 
         if (studenti.length === 0) {
           vysledek.textContent = "Není koho losovat.";
-          stav.textContent = "Soubor se sice načetl, ale nenašel jsem žádná jména.";
+          stav.textContent = "První list neobsahuje očekávaná jména pro losování.";
           tlacitko.disabled = true;
           return;
         }
