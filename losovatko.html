@@ -57,7 +57,10 @@
     }
   </style>
   <!-- Pro čtení XLSX v prohlížeči používáme malou hotovou knihovnu z CDN. -->
-  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
+    integrity="sha384-vtjasyidUo0kW94K5MXDXntzOJpQgBKXmE7e2Ga4LG0skTTLeBi97eFAXsqewJjw"
+    crossorigin="anonymous"></script>
 </head>
 <body>
   <main>
@@ -72,6 +75,7 @@
     const tlacitko = document.getElementById("losovat");
     const vysledek = document.getElementById("vysledek");
     const stav = document.getElementById("stav");
+    const souborTridnice = "./tridnice3A.xlsx";
 
     let studenti = [];
 
@@ -104,14 +108,17 @@
 
     async function nactiStudenty() {
       try {
-        const response = await fetch("./tridnice3A.xlsx");
+        const response = await fetch(souborTridnice);
         if (!response.ok) {
-          throw new Error("Soubor tridnice3A.xlsx se nepodařilo načíst.");
+          throw new Error(`Soubor ${souborTridnice} se nepodařilo načíst.`);
         }
 
         const data = await response.arrayBuffer();
         const workbook = XLSX.read(data, { type: "array" });
         const sheetName = workbook.SheetNames[0];
+        if (!sheetName) {
+          throw new Error("Soubor neobsahuje žádný list s daty.");
+        }
         const sheet = workbook.Sheets[sheetName];
         const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, blankrows: false, defval: "" });
 
