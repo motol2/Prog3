@@ -58,16 +58,17 @@
   </style>
   <!-- Pro čtení XLSX v prohlížeči používáme malou hotovou knihovnu z CDN. -->
   <script
-    src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
-    integrity="sha384-vtjasyidUo0kW94K5MXDXntzOJpQgBKXmE7e2Ga4LG0skTTLeBi97eFAXsqewJjw"
-    crossorigin="anonymous"></script>
+    src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"
+    integrity="sha512-d3pJ3KkPt3DLP4wMG7x9Wql3w742bqjVFxqf55AIvVl/HnQb0uGVW8laDN+oQJcDtgTTD6PKscN4jVZh4c9uCQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
 </head>
 <body>
   <main>
     <h1>Losovátko studentů</h1>
     <p>Po načtení třídnice stačí kliknout na jediné tlačítko a vylosuje se jeden student.</p>
     <button id="losovat" type="button" disabled>Vylosovat</button>
-    <div id="vysledek">Čekám na načtení třídnice…</div>
+    <div id="vysledek" aria-live="polite">Čekám na načtení třídnice…</div>
     <div id="stav" aria-live="polite">Načítám soubor <code>tridnice3A.xlsx</code>…</div>
   </main>
 
@@ -110,7 +111,7 @@
       try {
         const response = await fetch(souborTridnice);
         if (!response.ok) {
-          throw new Error(`Soubor ${souborTridnice} se nepodařilo načíst.`);
+          throw new Error(`Soubor ${souborTridnice} se nepodařilo načíst (HTTP ${response.status}).`);
         }
 
         const data = await response.arrayBuffer();
