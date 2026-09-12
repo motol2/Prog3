@@ -68,8 +68,8 @@
     <h1>Losovátko studentů</h1>
     <p>Po načtení třídnice stačí kliknout na jediné tlačítko a vylosuje se jeden student.</p>
     <button id="losovat" type="button" disabled>Vylosovat</button>
-    <div id="vysledek" aria-live="polite">Čekám na načtení třídnice…</div>
-    <div id="stav" aria-live="polite">Načítám soubor <code>tridnice3A.xlsx</code>…</div>
+    <div id="vysledek" role="status" aria-live="polite">Čekám na načtení třídnice…</div>
+    <div id="stav" role="status" aria-live="polite">Načítám soubor <code>tridnice3A.xlsx</code>…</div>
   </main>
 
   <script>
@@ -163,7 +163,7 @@
         const urlSouboru = new URL(souborTridnice, window.location.href);
         urlSouboru.searchParams.set("v", Date.now().toString());
 
-        const response = await fetch(urlSouboru);
+        const response = await fetch(urlSouboru, { credentials: "omit" });
         if (!response.ok) {
           throw new Error(`Soubor ${souborTridnice} se nepodařilo načíst (HTTP ${response.status}).`);
         }
