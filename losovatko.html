@@ -88,10 +88,13 @@
       return [...new Set(polozky)];
     }
 
+    function maSloupceJmenoAPrijmeni(hlavicka) {
+      return /jméno/i.test(hlavicka[1] || "") && /příjmen/i.test(hlavicka[2] || "");
+    }
+
     function maOcekavanaData(rows) {
       const hlavicka = (rows[0] || []).map(text);
-      const maJmenoAPrijmeni =
-        /jméno/i.test(hlavicka[1] || "") && /příjmen/i.test(hlavicka[2] || "");
+      const maJmenoAPrijmeni = maSloupceJmenoAPrijmeni(hlavicka);
 
       if (maJmenoAPrijmeni) {
         return true;
@@ -120,8 +123,7 @@
       }
 
       const hlavicka = (rows[0] || []).map(text);
-      const maJmenoAPrijmeni =
-        /jméno/i.test(hlavicka[1] || "") && /příjmen/i.test(hlavicka[2] || "");
+      const maJmenoAPrijmeni = maSloupceJmenoAPrijmeni(hlavicka);
 
       if (maJmenoAPrijmeni) {
         return unikaty(
@@ -158,6 +160,7 @@
         if (studenti.length === 0) {
           vysledek.textContent = "Není koho losovat.";
           stav.textContent = "První list neobsahuje očekávaná jména pro losování.";
+          stav.classList.remove("chyba");
           tlacitko.disabled = true;
           return;
         }
