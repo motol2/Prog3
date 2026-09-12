@@ -83,16 +83,7 @@
       return [...new Set(polozky)];
     }
 
-    function nactiStudentyZRradku(rows) {
-      const prvniSloupec = rows.map((row) => text(row[0])).filter(Boolean);
-
-      if (prvniSloupec.length > 1) {
-        const bezHlavicky = prvniSloupec.slice(1).filter((value) => Number.isNaN(Number(value)));
-        if (bezHlavicky.length > 0) {
-          return unikaty(bezHlavicky);
-        }
-      }
-
+    function nactiStudentyZRadku(rows) {
       const hlavicka = (rows[0] || []).map(text);
       const maJmenoAPrijmeni =
         /jméno/i.test(hlavicka[1] || "") && /příjmen/i.test(hlavicka[2] || "");
@@ -106,7 +97,9 @@
         );
       }
 
-      return unikaty(prvniSloupec.slice(1));
+      const prvniSloupec = rows.map((row) => text(row[0])).filter(Boolean);
+      const maHlavickuVPrvnimSloupci = /jméno|student/i.test(prvniSloupec[0] || "");
+      return unikaty((maHlavickuVPrvnimSloupci ? prvniSloupec.slice(1) : prvniSloupec).filter(Boolean));
     }
 
     async function nactiStudenty() {
@@ -122,7 +115,7 @@
         const sheet = workbook.Sheets[sheetName];
         const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, blankrows: false, defval: "" });
 
-        studenti = nactiStudentyZRradku(rows);
+        studenti = nactiStudentyZRadku(rows);
 
         if (studenti.length === 0) {
           vysledek.textContent = "Není koho losovat.";
