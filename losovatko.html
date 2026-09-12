@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Losovátko 3A</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #1f2937;
+    }
+
+    main {
+      max-width: 36rem;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    button {
+      padding: 0.8rem 1.4rem;
+      border: 0;
+      border-radius: 8px;
+      background: #2563eb;
+      color: #ffffff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    #vysledek {
+      min-height: 3rem;
+      margin: 1.5rem 0 1rem;
+      font-size: 1.6rem;
+      font-weight: bold;
+    }
+
+    #stav {
+      min-height: 1.5rem;
+      color: #475569;
+    }
+
+    .chyba {
+      color: #b91c1c;
+    }
+  </style>
+  <!-- Pro čtení XLSX v prohlížeči používáme malou hotovou knihovnu z CDN. -->
+  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <main>
+    <h1>Losovátko studentů</h1>
+    <p>Po načtení třídnice stačí kliknout na jediné tlačítko a vylosuje se jeden student.</p>
+    <button id="losovat" type="button" disabled>Vylosovat</button>
+    <div id="vysledek">Čekám na načtení třídnice…</div>
+    <div id="stav" aria-live="polite">Načítám soubor <code>tridnice3A.xlsx</code>…</div>
+  </main>
+
+  <script>
+    const tlacitko = document.getElementById("losovat");
+    const vysledek = document.getElementById("vysledek");
+    const stav = document.getElementById("stav");
+
+    let studenti = [];
+
+    function text(hodnota) {
+      return String(hodnota ?? "").trim();
+    }
+
+    function unikaty(polozky) {
+      return [...new Set(polozky)];
+    }
+
+    function nactiStudentyZRradku(rows) {
+      const prvniSloupec = rows.map((row) => text(row[0])).filter(Boolean);
+
+      if (prvniSloupec.length > 1) {
+        const bezHlavicky = prvniSloupec.slice(1).filter((value) => Number.isNaN(Number(value)));
+        if (bezHlavicky.length > 0) {
+          return unikaty(bezHlavicky);
+        }
+      }
+
+      const hlavicka = (rows[0] || []).map(text);
+      const maJmenoAPrijmeni =
+        /jméno/i.test(hlavicka[1] || "") && /příjmen/i.test(hlavicka[2] || "");
+
+      if (maJmenoAPrijmeni) {
+        return unikaty(
+          rows
+            .slice(1)
+            .map((row) => [text(row[1]), text(row[2])].filter(Boolean).join(" "))
+            .filter(Boolean)
+        );
+      }
+
+      return unikaty(prvniSloupec.slice(1));
+    }
+
+    async function nactiStudenty() {
+      try {
+        const response = await fetch("./tridnice3A.xlsx");
+        if (!response.ok) {
+          throw new Error("Soubor tridnice3A.xlsx se nepodařilo načíst.");
+        }
+
+        const data = await response.arrayBuffer();
+        const workbook = XLSX.read(data, { type: "array" });
+        const sheetName = workbook.SheetNames[0];
+        const sheet = workbook.Sheets[sheetName];
+        const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, blankrows: false, defval: "" });
+
+        studenti = nactiStudentyZRradku(rows);
+
+        if (studenti.length === 0) {
+          vysledek.textContent = "Není koho losovat.";
+          stav.textContent = "Soubor se sice načetl, ale nenašel jsem žádná jména.";
+          tlacitko.disabled = true;
+          return;
+        }
+
+        vysledek.textContent = "Připraveno k losování.";
+        stav.textContent = `Načteno studentů: ${studenti.length}.`;
+        stav.classList.remove("chyba");
+        tlacitko.disabled = false;
+      } catch (error) {
+        studenti = [];
+        vysledek.textContent = "Losování teď není dostupné.";
+        stav.textContent = error.message || "Nepodařilo se načíst třídnici.";
+        stav.classList.add("chyba");
+        tlacitko.disabled = true;
+      }
+    }
+
+    tlacitko.addEventListener("click", () => {
+      if (studenti.length === 0) {
+        vysledek.textContent = "Není koho losovat.";
+        return;
+      }
+
+      const student = studenti[Math.floor(Math.random() * studenti.length)];
+      vysledek.textContent = `Vylosován byl: ${student}`;
+    });
+
+    nactiStudenty();
+  </script>
+</body>
+</html>
