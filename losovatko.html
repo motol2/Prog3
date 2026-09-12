@@ -160,7 +160,7 @@
 
     async function nactiStudenty() {
       try {
-        const response = await fetch(souborTridnice);
+        const response = await fetch(souborTridnice, { cache: "no-store" });
         if (!response.ok) {
           throw new Error(`Soubor ${souborTridnice} se nepodařilo načíst (HTTP ${response.status}).`);
         }
