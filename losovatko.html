@@ -88,6 +88,11 @@
       return [...new Set(polozky)];
     }
 
+    function bezUvodnichPrazdnychRadku(rows) {
+      const prvniObsah = rows.findIndex((row) => row.some((hodnota) => text(hodnota)));
+      return prvniObsah === -1 ? [] : rows.slice(prvniObsah);
+    }
+
     function maSloupceJmenoAPrijmeni(hlavicka) {
       return /jméno/i.test(hlavicka[1] || "") && /příjmen/i.test(hlavicka[2] || "");
     }
@@ -153,7 +158,9 @@
           throw new Error("Soubor neobsahuje žádný list s daty.");
         }
         const sheet = workbook.Sheets[sheetName];
-        const rows = XLSX.utils.sheet_to_json(sheet, { header: 1, blankrows: false, defval: "" });
+        const rows = bezUvodnichPrazdnychRadku(
+          XLSX.utils.sheet_to_json(sheet, { header: 1, blankrows: true, defval: "" })
+        );
 
         studenti = nactiStudentyZRadku(rows);
 

@@ -15,5 +15,6 @@ V každém podadresáři je připravený soubor `README.md` pro vložení odkazu
    - `https://<owner>.github.io/<repo>/losovatko.html`
 5. Pro aktuální repozitář `motol2/Prog3` tedy vychází adresa:
    - `https://motol2.github.io/Prog3/losovatko.html`
+6. Pokud se někdy změní owner nebo název repozitáře, GitHub po publikaci ukáže přesnou aktuální URL přímo v nastavení **Pages**.
 
 Poznámka: po prvním zapnutí GitHub Pages může publikace trvat pár minut.
