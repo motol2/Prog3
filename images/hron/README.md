@@ -1,3 +1,3 @@
-# hron
+# Michal Hron
 
-- Osobní repozitář: _doplnit podle dodaného seznamu studentů a odkazů na GitHub_
+[GitHub Repository](https://github.com/michal670/Hron---repozit-)

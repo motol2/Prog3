@@ -1,3 +1,3 @@
-# rehak
+# Marek Řehák
 
-- Osobní repozitář: _doplnit podle dodaného seznamu studentů a odkazů na GitHub_
+[GitHub Repository](https://github.com/MarekRehak/-eh-k.git)

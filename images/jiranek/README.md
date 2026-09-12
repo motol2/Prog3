@@ -1,3 +1,3 @@
-# jiranek
+# Lukáš Jiránek
 
-- Osobní repozitář: _doplnit podle dodaného seznamu studentů a odkazů na GitHub_
+[GitHub Repository](https://github.com/MentysTV/Jir-nek-Luk-)
