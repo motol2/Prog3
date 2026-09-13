@@ -336,30 +336,29 @@
         async function loadTxtFilesToSelector() {
             const options = new Set([DEFAULT_DB_FILE]);
             try {
-                let loadedFromSource = false;
                 const githubApiUrl = buildGitHubApiTxtListUrl();
                 if (githubApiUrl) {
-                    const response = await fetch(githubApiUrl, { headers: { 'Accept': 'application/vnd.github+json' } });
-                    if (response.ok) {
-                        const files = await response.json();
-                        if (Array.isArray(files)) {
-                            const txtFiles = files.filter(file => file?.type === 'file' && typeof file.name === 'string' && file.name.toLowerCase().endsWith('.txt'));
-                            txtFiles.forEach(file => options.add(file.name));
-                            loadedFromSource = txtFiles.length > 0;
+                    try {
+                        const response = await fetch(githubApiUrl, { headers: { 'Accept': 'application/vnd.github+json' } });
+                        if (response.ok) {
+                            const files = await response.json();
+                            if (Array.isArray(files)) {
+                                const txtFiles = files.filter(file => file?.type === 'file' && typeof file.name === 'string' && file.name.toLowerCase().endsWith('.txt'));
+                                txtFiles.forEach(file => options.add(file.name));
+                            }
                         }
+                    } catch (e) {
+                        console.log('Nepodařilo se načíst seznam z GitHub API.');
                     }
                 }
-
-                if (!loadedFromSource) {
-                    const response = await fetch('./');
-                    if (response.ok) {
-                        const html = await response.text();
-                        const matches = [...html.matchAll(/href="([^"]+\.txt)"/gi)];
-                        matches.forEach(m => {
-                            const file = m[1].split('/').pop();
-                            if (file) options.add(file);
-                        });
-                    }
+                const response = await fetch('./');
+                if (response.ok) {
+                    const html = await response.text();
+                    const matches = [...html.matchAll(/href="([^"]+\.txt)"/gi)];
+                    matches.forEach(m => {
+                        const file = m[1].split('/').pop();
+                        if (file) options.add(file);
+                    });
                 }
             } catch (e) {
                 console.log('Nepodařilo se načíst seznam .txt souborů, ponechávám výchozí.');
