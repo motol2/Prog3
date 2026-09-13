@@ -344,9 +344,9 @@
                         if (response.ok) {
                             const files = await response.json();
                             if (Array.isArray(files)) {
-                                apiListingLoaded = true;
                                 const txtFiles = files.filter(file => file?.type === 'file' && isSafeTxtFileName(file.name));
                                 txtFiles.forEach(file => options.add(file.name));
+                                apiListingLoaded = txtFiles.length > 0;
                             }
                         }
                     } catch (e) {
