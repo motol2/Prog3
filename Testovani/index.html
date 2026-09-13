@@ -337,14 +337,14 @@
             const options = new Set([DEFAULT_DB_FILE]);
             try {
                 const githubApiUrl = buildGitHubApiTxtListUrl();
-                let apiRequestFailed = true;
+                let apiListingLoaded = false;
                 if (githubApiUrl) {
                     try {
                         const response = await fetch(githubApiUrl, { headers: { 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' } });
                         if (response.ok) {
                             const files = await response.json();
                             if (Array.isArray(files)) {
-                                apiRequestFailed = false;
+                                apiListingLoaded = true;
                                 const txtFiles = files.filter(file => file?.type === 'file' && isSafeTxtFileName(file.name));
                                 txtFiles.forEach(file => options.add(file.name));
                             }
@@ -353,7 +353,7 @@
                         console.log('Nepodařilo se načíst seznam z GitHub API.');
                     }
                 }
-                if (apiRequestFailed) {
+                if (!apiListingLoaded) {
                     const response = await fetch('./');
                     if (response.ok) {
                         const html = await response.text();
