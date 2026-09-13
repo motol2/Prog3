@@ -1,0 +1,47 @@
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+# 1. Autorské právo a AI (Skupina A) | Daniel Horáček & Tomáš Jandák |
+
+# 1. Autorské právo a AI (Skupina B) | Vitalii Fenynets & Maksym Kravets |
+
+# 2. AI a GDPR (Skupina A) | Tomáš Filip & Vojtěch Garčic |
+
+# 2. AI a GDPR (Skupina B) | Anastasiia Balanets & Adam Brož |
+
+# 3. Autonomní vozidla | Šimon Kubala & Lukáš Jiránek |
+
+# 4. AI ve škole | Šimon Křeperát & Michal Hron |
+[OBTIZNOST: střední]
+[Q] Představ si, že střední škola používá AI systém, který automaticky vyhodnocuje přijímací zkoušky a rozhoduje o přijetí žáků. Do jaké kategorie rizika tento systém patří?
+[0] Nepodléhá žádné regulaci.
+[0] Zakázané riziko (plně nelegální).
+[x] Vysoké riziko (High Risk).
+[0] Minimální riziko.
+[VYSVETLENI] AI používaná ve vzdělávání (např. při přijímacích zkouškách nebo hodnocení žáků) patří mezi vysoké riziko, protože může zásadně ovlivnit budoucnost člověka. Musí splňovat přísné požadavky na férovost, transparentnost a lidský dohled.
+
+---
+
+
+# 5. Agentní programování | Michael Bartůněk & Ondřej Borovička |
+
+# 6. Metody strojového učení | Karyna Kryvka & Pavel Kubát |
+
+# 1. Autorské právo a AI (Skupina A) | Tomáš Šunkovský & Marek Řehák |
+
+# 1. Autorské právo a AI (Skupina B) | Dominik Pavelka & Mykola Mandziuk |
+
+# 2. AI a GDPR | Matyáš Sauer & Marek Miláček |
+
+# 3. Autonomní vozidla | Antonín Povolný & Jakub Suchánský |
+
+# 4. AI ve škole | Mark Nahornyi & Jáchym Viták |
+
+# 5. Agentní programování | Petr Škarvan & Tomáš Štěpán |
+
+# 6. Metody strojového učení | Vincent Procházka & Hynek Mayrhofer |
