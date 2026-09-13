@@ -56,12 +56,6 @@
       color: #b91c1c;
     }
   </style>
-  <!-- Pro čtení XLSX v prohlížeči používáme malou hotovou knihovnu z CDN. -->
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"
-    integrity="sha512-d3pJ3KkPt3DLP4wMG7x9Wql3w742bqjVFxqf55AIvVl/HnQb0uGVW8laDN+oQJcDtgTTD6PKscN4jVZh4c9uCQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"></script>
 </head>
 <body>
   <main>
@@ -72,6 +66,11 @@
     <div id="stav" role="status" aria-live="polite">Načítám soubor <code>tridnice3A.xlsx</code>…</div>
   </main>
 
+  <!-- SheetJS musí být načtené dřív, než aplikace sáhne na objekt XLSX. -->
+  <script
+    src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
   <script>
     const tlacitko = document.getElementById("losovat");
     const vysledek = document.getElementById("vysledek");
@@ -158,7 +157,20 @@
       return unikaty((maHlavickuVPrvnimSloupci ? prvniSloupec.slice(1) : prvniSloupec).filter(Boolean));
     }
 
+    function zobrazChybuKnihovny() {
+      studenti = [];
+      vysledek.textContent = "Losování teď není dostupné.";
+      stav.textContent = "Nepodařilo se načíst knihovnu pro čtení třídnice. Obnovte prosím stránku, nebo to zkuste později.";
+      stav.classList.add("chyba");
+      tlacitko.disabled = true;
+    }
+
     async function nactiStudenty() {
+      if (typeof XLSX === "undefined") {
+        zobrazChybuKnihovny();
+        return;
+      }
+
       try {
         const urlSouboru = new URL(souborTridnice, window.location.href);
         urlSouboru.searchParams.set("v", Date.now().toString());
