@@ -342,10 +342,9 @@
                     if (response.ok) {
                         const files = await response.json();
                         if (Array.isArray(files)) {
-                            files
-                                .filter(file => file?.type === 'file' && typeof file.name === 'string' && file.name.toLowerCase().endsWith('.txt'))
-                                .forEach(file => options.add(file.name));
-                            loadedFromSource = true;
+                            const txtFiles = files.filter(file => file?.type === 'file' && typeof file.name === 'string' && file.name.toLowerCase().endsWith('.txt'));
+                            txtFiles.forEach(file => options.add(file.name));
+                            loadedFromSource = txtFiles.length > 0;
                         }
                     }
                 }
