@@ -333,28 +333,34 @@
             const options = new Set([DEFAULT_DB_FILE]);
             try {
                 const githubApiUrl = buildGitHubApiTxtListUrl();
+                let apiListedTxt = false;
+                let apiRequestFailed = true;
                 if (githubApiUrl) {
                     try {
                         const response = await fetch(githubApiUrl, { headers: { 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28' } });
                         if (response.ok) {
+                            apiRequestFailed = false;
                             const files = await response.json();
                             if (Array.isArray(files)) {
                                 const txtFiles = files.filter(file => file?.type === 'file' && typeof file.name === 'string' && file.name.toLowerCase().endsWith('.txt'));
                                 txtFiles.forEach(file => options.add(file.name));
+                                apiListedTxt = txtFiles.length > 0;
                             }
                         }
                     } catch (e) {
                         console.log('Nepodařilo se načíst seznam z GitHub API.');
                     }
                 }
-                const response = await fetch('./');
-                if (response.ok) {
-                    const html = await response.text();
-                    const matches = [...html.matchAll(/href="([^"]+\.txt)"/gi)];
-                    matches.forEach(m => {
-                        const file = m[1].split('/').pop();
-                        if (file && file.toLowerCase().endsWith('.txt')) options.add(file);
-                    });
+                if (apiRequestFailed || !apiListedTxt) {
+                    const response = await fetch('./');
+                    if (response.ok) {
+                        const html = await response.text();
+                        const matches = [...html.matchAll(/href="([^"]+\.txt)"/gi)];
+                        matches.forEach(m => {
+                            const file = m[1].split('/').pop();
+                            if (file && file.toLowerCase().endsWith('.txt')) options.add(file);
+                        });
+                    }
                 }
             } catch (e) {
                 console.log('Nepodařilo se načíst seznam .txt souborů, ponechávám výchozí.');
