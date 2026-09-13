@@ -329,6 +329,10 @@
             return `https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/contents/${contentPath}`;
         }
 
+        function isSafeTxtFileName(fileName) {
+            return typeof fileName === 'string' && /^(?!.*[\\/])(?!.*\.\.)[^/\\]+\.txt$/i.test(fileName);
+        }
+
         async function loadTxtFilesToSelector() {
             const options = new Set([DEFAULT_DB_FILE]);
             try {
@@ -342,7 +346,7 @@
                             apiRequestFailed = false;
                             const files = await response.json();
                             if (Array.isArray(files)) {
-                                const txtFiles = files.filter(file => file?.type === 'file' && typeof file.name === 'string' && file.name.toLowerCase().endsWith('.txt'));
+                                const txtFiles = files.filter(file => file?.type === 'file' && isSafeTxtFileName(file.name));
                                 txtFiles.forEach(file => options.add(file.name));
                                 apiListedTxt = txtFiles.length > 0;
                             }
@@ -358,7 +362,7 @@
                         const matches = [...html.matchAll(/href="([^"]+\.txt)"/gi)];
                         matches.forEach(m => {
                             const file = m[1].split('/').pop();
-                            if (file && file.toLowerCase().endsWith('.txt')) options.add(file);
+                            if (isSafeTxtFileName(file)) options.add(file);
                         });
                     }
                 }
