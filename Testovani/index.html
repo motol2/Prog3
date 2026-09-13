@@ -297,6 +297,8 @@
     <script>
         const DEFAULT_DATABASE_TXT = `# Databáze otázek pro testovací aplikaci - Téma: EU AI Act (20 otázek)`;
         const DEFAULT_DB_FILE = 'databaze_otazek_ai_act.txt';
+        const GITHUB_REPO_OWNER = window.TESTOVANI_REPO_OWNER || 'motol2';
+        const GITHUB_REPO_NAME = window.TESTOVANI_REPO_NAME || 'Prog3';
 
         let rawDatabaseQuestions = [];
         let activeQuizQuestions = [];
@@ -323,12 +325,9 @@
 
         function buildGitHubApiTxtListUrl() {
             if (!window.location.hostname.endsWith('.github.io')) return null;
-            const owner = window.location.hostname.split('.')[0];
-            const segments = window.location.pathname.split('/').filter(Boolean);
-            const repo = segments[0];
-            if (!owner || !repo) return null;
+            if (!GITHUB_REPO_OWNER || !GITHUB_REPO_NAME) return null;
             const contentPath = 'Testovani';
-            return `https://api.github.com/repos/${owner}/${repo}/contents/${contentPath}`;
+            return `https://api.github.com/repos/${GITHUB_REPO_OWNER}/${GITHUB_REPO_NAME}/contents/${contentPath}`;
         }
 
         async function loadTxtFilesToSelector() {
