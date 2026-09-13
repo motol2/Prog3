@@ -297,6 +297,7 @@
     <script>
         const DEFAULT_DATABASE_TXT = `# Databáze otázek pro testovací aplikaci - Téma: EU AI Act (20 otázek)`;
         const DEFAULT_DB_FILE = 'databaze_otazek_ai_act.txt';
+        const GITHUB_API_TXT_LIST_URL = 'https://api.github.com/repos/motol2/Prog3/contents/Testovani';
 
         let rawDatabaseQuestions = [];
         let activeQuizQuestions = [];
@@ -324,15 +325,15 @@
         async function loadTxtFilesToSelector() {
             const options = new Set([DEFAULT_DB_FILE]);
             try {
-                const response = await fetch('./');
-                const html = await response.text();
-                const matches = [...html.matchAll(/href="([^"]+\.txt)"/gi)];
-                matches.forEach(m => {
-                    const file = m[1].split('/').pop();
-                    if (file) options.add(file);
-                });
+                const response = await fetch(GITHUB_API_TXT_LIST_URL, { headers: { 'Accept': 'application/vnd.github+json' } });
+                if (!response.ok) throw new Error('GitHub API nevrátila seznam souborů.');
+                const files = await response.json();
+                if (!Array.isArray(files)) throw new Error('Neočekávaný formát seznamu souborů.');
+                files
+                    .filter(file => file?.type === 'file' && typeof file.name === 'string' && file.name.toLowerCase().endsWith('.txt'))
+                    .forEach(file => options.add(file.name));
             } catch (e) {
-                console.log('Nepodařilo se načíst seznam .txt souborů, ponechávám výchozí.');
+                console.log('Nepodařilo se načíst seznam .txt souborů z GitHub API, ponechávám výchozí.');
             }
 
             dbSourceSelect.innerHTML = '';
