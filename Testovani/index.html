@@ -355,7 +355,7 @@
                     const matches = [...html.matchAll(/href="([^"]+\.txt)"/gi)];
                     matches.forEach(m => {
                         const file = m[1].split('/').pop();
-                        if (file) options.add(file);
+                        if (file && file.toLowerCase().endsWith('.txt')) options.add(file);
                     });
                 }
             } catch (e) {
