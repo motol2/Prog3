@@ -25,7 +25,6 @@ Nejpoužívanější formátovací značky:
 
 - `**tučně**` → **tučně**
 - `*kurzíva*` → *kurzíva*
-- `~~přeškrtnuté~~` → ~~přeškrtnuté~~
 - `# Nadpis 1` až `### Nadpis 3` → nadpisy
 - `- položka seznamu` → odrážkový seznam
 - `1. položka` → číslovaný seznam
