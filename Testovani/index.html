@@ -327,8 +327,9 @@
             const segments = window.location.pathname.split('/').filter(Boolean);
             const repo = segments[0];
             if (!owner || !repo) return null;
-            const testovaniIndex = segments.findIndex(s => s.toLowerCase() === 'testovani');
-            const contentPath = testovaniIndex >= 0 ? segments.slice(1, testovaniIndex + 1).join('/') : 'Testovani';
+            const repoRelativeSegments = segments.slice(1);
+            const testovaniIndex = repoRelativeSegments.findIndex(s => s.toLowerCase() === 'testovani');
+            const contentPath = testovaniIndex >= 0 ? repoRelativeSegments.slice(0, testovaniIndex + 1).join('/') : 'Testovani';
             return `https://api.github.com/repos/${owner}/${repo}/contents/${contentPath}`;
         }
 
