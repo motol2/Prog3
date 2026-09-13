@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktivní Testovací Aplikace | Generátor Testů</title>
+    <meta name="description" content="Moderní webová aplikace pro generování a absolvování interaktivních testů z textové databáze otázek.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --bg-card-hover: rgba(51, 65, 85, 0.8);
+            --border-color: rgba(255, 255, 255, 0.1);
+            
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --primary-light: rgba(99, 102, 241, 0.15);
+            
+            --success: #10b981;
+            --success-bg: rgba(16, 185, 129, 0.15);
+            --success-border: rgba(16, 185, 129, 0.4);
+            
+            --error: #ef4444;
+            --error-bg: rgba(239, 68, 68, 0.15);
+            --error-border: rgba(239, 68, 68, 0.4);
+
+            --warning: #f59e0b;
+            --warning-bg: rgba(245, 158, 11, 0.15);
+            
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            
+            --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.2);
+            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top center, #1e1b4b 0%, #0f172a 60%, #090d16 100%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 850px;
+            background: var(--bg-card);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), var(--shadow-glow);
+            transition: var(--transition);
+        }
+
+        /* CARD SECTIONS & SCREEN SWITCHING */
+        .screen {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* FORM CONTROLS */
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        select, input[type="number"], input[type="file"] {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-main);
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        select:focus, input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+        }
+
+        /* FILE UPLOAD DROPZONE */
+        .file-dropzone {
+            border: 2px dashed rgba(99, 102, 241, 0.4);
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: var(--radius-md);
+            padding: 2rem 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 1rem;
+        }
+
+        .file-dropzone:hover, .file-dropzone.dragover {
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .file-dropzone p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .file-dropzone .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .badge-status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .badge-status.loaded {
+            background: var(--success-bg);
+            color: #34d399;
+            border: 1px solid var(--success-border);
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: var(--radius-md);
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #4f46e5 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+        }
+
+        .btn-secondary {
+            background: rgba(51, 65, 85, 0.6);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(71, 85, 105, 0.8);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        /* CHECKBOXES & RADIO GRID */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .option-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 0.75rem 1rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .option-checkbox input {
+            accent-color: var(--primary);
+            width: 1.1rem;
+            height: 1.1rem;
+        }
+
+        /* PILL SELECTORS FOR DIFFICULTY & QUESTION COUNT PRESETS */
+        .pill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .pill-btn {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-sm);
+            padding: 0.65rem 0.8rem;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: var(--transition);
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+        }
+
+        .pill-btn:hover {
+            background: var(--bg-card-hover);
+            color: var(--text-main);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .pill-btn.active {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            color: #ffffff;
+            box-shadow: 0 0 12px rgba(99, 102, 241, 0.3);
+        }
+
+        /* QUIZ SCREEN ELEMENTS */
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #a855f7);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .badge-difficulty {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .diff-lehka { background: var(--success-bg); color: #34d399; border: 1px solid var(--success-border); }
+        .diff-stredni { background: var(--warning-bg); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.4); }
+        .diff-tezka { background: var(--error-bg); color: #f87171; border: 1px solid var(--error-border); }
+
+        .question-text {
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.45;
+            margin-bottom: 1.5rem;
+            color: #f1f5f9;
+        }
+
+        .answers-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+            margin-bottom: 1.75rem;
+        }
+
+        .answer-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: rgba(15, 23, 42, 0.5);
+            border: 1.5px solid var(--border-color);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .answer-card:hover:not(.disabled) {
+            border-color: var(--primary);
+            background: var(--bg-card-hover);
+            transform: translateX(4px);
+        }
+
+        .answer-card.selected {
+            border-color: var(--primary);
+            background: var(--primary-light);
+            box-shadow: 0 0 12px rgba(99, 102, 241, 0.25);
+        }
+
+        .answer-card.correct {
+            border-color: var(--success-border) !important;
+            background: var(--success-bg) !important;
+            color: #a7f3d0;
+        }
+
+        .answer-card.incorrect {
+            border-color: var(--error-border) !important;
+            background: var(--error-bg) !important;
+            color: #fca5a5;
+        }
+
+        .answer-letter {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .answer-card.selected .answer-letter {
+            background: var(--primary);
+            color: #ffffff;
+        }
+
+        .answer-card.correct .answer-letter {
+            background: var(--success);
+            color: #ffffff;
+        }
+
+        .answer-card.incorrect .answer-letter {
+            background: var(--error);
+            color: #ffffff;
+        }
+
+        /* EXPLANATION BOX */
+        .explanation-box {
+            display: none;
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-left: 4px solid var(--primary);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .explanation-box h4 {
+            font-size: 0.95rem;
+            color: #a5b4fc;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .explanation-box p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .quiz-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* RESULTS SCREEN */
+        .results-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .score-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, rgba(15, 23, 42, 0.8) 100%);
+            border: 4px solid var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem auto;
+            box-shadow: var(--shadow-glow);
+        }
+
+        .score-circle .number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+        }
+
+        .score-circle .percent {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .results-review {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin: 2rem 0;
+            max-height: 450px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+
+        /* CUSTOM SCROLLBAR */
+        .results-review::-webkit-scrollbar {
+            width: 6px;
+        }
+        .results-review::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 3px;
+        }
+        .results-review::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.4);
+            border-radius: 3px;
+        }
+
+        .review-item {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.25rem;
+        }
+
+        .review-item.is-correct {
+            border-left: 4px solid var(--success);
+        }
+
+        .review-item.is-incorrect {
+            border-left: 4px solid var(--error);
+        }
+
+        .review-item .q-title {
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+        }
+
+        .review-ans {
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .review-ans.user-choice { color: #f87171; }
+        .review-ans.correct-choice { color: #34d399; }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .quiz-actions {
+                flex-direction: column;
+            }
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Interaktivní Testovací Aplikace</h1>
+        <p>Generování dynamických testů ze souboru s databází otázek (*.txt)</p>
+    </header>
+
+    <div class="container">
+
+        <!-- SETUP / CONFIG SCREEN -->
+        <div id="screen-setup" class="screen active">
+            <h2 style="font-family: 'Outfit'; font-size: 1.5rem; margin-bottom: 1.5rem;">⚙️ Nastavení nového testu</h2>
+
+            <!-- FILE UPLOAD / STATUS -->
+            <div class="form-group">
+                <label>Databáze otázek (.txt)</label>
+                <div class="file-dropzone" id="dropzone">
+                    <span class="icon">📁</span>
+                    <p>Přetáhněte sem soubor <strong>*.txt</strong> nebo klikněte pro výběr</p>
+                    <input type="file" id="file-input" accept=".txt" style="display: none;">
+                    <div id="db-status" class="badge-status loaded">Načítání výchozí databáze (AI Act)...</div>
+                </div>
+            </div>
+
+            <!-- DIFFICULTY FILTER -->
+            <div class="form-group">
+                <label>Volba obtížnosti</label>
+                <div class="pill-grid" id="difficulty-pills">
+                    <div class="pill-btn active" data-value="vse">🎯 Všechny</div>
+                    <div class="pill-btn" data-value="lehká">🟢 Lehká</div>
+                    <div class="pill-btn" data-value="střední">🟡 Střední</div>
+                    <div class="pill-btn" data-value="těžká">🔴 Těžká</div>
+                </div>
+                <!-- Skrytý select pro zpětnou kompatibilitu -->
+                <select id="difficulty-select" style="display: none;">
+                    <option value="vse" selected>Všechny obtížnosti</option>
+                    <option value="lehká">Lehká</option>
+                    <option value="střední">Střední</option>
+                    <option value="těžká">Těžká</option>
+                </select>
+            </div>
+
+            <!-- QUESTION COUNT & PRESETS -->
+            <div class="form-group">
+                <label for="count-input">Počet otázek v testu</label>
+                <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.5rem;">
+                    <input type="number" id="count-input" min="1" max="50" value="10" style="flex: 1;">
+                </div>
+                <div class="pill-grid" id="count-chips" style="grid-template-columns: repeat(4, 1fr);">
+                    <div class="pill-btn" data-count="3">3 otázky</div>
+                    <div class="pill-btn" data-count="5">5 otázek</div>
+                    <div class="pill-btn active" data-count="10">10 otázek</div>
+                    <div class="pill-btn" data-count="all">Všechny</div>
+                </div>
+                <small id="available-count-msg" style="color: var(--text-muted); display: block; margin-top: 0.6rem; font-weight: 500;">Načítám dostupné otázky...</small>
+            </div>
+
+            <!-- MODES & OPTIONS -->
+            <div class="form-group">
+                <label>Možnosti testování</label>
+                <div class="options-grid">
+                    <label class="option-checkbox">
+                        <input type="checkbox" id="opt-instant-feedback" checked>
+                        <span>Okamžitá kontrola</span>
+                    </label>
+                    <label class="option-checkbox">
+                        <input type="checkbox" id="opt-shuffle-q" checked>
+                        <span>Míchat otázky</span>
+                    </label>
+                    <label class="option-checkbox">
+                        <input type="checkbox" id="opt-shuffle-a" checked>
+                        <span>Míchat odpovědi</span>
+                    </label>
+                </div>
+            </div>
+
+            <button id="btn-start" class="btn btn-primary btn-full">
+                🚀 Spustit test
+            </button>
+        </div>
+
+
+        <!-- QUIZ RUNNING SCREEN -->
+        <div id="screen-quiz" class="screen">
+            <div class="quiz-header">
+                <div>
+                    <span id="quiz-progress-text" style="font-weight: 700; color: #cbd5e1;">Otázka 1 z 10</span>
+                </div>
+                <div id="quiz-difficulty-badge" class="badge-difficulty diff-lehka">Lehká</div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div id="progress-bar" class="progress-bar-fill"></div>
+            </div>
+
+            <div id="quiz-question-text" class="question-text">
+                Načítání otázky...
+            </div>
+
+            <div id="quiz-answers" class="answers-list">
+                <!-- Dynamic answer cards rendered here -->
+            </div>
+
+            <!-- EXPLANATION -->
+            <div id="quiz-explanation" class="explanation-box">
+                <h4>💡 Vysvětlení:</h4>
+                <p id="quiz-explanation-text"></p>
+            </div>
+
+            <div class="quiz-actions">
+                <button id="btn-prev" class="btn btn-secondary" style="visibility: hidden;">⬅️ Předchozí</button>
+                <button id="btn-next" class="btn btn-primary" disabled>Další otázka ➡️</button>
+            </div>
+        </div>
+
+
+        <!-- RESULTS SCREEN -->
+        <div id="screen-results" class="screen">
+            <div class="results-header">
+                <h2 style="font-family: 'Outfit'; font-size: 1.8rem; margin-bottom: 0.5rem;">Výsledky testu</h2>
+                <p id="results-headline" style="color: var(--text-muted);">Skvělá práce, test je dokončen!</p>
+                
+                <div class="score-circle">
+                    <span id="results-score-num" class="number">0 / 0</span>
+                    <span id="results-score-percent" class="percent">0%</span>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.1rem; color: #cbd5e1; margin-bottom: 1rem;">Přehled odpovědí a vysvětlení:</h3>
+            <div id="results-review-list" class="results-review">
+                <!-- Detailed question summary rendered here -->
+            </div>
+
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <button id="btn-restart" class="btn btn-primary" style="flex: 1;">🔄 Opakovat test</button>
+                <button id="btn-config" class="btn btn-secondary" style="flex: 1;">⚙️ Změnit nastavení</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // DEFAULT FALLBACK DATABASE (In case file fetch fails on local file:// protocol)
+        const DEFAULT_DATABASE_TXT = `# Databáze otázek pro testovací aplikaci - Téma: EU AI Act (20 otázek)
+[OBTIZNOST: lehká]
+[Q] Co je to EU AI Act (Akt o umělé inteligenci)?
+[x] První ucelený zákon na světě, který reguluje vývoj a využití umělé inteligence.
+[0] Program Evropské unie pro financování nákupu nových počítačů do škol.
+[0] Mezinárodní dohoda o zákazu výzkumu AI na univerzitách.
+[0] Soubor doporučení, která ale firmy nemusí vůbec dodržovat.
+[VYSVETLENI] AI Act je první právně závazný rámec pro regulaci AI na světě, schválený Evropskou unií v roce 2024.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Na jakém hlavním principu je AI Act postaven?
+[0] Na základě cenové dostupnosti technologií.
+[x] Na základě přístupu založeného na míře rizika (Risk-based approach).
+[0] Na úplném zákazu všech generativních nástrojů (jako ChatGPT).
+[0] Na povinnosti platit daň z každého vygenerovaného obrázku.
+[VYSVETLENI] AI Act rozděluje systémy AI podle toho, jak velké riziko představují pro práva a bezpečnost lidí (od minimálního po zakázané).
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Který z následujících systémů spadává do kategorie ZAKÁZANÉHO RIZIKA (Unacceptable Risk)?
+[0] Algoritmus na doporučování videí na YouTube.
+[0] Chatbot pro zákaznickou podporu v e-shopu.
+[x] Systém sociálního kreditování (hodnocení občanského chování vládou).
+[0] Hlasový asistent v mobilním telefonu.
+[VYSVETLENI] Sociální kreditování (hodnocení a znevýhodňování občanů na základě jejich chování) je v EU podle AI Actu plně zakázáno, protože porušuje základní lidská práva.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Představ si, že střední škola používá AI systém, který automaticky vyhodnocuje přijímací zkoušky a rozhoduje o přijetí žáků. Do jaké kategorie rizika tento systém patří?
+[0] Nepodléhá žádné regulaci.
+[0] Zakázané riziko (plně nelegální).
+[x] Vysoké riziko (High Risk).
+[0] Minimální riziko.
+[VYSVETLENI] AI používaná ve vzdělávání (např. při přijímacích zkouškách nebo hodnocení žáků) patří mezi vysoké riziko, protože může zásadně ovlivnit budoucnost člověka. Musí splňovat přísné požadavky na férovost, transparentnost a lidský dohled.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Do jaké kategorie rizika spadá většina běžně používaných AI aplikací, jako jsou spamové filtry v e-mailu nebo AI ve videohrách?
+[x] Minimální nebo žádné riziko.
+[0] Vysoké riziko.
+[0] Omezené riziko.
+[0] Zakázané riziko.
+[VYSVETLENI] Naprostá většina aplikací AI představuje minimální riziko a AI Act je dál ponechává bez dalších omezujících povinností.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Pokud někdo vytvoří realistické video (deepfake) známé osobnosti nebo spolužáka pomocí AI, jaká povinnost podle AI Actu platí?
+[0] Video musí být okamžitě smazáno ze všech serverů.
+[x] Autor musí viditelně označit, že jde o AI vygenerovaný/upravený obsah.
+[0] Nemusí dělat nic, pokud je video vtipné.
+[0] Je nutné zaplatit autorský poplatek Evropské unii.
+[VYSVETLENI] U tzv. omezeného rizika (kam spadají deepfakes a generovaný obsah) platí pravidlo transparentnosti – uživatel musí být jasně informován, že s ním komunikuje AI nebo že vidí vygenerovaný fotorealistický obsah.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Vývojáři velkých jazykových modelů (jako jsou tvůrci ChatGPT nebo Claude) mají podle AI Actu povinnost:
+[0] Zveřejnit kompletní zdrojový kód zdarma pro všechny.
+[0] Platit všem uživatelům za to, že jejich modely testují.
+[x] Respektovat autorská práva a zveřejnit shrnutí dat použitých pro trénování.
+[0] Zákaz trénovat modely na jakýchkoliv textech v češtině.
+[VYSVETLENI] Tvůrci obecných modelů AI (GPAI) musí zaručit dodržování autorských práv a poskytnout transparentní informace o tom, z jakých dat model trénovali.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Je podle AI Actu povoleno, aby zaměstnavatel nebo škola používvala AI k rozpoznávání emocí studentů či zaměstnanců v učebnách/na pracovišti?
+[0] Ano, bez jakýchkoliv omezení.
+[x] Ne, rozpoznávání emocí v práci a ve školách je zakázáno (až na specifické lékařské/bezpečnostní výjimky).
+[0] Ano, ale pouze se souhlasem třídního učitele.
+[0] Jen v případě, že se jedná o hodiny informatiky.
+[VYSVETLENI] Rozpoznávání emocí na pracovišti a ve vzdělávacích institucích je zařazeno mezi zakázané praktiky kvůli riziku zneužití a zásahu do soukromí.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Kdo musí dodržovat pravidla AI Actu?
+[0] Pouze firmy se sídlem v Evropské unii.
+[x] Jakákoliv firma na světě (např. z USA či Číny), pokud své AI systémy nabízí uživatelům v EU.
+[0] Pouze státní úřady a armáda.
+[0] Jen jednotlivci, kteří AI používají pro osobní potřebu.
+[VYSVETLENI] AI Act má tzv. extrateritoriální účinek – platí pro každého vývojáře a poskytovatele AI na světě, pokud jsou jeho služby využívány na území EU.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co hrozí firmám, které vědomě poruší nejpřísnější zákazy v AI Actu (např. nasadí zakázané systémy biometrie)?
+[0] Pouze písemné varování.
+[0] Zákaz používání internetu na 1 rok.
+[x] Vysoká finanční pokuta (až 35 milionů eur nebo 7 % z celosvětového ročního obratu).
+[0] Zrušení společnosti.
+[VYSVETLENI] Za závažné porušení pravidel AI Actu hrozí astronomické pokuty, které mohou dosáhnout desítek milionů eur nebo určitého procenta z celosvětového obratu firmy.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Automobilka vyvíjí plně autonomní auto (bez řidiče), jehož AI systém řídí zatáčení, brzdění a vyhýbání se překážkám. Do jaké kategorie rizika spadá AI řízení tohoto vozidla?
+[0] Minimální riziko, protože auta jsou běžná.
+[0] Zakázané riziko, plně autonomní auta jsou v EU nelegální.
+[x] Vysoké riziko (High Risk), protože chyba systému může ohrozit lidské životy a zdraví.
+[0] Omezené riziko bez nutnosti testování.
+[VYSVETLENI] AI systémy sloužící jako bezpečnostní komponenty v dopravě (autonomní auta, vlaky, letadla) spadají pod VYSOKÉ RIZIKO. Podléhají přísným bezpečnostním certifikacím a auditům před uvedením do provozu.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Městský podnik dopravy plánuje nasadit AI systém pro automatické řízení semaforů a křižovatek v celém městě. Pod jakou oblast AI Actu tento systém spadá?
+[0] Pod zábavní systém a videohry.
+[x] Pod kritickou infrastrukturu (High Risk), kde by výpadek mohl ohrozit bezpečnost dopravy.
+[0] Pod zakázané praktiky biometrického sledování.
+[0] Tento systém nereguluje žádný zákon.
+[VYSVETLENI] AI používaná při správě a provozu kritické infrastruktury (doprava, zásobování vodou, elektřina) je zařazena do VYSOKÉHO RIZIKA, protože její selhání může způsobit nehody nebo kolaps služeb.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Policie chce na náměstí nainstalovat AI kamery s živým rozpoznáváním obličejů v reálném čase k běžné kontrole kolemjdoucích občanů. Je to podle AI Actu dovoleno?
+[0] Ano, je to běžná preventivní praxe bez omezení.
+[x] Ne, plošná živá biometrická identifikace na veřejnosti je ZAKÁZÁNA (až na velmi přísné výjimky jako terorismus s povolením soudu).
+[0] Ano, pokud kamery spravuje soukromá bezpečnostní služba.
+[0] Jen v případě, že jsou občané předem upozorněni letákem.
+[VYSVETLENI] Dálková biometrická identifikace v reálném čase na veřejně přístupných místech je v EU zásadně zakázána. Výjimky (např. hledání uneseného dítěte či teroristická hrozba) vyžadují předchozí souhlas soudu.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Výrobce vyrobil dětskou hračku s AI hlasovým asistentem, která tajně využívá podvědomé zvuky a manipulaci k tomu, aby přiměla dítě k nebezpečnému jednání. Jak AI Act hodnotí tuto hračku?
+[x] Jako zakázané riziko (Unacceptable Risk) – manipulativní a klamavé AI systémy poškozující zranitelné osoby jsou zakázány.
+[0] Jako vysoké riziko – hračka se smí prodávat od 18 let.
+[0] Jako omezené riziko – stačí na krabici napsat upozornění.
+[0] Jako minimální riziko, hračky se neregulují.
+[VYSVETLENI] AI systémy, které využívají podvědomé (subliminální) techniky nebo zneužívají věk a handicap k manipulaci lidí, spadají do ZAKÁZANÉHO RIZIKA.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Banka nasadí AI systém, který posuzuje žádosti občanů o hypotéku a půjčky a automaticky určuje jejich bonitu (kreditní skóre). Jaké povinnosti banka má podle AI Actu?
+[0] Žádné, bankovnictví má výjimku ze zákona.
+[x] Musí zajistit, že systém spadá pod vysoké riziko (dokládat kvalitu trénovacích dat, transparentnost a lidský dohled).
+[0] Musí systém okamžitě vypnout, posuzování půjček AI je nelegální.
+[0] Stačí, když klientovi pošle e-mail.
+[VYSVETLENI] AI používaná k posuzování úvěruschopnosti a hodnocení bonity fyzických osob spadá pod VYSOKÉ RIZIKO, aby se zamezilo diskriminaci a neoprávněnému zamítání financí.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Firma používá AI algoritmus při náborovém řízení k automatickému vyřazování životopisů a hodnocení videopohovorů uchazečů o práci. Co platí pro tento AI systém?
+[0] Spadá pod minimální riziko.
+[x] Spadá pod vysoké riziko (High Risk) – firma musí garantovat, že AI nediskriminuje na základě pohlaví, věku či rasy.
+[0] Je zcela zakázaný na celém území EU.
+[0] Nevyžaduje žádnou kontrolu ze strany člověka.
+[VYSVETLENI] AI používaná v zaměstnávání, při náboru pracovníků a rozhodování o povýšení je kategorizována jako VYSOKÉ RIZIKO kvůli ochraně práv zaměstnanců na trhu práce.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Generátor obrázků (jako Midjourney nebo DALL-E) vygeneroval fotorealistickou fotografii. Jaká technická povinnost platí pro tvůrce tohoto AI nástroje podle AI Actu?
+[0] Výrobce musí za každý vygenerovaný obrázek zaplatit poplatek 1 EUR.
+[x] Výstup musí obsahovat strojově čitelný vodoznak/označení, že jde o AI vygenerovaný obsah.
+[0] Obrázek se nesmí nikde na internetu publikovat.
+[0] Výrobce musí do obrázku ručně nakreslit červený křížek.
+[VYSVETLENI] Poskytovatelé AI generujících audio, foto či video obsah musejí zajistit, aby byl výstup strojově čitelný a označený jako uměle vytvořený (např. pomocí digitálního vodoznaku).
+
+---
+
+[OBTIZNOST: těžká]
+[Q] V nemocnici pomáhá AI software lékařům analyzovat mamografické snímky a odhalovat raná stadia rakoviny. Jaký přístup AI Act k tomuto lékařskému AI softwaru vyžaduje?
+[0] Považuje ho za zakázaný, protože AI nesmí léčit lidi.
+[x] Považuje ho za vysoké riziko (High Risk) – vyžaduje přísné certifikace, přesná trénovací data a konečné rozhodnutí vždy dělá lékař.
+[0] Považuje ho za omezené riziko, stačí mít u počítače návod k použití.
+[0] Lékařský software nereguluje AI Act, ale pouze stavební zákon.
+[VYSVETLENI] AI jako zdravotnický prostředek podléhá regulaci VYSOKÉHO RIZIKA. Musí být vysoce přesná, prověřená a konečné diagnózy musí schvalovat kvalifikovaný zdravotnický personál.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Soudní systém plánuje využívat AI k vyhodnocování důkazů a předpovídání rizika, zda obžalovaný spáchá opakovaně trestný čin. Jak s tímto AI Act nakládá?
+[0] Umožňuje AI rozhodovat o trestu bez účasti soudce.
+[x] Zařazuje tyto systémy pod vysoké riziko (High Risk) s nutností přísného lidského dohledu a ochrany spravedlivého procesu.
+[0] Považuje je za minimální riziko.
+[0] Povoluje je pouze pro dopravní přestupky.
+[VYSVETLENI] AI v oblastech spravedlnosti a právního státu patří mezi VYSOKÉ RIZIKO, aby byla garantována nezávislost soudnictví, spravedlivý proces a nedocházelo k chybnému odsuzování.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Logistická společnost testuje autonomní doručovací drony bez pilota pro doručování balíků ve městech. Co musí splňovat AI autopilot dronu?
+[0] Nemusí splňovat nic, drony do 5 kg nepodléhají zákonům.
+[x] Spadá pod bezpečnostní prvky v dopravě (High Risk) a musí splňovat přísná kritéria proti havárii a selhání.
+[0] Doručovací drony jsou v celém světě zakázány.
+[0] Dron musí mít na palubě živého holuba pro případ poruchy.
+[VYSVETLENI] AI systémy zajišťující autonomní navigaci a bezpečnost letu bezpilotních dronů v obydlených oblastech spadají pod VYSOKÉ RIZIKO z důvodu ochrany zdraví a majetku občanů na zemi.`;
+
+        // STATE APP VARIABLES
+        let rawDatabaseQuestions = [];
+        let activeQuizQuestions = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = {}; // { questionIndex: selectedOptionIndex }
+        let quizConfig = {
+            difficulty: 'vse',
+            count: 10,
+            instantFeedback: true,
+            shuffleQ: true,
+            shuffleA: true
+        };
+
+        // DOM ELEMENTS
+        const screenSetup = document.getElementById('screen-setup');
+        const screenQuiz = document.getElementById('screen-quiz');
+        const screenResults = document.getElementById('screen-results');
+
+        const dropzone = document.getElementById('dropzone');
+        const fileInput = document.getElementById('file-input');
+        const dbStatus = document.getElementById('db-status');
+        const difficultySelect = document.getElementById('difficulty-select');
+        const countInput = document.getElementById('count-input');
+        const availableCountMsg = document.getElementById('available-count-msg');
+
+        const btnStart = document.getElementById('btn-start');
+        const btnPrev = document.getElementById('btn-prev');
+        const btnNext = document.getElementById('btn-next');
+        const btnRestart = document.getElementById('btn-restart');
+        const btnConfig = document.getElementById('btn-config');
+
+        // PARSER FOR *.TXT DATABASE FORMAT
+        function parseTxtDatabase(text) {
+            const blocks = text.split(/^---$/m).map(b => b.trim()).filter(Boolean);
+            const parsed = [];
+
+            blocks.forEach((block, idx) => {
+                const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
+                const q = {
+                    id: idx + 1,
+                    difficulty: 'střední',
+                    question: '',
+                    options: [],
+                    explanation: ''
+                };
+
+                lines.forEach(line => {
+                    if (line.startsWith('[OBTIZNOST:')) {
+                        const match = line.match(/\[OBTIZNOST:\s*(.*?)\]/i);
+                        if (match) q.difficulty = match[1].trim();
+                    } else if (line.startsWith('[Q]')) {
+                        q.question = line.replace('[Q]', '').trim();
+                    } else if (line.startsWith('[x]')) {
+                        q.options.push({ text: line.replace('[x]', '').trim(), isCorrect: true });
+                    } else if (line.startsWith('[0]')) {
+                        q.options.push({ text: line.replace('[0]', '').trim(), isCorrect: false });
+                    } else if (line.startsWith('[VYSVETLENI]')) {
+                        q.explanation = line.replace('[VYSVETLENI]', '').trim();
+                    }
+                });
+
+                if (q.question && q.options.length > 0) {
+                    parsed.push(q);
+                }
+            });
+
+            return parsed;
+        }
+
+        // LOAD DATABASE FROM FILE / DEFAULT
+        function loadDatabaseContent(txtContent, sourceName = 'vychozi') {
+            rawDatabaseQuestions = parseTxtDatabase(txtContent);
+            dbStatus.textContent = `Načteno ${rawDatabaseQuestions.length} otázek (Zdroj: ${sourceName})`;
+            dbStatus.className = 'badge-status loaded';
+            updateAvailableCount();
+        }
+
+        // INITIAL LOAD VIA FETCH OR FALLBACK
+        async function initDatabase() {
+            try {
+                const response = await fetch('databaze_otazek_ai_act.txt');
+                if (response.ok) {
+                    const text = await response.text();
+                    loadDatabaseContent(text, 'databaze_otazek_ai_act.txt');
+                    return;
+                }
+            } catch (e) {
+                console.log('Soubor nelze načíst přes HTTP/fetch, používám výchozí obsaženou databázi.');
+            }
+            loadDatabaseContent(DEFAULT_DATABASE_TXT, 'vestavěná databáze AI Act');
+        }
+
+        // UPDATE AVAILABLE COUNT DISPLAY
+        function updateAvailableCount() {
+            const diff = difficultySelect.value;
+            let available = rawDatabaseQuestions;
+            if (diff !== 'vse') {
+                available = rawDatabaseQuestions.filter(q => q.difficulty.toLowerCase() === diff.toLowerCase());
+            }
+            availableCountMsg.textContent = `Dostupných otázek pro tuto obtížnost: ${available.length}`;
+            if (available.length > 0) {
+                countInput.max = available.length;
+                if (parseInt(countInput.value) > available.length) {
+                    countInput.value = available.length;
+                }
+            } else {
+                countInput.value = 0;
+            }
+        }
+
+        // FILE DROP & UPLOAD HANDLERS
+        dropzone.addEventListener('click', () => fileInput.click());
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+        dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzone.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) {
+                handleFile(e.target.files[0]);
+            }
+        });
+
+        function handleFile(file) {
+            if (!file.name.endsWith('.txt')) {
+                alert('Prosím vyberte textový soubor s příponou .txt');
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                loadDatabaseContent(e.target.result, file.name);
+            };
+            reader.readAsText(file, 'UTF-8');
+        }
+
+        difficultySelect.addEventListener('change', updateAvailableCount);
+
+        // DIFFICULTY PILL EVENT HANDLERS
+        document.querySelectorAll('#difficulty-pills .pill-btn').forEach(pill => {
+            pill.addEventListener('click', () => {
+                document.querySelectorAll('#difficulty-pills .pill-btn').forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                const val = pill.getAttribute('data-value');
+                difficultySelect.value = val;
+                updateAvailableCount();
+            });
+        });
+
+        // COUNT CHIP EVENT HANDLERS
+        document.querySelectorAll('#count-chips .pill-btn').forEach(chip => {
+            chip.addEventListener('click', () => {
+                document.querySelectorAll('#count-chips .pill-btn').forEach(c => c.classList.remove('active'));
+                chip.classList.add('active');
+                const countAttr = chip.getAttribute('data-count');
+                
+                const diff = difficultySelect.value;
+                let available = rawDatabaseQuestions;
+                if (diff !== 'vse') {
+                    available = rawDatabaseQuestions.filter(q => q.difficulty.toLowerCase() === diff.toLowerCase());
+                }
+
+                if (countAttr === 'all') {
+                    countInput.value = available.length || 1;
+                } else {
+                    countInput.value = Math.min(parseInt(countAttr), available.length || 1);
+                }
+            });
+        });
+
+        countInput.addEventListener('input', () => {
+            document.querySelectorAll('#count-chips .pill-btn').forEach(c => c.classList.remove('active'));
+        });
+
+        // SWITCH SCREENS
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId).classList.add('active');
+        }
+
+        // START QUIZ
+        btnStart.addEventListener('click', () => {
+            quizConfig.difficulty = difficultySelect.value;
+            quizConfig.count = parseInt(countInput.value) || 5;
+            quizConfig.instantFeedback = document.getElementById('opt-instant-feedback').checked;
+            quizConfig.shuffleQ = document.getElementById('opt-shuffle-q').checked;
+            quizConfig.shuffleA = document.getElementById('opt-shuffle-a').checked;
+
+            let pool = [...rawDatabaseQuestions];
+            if (quizConfig.difficulty !== 'vse') {
+                pool = pool.filter(q => q.difficulty.toLowerCase() === quizConfig.difficulty.toLowerCase());
+            }
+
+            if (pool.length === 0) {
+                alert('Pro vybranou obtížnost nejsou v databázi žádné otázky!');
+                return;
+            }
+
+            if (quizConfig.shuffleQ) {
+                pool.sort(() => 0.5 - Math.random());
+            }
+
+            activeQuizQuestions = pool.slice(0, Math.min(quizConfig.count, pool.length));
+            
+            // Deep clone questions & options to allow shuffling options safely
+            activeQuizQuestions = activeQuizQuestions.map(q => {
+                let opts = q.options.map(o => ({ ...o }));
+                if (quizConfig.shuffleA) {
+                    opts.sort(() => 0.5 - Math.random());
+                }
+                return { ...q, options: opts };
+            });
+
+            currentQuestionIndex = 0;
+            userAnswers = {};
+
+            showScreen('screen-quiz');
+            renderQuestion();
+        });
+
+        // RENDER CURRENT QUESTION
+        function renderQuestion() {
+            const q = activeQuizQuestions[currentQuestionIndex];
+            const total = activeQuizQuestions.length;
+
+            document.getElementById('quiz-progress-text').textContent = `Otázka ${currentQuestionIndex + 1} z ${total}`;
+            document.getElementById('progress-bar').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
+
+            // Badge
+            const badge = document.getElementById('quiz-difficulty-badge');
+            badge.textContent = q.difficulty;
+            badge.className = 'badge-difficulty ' + (
+                q.difficulty.toLowerCase().includes('lehk') ? 'diff-lehka' :
+                q.difficulty.toLowerCase().includes('střed') ? 'diff-stredni' : 'diff-tezka'
+            );
+
+            document.getElementById('quiz-question-text').textContent = q.question;
+
+            // Answers list
+            const answersContainer = document.getElementById('quiz-answers');
+            answersContainer.innerHTML = '';
+
+            const explanationBox = document.getElementById('quiz-explanation');
+            explanationBox.style.display = 'none';
+
+            const selectedOptIndex = userAnswers[currentQuestionIndex];
+            const isAnswered = selectedOptIndex !== undefined;
+
+            q.options.forEach((opt, idx) => {
+                const card = document.createElement('div');
+                card.className = 'answer-card';
+                
+                const letter = String.fromCharCode(65 + idx); // A, B, C, D
+                
+                card.innerHTML = `
+                    <div class="answer-letter">${letter}</div>
+                    <div style="flex: 1; font-weight: 500;">${opt.text}</div>
+                `;
+
+                if (isAnswered) {
+                    card.classList.add('disabled');
+                    if (quizConfig.instantFeedback) {
+                        if (opt.isCorrect) card.classList.add('correct');
+                        if (idx === selectedOptIndex && !opt.isCorrect) card.classList.add('incorrect');
+                    } else {
+                        if (idx === selectedOptIndex) card.classList.add('selected');
+                    }
+                } else {
+                    card.addEventListener('click', () => selectAnswer(idx));
+                }
+
+                answersContainer.appendChild(card);
+            });
+
+            // Handle navigation buttons
+            btnPrev.style.visibility = currentQuestionIndex > 0 ? 'visible' : 'hidden';
+
+            if (isAnswered) {
+                btnNext.disabled = false;
+                if (quizConfig.instantFeedback && q.explanation) {
+                    document.getElementById('quiz-explanation-text').textContent = q.explanation;
+                    explanationBox.style.display = 'block';
+                }
+            } else {
+                btnNext.disabled = true;
+            }
+
+            if (currentQuestionIndex === total - 1) {
+                btnNext.textContent = 'Dokončit test 🏆';
+            } else {
+                btnNext.textContent = 'Další otázka ➡️';
+            }
+        }
+
+        // SELECT ANSWER
+        function selectAnswer(optIndex) {
+            userAnswers[currentQuestionIndex] = optIndex;
+            renderQuestion();
+        }
+
+        // NAVIGATION
+        btnNext.addEventListener('click', () => {
+            if (currentQuestionIndex < activeQuizQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                finishQuiz();
+            }
+        });
+
+        btnPrev.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        });
+
+        // FINISH QUIZ & SHOW RESULTS
+        function finishQuiz() {
+            let correctCount = 0;
+            activeQuizQuestions.forEach((q, qIdx) => {
+                const userChoice = userAnswers[qIdx];
+                if (userChoice !== undefined && q.options[userChoice].isCorrect) {
+                    correctCount++;
+                }
+            });
+
+            const total = activeQuizQuestions.length;
+            const percentage = Math.round((correctCount / total) * 100);
+
+            document.getElementById('results-score-num').textContent = `${correctCount} / ${total}`;
+            document.getElementById('results-score-percent').textContent = `${percentage}%`;
+
+            const headline = document.getElementById('results-headline');
+            if (percentage >= 90) headline.textContent = '🏆 Vynikající! Téma ovládáš na jedničku.';
+            else if (percentage >= 70) headline.textContent = '👏 Velmi dobrý výkon! Znáš většinu odpovědí.';
+            else if (percentage >= 50) headline.textContent = '👍 Dobrý pokus! Ještě je pár věcí k procvičení.';
+            else headline.textContent = '📚 Ještě je potřeba si látku trochu zopakovat.';
+
+            // Render review list
+            const reviewContainer = document.getElementById('results-review-list');
+            reviewContainer.innerHTML = '';
+
+            activeQuizQuestions.forEach((q, qIdx) => {
+                const userChoiceIdx = userAnswers[qIdx];
+                const userOpt = userChoiceIdx !== undefined ? q.options[userChoiceIdx] : null;
+                const correctOpt = q.options.find(o => o.isCorrect);
+                const isCorrect = userOpt && userOpt.isCorrect;
+
+                const item = document.createElement('div');
+                item.className = `review-item ${isCorrect ? 'is-correct' : 'is-incorrect'}`;
+
+                item.innerHTML = `
+                    <div class="q-title">${qIdx + 1}. ${q.question}</div>
+                    <div class="review-ans ${isCorrect ? 'correct-choice' : 'user-choice'}">
+                        ${isCorrect ? '✅' : '❌'} <strong>Tvoje odpověď:</strong> ${userOpt ? userOpt.text : 'Nezodpovězeno'}
+                    </div>
+                    ${!isCorrect ? `
+                        <div class="review-ans correct-choice">
+                            ✔️ <strong>Správná odpověď:</strong> ${correctOpt ? correctOpt.text : ''}
+                        </div>
+                    ` : ''}
+                    ${q.explanation ? `<div style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem; background: rgba(0,0,0,0.2); padding: 0.5rem 0.75rem; border-radius: 6px;">💡 <em>Vysvětlení:</em> ${q.explanation}</div>` : ''}
+                `;
+
+                reviewContainer.appendChild(item);
+            });
+
+            showScreen('screen-results');
+        }
+
+        // RESTART / CONFIG BUTTONS
+        btnRestart.addEventListener('click', () => {
+            btnStart.click();
+        });
+
+        btnConfig.addEventListener('click', () => {
+            showScreen('screen-setup');
+        });
+
+        // INITIALIZE ON LOAD
+        initDatabase();
+    </script>
+</body>
+</html>
