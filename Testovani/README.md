@@ -5,7 +5,7 @@ Tento adresář obsahuje různé sady testovacích otázek a materiálů.
 ## Dostupné sady
 
 ### Sada 1: EU AI Act
-- **Počet otázek:** 20
+- **Počet otázek:** 10
 - **Popis:** Otázky zaměřené na Nařízení EU o umělé inteligenci (EU AI Act)
 - **Odkaz:** [Sada EU AI Act](https://motol2.github.io/Prog3/Testovani/)
 - **Status:** Aktivní ✓
@@ -26,10 +26,10 @@ Tento adresář obsahuje různé sady testovacích otázek a materiálů.
 - **6. Metody strojového učení** | Karyna Kryvka & Pavel Kubát |
 
 ---
-- **1. Autorské právo a AI** *(Skupina A)* | Tomáš Šunkovský & Marek Řehák |
+- **1. Autorské právo a AI** *(Skupina A)* | Tomáš Sunkovský & Marek Řehák |
 - **1. Autorské právo a AI** *(Skupina B)* | Dominik Pavelka &  Mark Nahornyi |
 - **2. AI a GDPR** | Matyáš Sauer & Marek Miláček |
-- **3. Autonomní vozidla** | Antonín Povolný & Jakub Suchánský |
+- **3. Autonomní vozidla** | Antonín Povolný & Evelyn Andrienkova|
 - **4. AI ve škole** | Mykola Mandziuk & Jáchym Viták |
 - **5. Agentní programování** | Petr Škarvan & Tomáš Štěpán |
 - **6. Metody strojového učení** | Vincent Procházka & Hynek Mayrhofer |
