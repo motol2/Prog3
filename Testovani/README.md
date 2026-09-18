@@ -27,10 +27,10 @@ Tento adresář obsahuje různé sady testovacích otázek a materiálů.
 
 ---
 - **1. Autorské právo a AI** *(Skupina A)* | Tomáš Šunkovský & Marek Řehák |
-- **1. Autorské právo a AI** *(Skupina B)* | Dominik Pavelka & Mykola Mandziuk |
+- **1. Autorské právo a AI** *(Skupina B)* | Dominik Pavelka &  Mark Nahornyi |
 - **2. AI a GDPR** | Matyáš Sauer & Marek Miláček |
 - **3. Autonomní vozidla** | Antonín Povolný & Jakub Suchánský |
-- **4. AI ve škole** | Mark Nahornyi & Jáchym Viták |
+- **4. AI ve škole** | Mykola Mandziuk & Jáchym Viták |
 - **5. Agentní programování** | Petr Škarvan & Tomáš Štěpán |
 - **6. Metody strojového učení** | Vincent Procházka & Hynek Mayrhofer |
 
