@@ -3,426 +3,1321 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interaktivní Testovací Aplikace | Generátor Testů</title>
-    <meta name="description" content="Moderní webová aplikace pro generování a absolvování interaktivních testů z textové databáze otázek.">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
+    <title>Interaktivní testovací aplikace</title>
+
     <style>
         :root {
-            --bg-main: #0f172a;
-            --bg-card: rgba(30, 41, 59, 0.7);
-            --bg-card-hover: rgba(51, 65, 85, 0.8);
-            --border-color: rgba(255, 255, 255, 0.1);
-            
+            --bg: #0f172a;
+            --card: rgba(30, 41, 59, .9);
+            --card-light: rgba(51, 65, 85, .8);
+            --border: rgba(255, 255, 255, .12);
             --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --primary-light: rgba(99, 102, 241, 0.15);
-            
+            --primary-dark: #4f46e5;
+            --primary-light: rgba(99, 102, 241, .2);
             --success: #10b981;
-            --success-bg: rgba(16, 185, 129, 0.15);
-            --success-border: rgba(16, 185, 129, 0.4);
-            
-            --error: #ef4444;
-            --error-bg: rgba(239, 68, 68, 0.15);
-            --error-border: rgba(239, 68, 68, 0.4);
-
+            --success-bg: rgba(16, 185, 129, .16);
+            --danger: #ef4444;
+            --danger-bg: rgba(239, 68, 68, .16);
             --warning: #f59e0b;
-            --warning-bg: rgba(245, 158, 11, 0.15);
-            
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            
-            --radius-lg: 16px;
-            --radius-md: 12px;
-            --radius-sm: 8px;
-            
-            --shadow-glow: 0 0 25px rgba(99, 102, 241, 0.2);
-            --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --radius: 12px;
         }
 
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background: radial-gradient(circle at top center, #1e1b4b 0%, #0f172a 60%, #090d16 100%);
-            color: var(--text-main);
+            margin: 0;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             padding: 2rem 1rem;
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            background:
+                radial-gradient(circle at top, #312e81 0, var(--bg) 48%, #020617 100%);
         }
 
         header {
+            max-width: 850px;
+            margin: 0 auto 2rem;
             text-align: center;
-            margin-bottom: 2rem;
-            max-width: 800px;
         }
 
-        header h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #a5b4fc 0%, #6366f1 50%, #c084fc 100%);
+        h1 {
+            margin: 0 0 .5rem;
+            font-size: clamp(2rem, 5vw, 3rem);
+            background: linear-gradient(135deg, #a5b4fc, #6366f1, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.02em;
         }
 
         header p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
+            margin: 0;
+            color: var(--muted);
         }
 
         .container {
             width: 100%;
             max-width: 850px;
-            background: var(--bg-card);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), var(--shadow-glow);
-            transition: var(--transition);
+            margin: 0 auto;
+            padding: 2rem;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .35);
         }
 
-        .screen { display:none; animation:fadeIn .4s ease-in-out forwards; }
-        .screen.active { display:block; }
-        @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
-
-        .form-group { margin-bottom:1.75rem; }
-        label { display:block; font-weight:600; margin-bottom:.5rem; color:#cbd5e1; font-size:.95rem; }
-
-        select, input[type="number"], input[type="file"] {
-            width:100%; padding:.85rem 1rem; background:rgba(15,23,42,.6);
-            border:1px solid var(--border-color); border-radius:var(--radius-md);
-            color:var(--text-main); font-size:1rem; outline:none; transition:var(--transition);
+        .screen {
+            display: none;
         }
-        select:focus, input:focus { border-color:var(--primary); box-shadow:0 0 0 3px rgba(99,102,241,.25); }
+
+        .screen.active {
+            display: block;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: .5rem;
+            color: #cbd5e1;
+            font-weight: 700;
+        }
+
+        select,
+        input[type="number"] {
+            width: 100%;
+            padding: .85rem 1rem;
+            color: var(--text);
+            background: rgba(15, 23, 42, .8);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+        }
+
+        select:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, .25);
+        }
+
+        small {
+            display: block;
+            margin-top: .5rem;
+            color: var(--muted);
+            line-height: 1.4;
+        }
 
         .file-dropzone {
-            border:2px dashed rgba(99,102,241,.4); background:rgba(15,23,42,.4); border-radius:var(--radius-md);
-            padding:2rem 1.5rem; text-align:center; cursor:pointer; transition:var(--transition); margin-bottom:1rem;
+            padding: 1.5rem;
+            text-align: center;
+            background: rgba(15, 23, 42, .6);
+            border: 2px dashed rgba(99, 102, 241, .5);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: .2s ease;
         }
-        .file-dropzone:hover, .file-dropzone.dragover { border-color:var(--primary); background:var(--primary-light); }
-        .file-dropzone p { color:var(--text-muted); font-size:.95rem; }
-        .file-dropzone .icon { font-size:2rem; margin-bottom:.5rem; display:block; }
 
-        .badge-status { display:inline-block; padding:.3rem .8rem; border-radius:20px; font-size:.85rem; font-weight:600; margin-top:.5rem; }
-        .badge-status.loaded { background:var(--success-bg); color:#34d399; border:1px solid var(--success-border); }
-
-        .btn { display:inline-flex; align-items:center; justify-content:center; gap:.5rem; padding:.85rem 1.75rem; font-size:1rem; font-weight:600; border-radius:var(--radius-md); border:none; cursor:pointer; transition:var(--transition); text-decoration:none; }
-        .btn-primary { background:linear-gradient(135deg,var(--primary) 0%,#4f46e5 100%); color:#fff; box-shadow:0 4px 15px rgba(99,102,241,.3); }
-        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(99,102,241,.45); }
-        .btn-secondary { background:rgba(51,65,85,.6); color:var(--text-main); border:1px solid var(--border-color); }
-        .btn-secondary:hover { background:rgba(71,85,105,.8); }
-        .btn-full { width:100%; }
-
-        .options-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:1rem; margin-top:.5rem; }
-        .option-checkbox { display:flex; align-items:center; gap:.6rem; background:rgba(15,23,42,.5); padding:.75rem 1rem; border-radius:var(--radius-sm); border:1px solid var(--border-color); cursor:pointer; user-select:none; }
-        .option-checkbox input { accent-color:var(--primary); width:1.1rem; height:1.1rem; }
-
-        .pill-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:.75rem; margin-top:.5rem; }
-        .pill-btn {
-            background:rgba(15,23,42,.6); border:1.5px solid var(--border-color); border-radius:var(--radius-sm);
-            padding:.65rem .8rem; text-align:center; font-weight:600; font-size:.9rem; color:#94a3b8;
-            cursor:pointer; transition:var(--transition); user-select:none; display:flex; align-items:center; justify-content:center; gap:.4rem;
+        .file-dropzone:hover,
+        .file-dropzone.dragover {
+            background: var(--primary-light);
+            border-color: var(--primary);
         }
-        .pill-btn:hover { background:var(--bg-card-hover); color:var(--text-main); border-color:rgba(99,102,241,.4); }
-        .pill-btn.active { border-color:var(--primary); background:var(--primary-light); color:#fff; box-shadow:0 0 12px rgba(99,102,241,.3); }
 
-        .quiz-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem; padding-bottom:1rem; border-bottom:1px solid var(--border-color); }
-        .progress-bar-container { width:100%; height:8px; background:rgba(255,255,255,.1); border-radius:4px; overflow:hidden; margin-bottom:1.5rem; }
-        .progress-bar-fill { height:100%; background:linear-gradient(90deg,var(--primary),#a855f7); width:0%; transition:width .3s ease; }
+        .file-dropzone .icon {
+            display: block;
+            margin-bottom: .5rem;
+            font-size: 2rem;
+        }
 
-        .badge-difficulty { padding:.25rem .75rem; border-radius:20px; font-size:.8rem; font-weight:700; text-transform:uppercase; letter-spacing:.05em; }
-        .diff-lehka { background:var(--success-bg); color:#34d399; border:1px solid var(--success-border); }
-        .diff-stredni { background:var(--warning-bg); color:#fbbf24; border:1px solid rgba(245,158,11,.4); }
-        .diff-tezka { background:var(--error-bg); color:#f87171; border:1px solid var(--error-border); }
+        .status {
+            display: inline-block;
+            margin-top: .75rem;
+            padding: .4rem .75rem;
+            color: #86efac;
+            background: var(--success-bg);
+            border: 1px solid rgba(16, 185, 129, .4);
+            border-radius: 999px;
+            font-size: .85rem;
+            font-weight: 700;
+        }
 
-        .question-text { font-size:1.35rem; font-weight:700; line-height:1.45; margin-bottom:1.5rem; color:#f1f5f9; }
-        .answers-list { display:flex; flex-direction:column; gap:.9rem; margin-bottom:1.75rem; }
-        .answer-card { display:flex; align-items:center; gap:1rem; padding:1rem 1.25rem; background:rgba(15,23,42,.5); border:1.5px solid var(--border-color); border-radius:var(--radius-md); cursor:pointer; transition:var(--transition); position:relative; }
-        .answer-card:hover:not(.disabled) { border-color:var(--primary); background:var(--bg-card-hover); transform:translateX(4px); }
-        .answer-card.selected { border-color:var(--primary); background:var(--primary-light); box-shadow:0 0 12px rgba(99,102,241,.25); }
-        .answer-card.correct { border-color:var(--success-border)!important; background:var(--success-bg)!important; color:#a7f3d0; }
-        .answer-card.incorrect { border-color:var(--error-border)!important; background:var(--error-bg)!important; color:#fca5a5; }
-        .answer-letter { width:32px; height:32px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:rgba(255,255,255,.1); font-weight:700; font-size:.9rem; flex-shrink:0; }
-        .answer-card.selected .answer-letter { background:var(--primary); color:#fff; }
-        .answer-card.correct .answer-letter { background:var(--success); color:#fff; }
-        .answer-card.incorrect .answer-letter { background:var(--error); color:#fff; }
+        .status.error {
+            color: #fca5a5;
+            background: var(--danger-bg);
+            border-color: rgba(239, 68, 68, .4);
+        }
 
-        .explanation-box { display:none; background:rgba(15,23,42,.8); border:1px solid rgba(99,102,241,.3); border-left:4px solid var(--primary); border-radius:var(--radius-md); padding:1.25rem; margin-bottom:1.5rem; animation:fadeIn .3s ease; }
-        .explanation-box h4 { font-size:.95rem; color:#a5b4fc; margin-bottom:.4rem; display:flex; align-items:center; gap:.4rem; }
-        .explanation-box p { color:#cbd5e1; font-size:.95rem; line-height:1.5; }
+        .pill-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: .75rem;
+        }
 
-        .quiz-actions { display:flex; justify-content:space-between; align-items:center; gap:1rem; }
+        .pill {
+            padding: .75rem .5rem;
+            color: var(--muted);
+            text-align: center;
+            background: rgba(15, 23, 42, .7);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-weight: 700;
+            cursor: pointer;
+            user-select: none;
+            transition: .2s ease;
+        }
 
-        .results-header { text-align:center; margin-bottom:2rem; }
-        .score-circle { width:140px; height:140px; border-radius:50%; background:radial-gradient(circle,rgba(99,102,241,.2) 0%,rgba(15,23,42,.8) 100%); border:4px solid var(--primary); display:flex; flex-direction:column; align-items:center; justify-content:center; margin:1.5rem auto; box-shadow:var(--shadow-glow); }
-        .score-circle .number { font-family:'Outfit',sans-serif; font-size:2.2rem; font-weight:800; color:#fff; }
-        .score-circle .percent { font-size:.9rem; color:var(--text-muted); font-weight:600; }
+        .pill:hover {
+            color: var(--text);
+            background: var(--card-light);
+            border-color: var(--primary);
+        }
 
-        .results-review { display:flex; flex-direction:column; gap:1.25rem; margin:2rem 0; max-height:450px; overflow-y:auto; padding-right:.5rem; }
-        .results-review::-webkit-scrollbar { width:6px; }
-        .results-review::-webkit-scrollbar-track { background:rgba(15,23,42,.4); border-radius:3px; }
-        .results-review::-webkit-scrollbar-thumb { background:rgba(99,102,241,.4); border-radius:3px; }
+        .pill.active {
+            color: white;
+            background: var(--primary-light);
+            border-color: var(--primary);
+            box-shadow: 0 0 12px rgba(99, 102, 241, .25);
+        }
 
-        .review-item { background:rgba(15,23,42,.5); border:1px solid var(--border-color); border-radius:var(--radius-md); padding:1.25rem; }
-        .review-item.is-correct { border-left:4px solid var(--success); }
-        .review-item.is-incorrect { border-left:4px solid var(--error); }
-        .review-item .q-title { font-weight:700; margin-bottom:.75rem; font-size:1.05rem; }
-        .review-ans { font-size:.9rem; margin-bottom:.3rem; display:flex; align-items:center; gap:.5rem; }
-        .review-ans.user-choice { color:#f87171; }
-        .review-ans.correct-choice { color:#34d399; }
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: .75rem;
+        }
 
-        @media (max-width:640px){
-            .container{padding:1.5rem}
-            header h1{font-size:1.8rem}
-            .quiz-actions{flex-direction:column}
-            .btn{width:100%}
+        .checkbox {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            padding: .8rem;
+            background: rgba(15, 23, 42, .55);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            cursor: pointer;
+        }
+
+        .checkbox input {
+            width: 1.1rem;
+            height: 1.1rem;
+            accent-color: var(--primary);
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .btn {
+            min-height: 46px;
+            padding: .8rem 1.3rem;
+            color: white;
+            background: var(--primary);
+            border: 0;
+            border-radius: var(--radius);
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .btn:hover:not(:disabled) {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .btn-secondary {
+            color: var(--text);
+            background: rgba(51, 65, 85, .8);
+            border: 1px solid var(--border);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            margin-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .progress-container {
+            height: 8px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            background: rgba(255, 255, 255, .1);
+            border-radius: 999px;
+        }
+
+        .progress {
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), #a855f7);
+            transition: width .2s ease;
+        }
+
+        .difficulty-badge {
+            padding: .3rem .7rem;
+            border-radius: 999px;
+            font-size: .8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .difficulty-lehka {
+            color: #86efac;
+            background: var(--success-bg);
+        }
+
+        .difficulty-stredni {
+            color: #fcd34d;
+            background: rgba(245, 158, 11, .16);
+        }
+
+        .difficulty-tezka {
+            color: #fca5a5;
+            background: var(--danger-bg);
+        }
+
+        .question {
+            margin-bottom: 1.5rem;
+            color: #f1f5f9;
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.5;
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: .8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .answer {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            color: var(--text);
+            background: rgba(15, 23, 42, .6);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: .2s ease;
+        }
+
+        .answer:hover {
+            border-color: var(--primary);
+            background: var(--card-light);
+        }
+
+        .answer.selected {
+            background: var(--primary-light);
+            border-color: var(--primary);
+        }
+
+        .answer.correct {
+            background: var(--success-bg);
+            border-color: var(--success);
+        }
+
+        .answer.incorrect {
+            background: var(--danger-bg);
+            border-color: var(--danger);
+        }
+
+        .answer-letter {
+            display: grid;
+            place-items: center;
+            flex: 0 0 32px;
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, .1);
+            border-radius: 50%;
+            font-weight: 700;
+        }
+
+        .answer.selected .answer-letter {
+            background: var(--primary);
+        }
+
+        .answer.correct .answer-letter {
+            background: var(--success);
+        }
+
+        .answer.incorrect .answer-letter {
+            background: var(--danger);
+        }
+
+        .explanation {
+            display: none;
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+            color: #cbd5e1;
+            background: rgba(15, 23, 42, .8);
+            border-left: 4px solid var(--primary);
+            border-radius: var(--radius);
+            line-height: 1.5;
+        }
+
+        .explanation.visible {
+            display: block;
+        }
+
+        .quiz-actions,
+        .results-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .quiz-actions .btn,
+        .results-actions .btn {
+            flex: 1;
+        }
+
+        .results-header {
+            text-align: center;
+        }
+
+        .score {
+            width: 145px;
+            height: 145px;
+            display: grid;
+            place-items: center;
+            margin: 1.5rem auto;
+            background: rgba(99, 102, 241, .15);
+            border: 4px solid var(--primary);
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        .score strong {
+            display: block;
+            font-size: 2rem;
+        }
+
+        .score span {
+            color: var(--muted);
+        }
+
+        .review {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: 450px;
+            margin: 1.5rem 0;
+            padding-right: .5rem;
+            overflow-y: auto;
+        }
+
+        .review-item {
+            padding: 1rem;
+            background: rgba(15, 23, 42, .6);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .review-item.correct {
+            border-left: 4px solid var(--success);
+        }
+
+        .review-item.incorrect {
+            border-left: 4px solid var(--danger);
+        }
+
+        .review-question {
+            margin-bottom: .6rem;
+            font-weight: 700;
+        }
+
+        .review-user {
+            color: #fca5a5;
+        }
+
+        .review-correct {
+            color: #86efac;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.25rem;
+            }
+
+            .quiz-header,
+            .quiz-actions,
+            .results-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .quiz-actions .btn,
+            .results-actions .btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>Interaktivní Testovací Aplikace</h1>
-        <p>Generování dynamických testů ze souboru s databází otázek (*.txt)</p>
+        <h1>Interaktivní testovací aplikace</h1>
+        <p>Generování testů z textových databází otázek</p>
     </header>
 
-    <div class="container">
-        <div id="screen-setup" class="screen active">
-            <h2 style="font-family: 'Outfit'; font-size: 1.5rem; margin-bottom: 1.5rem;">⚙️ Nastavení nového testu</h2>
+    <main class="container">
+        <section id="screen-setup" class="screen active">
+            <h2>⚙️ Nastavení testu</h2>
 
             <div class="form-group">
-                <label for="db-source-select">Výchozí soubor databáze (*.txt)</label>
-                <select id="db-source-select">
-                    <option value="databaze_otazek_ai_act.txt" selected>databaze_otazek_ai_act.txt (výchozí)</option>
-                </select>
-                <small style="color: var(--text-muted); display:block; margin-top:.6rem;">Vybraný soubor se načte automaticky. Stále můžeš nahrát i vlastní soubor níže.</small>
+                <label for="db-source-select">Databáze otázek (*.txt)</label>
+                <select id="db-source-select"></select>
+                <small>
+                    Seznam souborů je uložen přímo v tomto HTML souboru.
+                    Při přidání další databáze doplňte její název do pole
+                    <code>QUESTION_FILES</code> ve skriptu dole.
+                </small>
             </div>
 
             <div class="form-group">
-                <label>Databáze otázek (.txt)</label>
-                <div class="file-dropzone" id="dropzone">
+                <label>Volitelné nahrání vlastního souboru</label>
+
+                <div id="dropzone" class="file-dropzone">
                     <span class="icon">📁</span>
-                    <p>Přetáhněte sem soubor <strong>*.txt</strong> nebo klikněte pro výběr</p>
-                    <input type="file" id="file-input" accept=".txt" style="display: none;">
-                    <div id="db-status" class="badge-status loaded">Načítání výchozí databáze (AI Act)...</div>
+                    <div>Přetáhněte sem soubor <strong>*.txt</strong> nebo klikněte pro výběr</div>
+                    <input id="file-input" type="file" accept=".txt" hidden>
+                    <div id="db-status" class="status">Načítání databáze...</div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Volba obtížnosti</label>
-                <div class="pill-grid" id="difficulty-pills">
-                    <div class="pill-btn active" data-value="vse">🎯 Všechny</div>
-                    <div class="pill-btn" data-value="lehká">🟢 Lehká</div>
-                    <div class="pill-btn" data-value="střední">🟡 Střední</div>
-                    <div class="pill-btn" data-value="těžká">🔴 Těžká</div>
+
+                <div id="difficulty-pills" class="pill-grid">
+                    <div class="pill active" data-difficulty="vse">🎯 Všechny</div>
+                    <div class="pill" data-difficulty="lehká">🟢 Lehká</div>
+                    <div class="pill" data-difficulty="střední">🟡 Střední</div>
+                    <div class="pill" data-difficulty="těžká">🔴 Těžká</div>
                 </div>
-                <select id="difficulty-select" style="display: none;">
-                    <option value="vse" selected>Všechny obtížnosti</option>
-                    <option value="lehká">Lehká</option>
-                    <option value="střední">Střední</option>
-                    <option value="těžká">Těžká</option>
-                </select>
             </div>
 
             <div class="form-group">
                 <label for="count-input">Počet otázek v testu</label>
-                <div style="display: flex; gap: 0.75rem; align-items: center; margin-bottom: 0.5rem;">
-                    <input type="number" id="count-input" min="1" max="50" value="10" style="flex: 1;">
+                <input id="count-input" type="number" min="1" max="50" value="10">
+
+                <div id="count-pills" class="pill-grid" style="margin-top:.75rem;">
+                    <div class="pill" data-count="3">3 otázky</div>
+                    <div class="pill" data-count="5">5 otázek</div>
+                    <div class="pill active" data-count="10">10 otázek</div>
+                    <div class="pill" data-count="all">Všechny</div>
                 </div>
-                <div class="pill-grid" id="count-chips" style="grid-template-columns: repeat(4, 1fr);">
-                    <div class="pill-btn" data-count="3">3 otázky</div>
-                    <div class="pill-btn" data-count="5">5 otázek</div>
-                    <div class="pill-btn active" data-count="10">10 otázek</div>
-                    <div class="pill-btn" data-count="all">Všechny</div>
-                </div>
-                <small id="available-count-msg" style="color: var(--text-muted); display: block; margin-top: 0.6rem; font-weight: 500;">Načítám dostupné otázky...</small>
+
+                <small id="available-count">
+                    Dostupných otázek: načítám...
+                </small>
             </div>
 
             <div class="form-group">
                 <label>Možnosti testování</label>
+
                 <div class="options-grid">
-                    <label class="option-checkbox"><input type="checkbox" id="opt-instant-feedback" checked><span>Okamžitá kontrola</span></label>
-                    <label class="option-checkbox"><input type="checkbox" id="opt-shuffle-q" checked><span>Míchat otázky</span></label>
-                    <label class="option-checkbox"><input type="checkbox" id="opt-shuffle-a" checked><span>Míchat odpovědi</span></label>
+                    <label class="checkbox">
+                        <input id="instant-feedback" type="checkbox" checked>
+                        <span>Okamžitá kontrola</span>
+                    </label>
+
+                    <label class="checkbox">
+                        <input id="shuffle-questions" type="checkbox" checked>
+                        <span>Míchat otázky</span>
+                    </label>
+
+                    <label class="checkbox">
+                        <input id="shuffle-answers" type="checkbox" checked>
+                        <span>Míchat odpovědi</span>
+                    </label>
                 </div>
             </div>
 
-            <button id="btn-start" class="btn btn-primary btn-full">🚀 Spustit test</button>
-        </div>
+            <button id="start-button" class="btn btn-full">
+                🚀 Spustit test
+            </button>
+        </section>
 
-        <div id="screen-quiz" class="screen">
+        <section id="screen-quiz" class="screen">
             <div class="quiz-header">
-                <div><span id="quiz-progress-text" style="font-weight: 700; color: #cbd5e1;">Otázka 1 z 10</span></div>
-                <div id="quiz-difficulty-badge" class="badge-difficulty diff-lehka">Lehká</div>
+                <strong id="progress-text">Otázka 1 z 1</strong>
+                <span id="difficulty-badge" class="difficulty-badge difficulty-stredni">
+                    Střední
+                </span>
             </div>
-            <div class="progress-bar-container"><div id="progress-bar" class="progress-bar-fill"></div></div>
-            <div id="quiz-question-text" class="question-text">Načítání otázky...</div>
-            <div id="quiz-answers" class="answers-list"></div>
-            <div id="quiz-explanation" class="explanation-box"><h4>💡 Vysvětlení:</h4><p id="quiz-explanation-text"></p></div>
-            <div class="quiz-actions">
-                <button id="btn-prev" class="btn btn-secondary" style="visibility: hidden;">⬅️ Předchozí</button>
-                <button id="btn-next" class="btn btn-primary" disabled>Další otázka ➡️</button>
-            </div>
-        </div>
 
-        <div id="screen-results" class="screen">
+            <div class="progress-container">
+                <div id="progress-bar" class="progress"></div>
+            </div>
+
+            <div id="question-text" class="question"></div>
+            <div id="answers" class="answers"></div>
+
+            <div id="explanation" class="explanation">
+                <strong>💡 Vysvětlení:</strong>
+                <div id="explanation-text"></div>
+            </div>
+
+            <div class="quiz-actions">
+                <button id="previous-button" class="btn btn-secondary">
+                    ⬅️ Předchozí
+                </button>
+
+                <button id="next-button" class="btn" disabled>
+                    Další otázka ➡️
+                </button>
+            </div>
+        </section>
+
+        <section id="screen-results" class="screen">
             <div class="results-header">
-                <h2 style="font-family: 'Outfit'; font-size: 1.8rem; margin-bottom: 0.5rem;">Výsledky testu</h2>
-                <p id="results-headline" style="color: var(--text-muted);">Skvělá práce, test je dokončen!</p>
-                <div class="score-circle"><span id="results-score-num" class="number">0 / 0</span><span id="results-score-percent" class="percent">0%</span></div>
+                <h2>Výsledky testu</h2>
+                <p id="results-headline">Test je dokončen.</p>
+
+                <div class="score">
+                    <div>
+                        <strong id="score-number">0 / 0</strong>
+                        <span id="score-percent">0 %</span>
+                    </div>
+                </div>
             </div>
-            <h3 style="font-size: 1.1rem; color: #cbd5e1; margin-bottom: 1rem;">Přehled odpovědí a vysvětlení:</h3>
-            <div id="results-review-list" class="results-review"></div>
-            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <button id="btn-restart" class="btn btn-primary" style="flex: 1;">🔄 Opakovat test</button>
-                <button id="btn-config" class="btn btn-secondary" style="flex: 1;">⚙️ Změnit nastavení</button>
+
+            <h3>Přehled odpovědí</h3>
+            <div id="review" class="review"></div>
+
+            <div class="results-actions">
+                <button id="restart-button" class="btn">
+                    🔄 Opakovat test
+                </button>
+
+                <button id="config-button" class="btn btn-secondary">
+                    ⚙️ Změnit nastavení
+                </button>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
     <script>
-        const DEFAULT_DATABASE_TXT = `# Databáze otázek pro testovací aplikaci - Téma: EU AI Act (20 otázek)`;
-        const DEFAULT_DB_FILE = 'databaze_otazek_ai_act.txt';
+        /*
+         * Seznam databází dostupných v adresáři Testovani.
+         *
+         * Při přidání dalšího souboru .txt přidejte jeho název také sem.
+         * Například:
+         * 'databaze_otazek_nove_tema.txt'
+         */
+        const QUESTION_FILES = [
+            'databaze_otazek_ai_act.txt',
+            'databaze_otazek_studenti.txt'
+        ];
 
-        let rawDatabaseQuestions = [];
-        let activeQuizQuestions = [];
+        const DEFAULT_FILE = 'databaze_otazek_ai_act.txt';
+
+        let allQuestions = [];
+        let quizQuestions = [];
         let currentQuestionIndex = 0;
-        let userAnswers = {};
-        let quizConfig = { difficulty:'vse', count:10, instantFeedback:true, shuffleQ:true, shuffleA:true };
+        let selectedAnswers = {};
 
-        const screenSetup = document.getElementById('screen-setup');
-        const screenQuiz = document.getElementById('screen-quiz');
-        const screenResults = document.getElementById('screen-results');
-        const dropzone = document.getElementById('dropzone');
-        const fileInput = document.getElementById('file-input');
-        const dbStatus = document.getElementById('db-status');
-        const dbSourceSelect = document.getElementById('db-source-select');
-        const difficultySelect = document.getElementById('difficulty-select');
-        const countInput = document.getElementById('count-input');
-        const availableCountMsg = document.getElementById('available-count-msg');
+        const settings = {
+            difficulty: 'vse',
+            count: 10,
+            instantFeedback: true,
+            shuffleQuestions: true,
+            shuffleAnswers: true
+        };
 
-        const btnStart = document.getElementById('btn-start');
-        const btnPrev = document.getElementById('btn-prev');
-        const btnNext = document.getElementById('btn-next');
-        const btnRestart = document.getElementById('btn-restart');
-        const btnConfig = document.getElementById('btn-config');
+        const elements = {
+            setupScreen: document.getElementById('screen-setup'),
+            quizScreen: document.getElementById('screen-quiz'),
+            resultsScreen: document.getElementById('screen-results'),
 
-        async function loadTxtFilesToSelector() {
-            const options = new Set([DEFAULT_DB_FILE]);
-            try {
-                const response = await fetch('./');
-                const html = await response.text();
-                const matches = [...html.matchAll(/href="([^"]+\.txt)"/gi)];
-                matches.forEach(m => {
-                    const file = m[1].split('/').pop();
-                    if (file) options.add(file);
-                });
-            } catch (e) {
-                console.log('Nepodařilo se načíst seznam .txt souborů, ponechávám výchozí.');
-            }
+            sourceSelect: document.getElementById('db-source-select'),
+            dropzone: document.getElementById('dropzone'),
+            fileInput: document.getElementById('file-input'),
+            dbStatus: document.getElementById('db-status'),
 
-            dbSourceSelect.innerHTML = '';
-            [...options].sort().forEach(file => {
-                const option = document.createElement('option');
-                option.value = file;
-                option.textContent = file === DEFAULT_DB_FILE ? `${file} (výchozí)` : file;
-                if (file === DEFAULT_DB_FILE) option.selected = true;
-                dbSourceSelect.appendChild(option);
-            });
+            availableCount: document.getElementById('available-count'),
+            countInput: document.getElementById('count-input'),
+
+            startButton: document.getElementById('start-button'),
+            previousButton: document.getElementById('previous-button'),
+            nextButton: document.getElementById('next-button'),
+            restartButton: document.getElementById('restart-button'),
+            configButton: document.getElementById('config-button'),
+
+            progressText: document.getElementById('progress-text'),
+            progressBar: document.getElementById('progress-bar'),
+            difficultyBadge: document.getElementById('difficulty-badge'),
+            questionText: document.getElementById('question-text'),
+            answers: document.getElementById('answers'),
+
+            explanation: document.getElementById('explanation'),
+            explanationText: document.getElementById('explanation-text'),
+
+            scoreNumber: document.getElementById('score-number'),
+            scorePercent: document.getElementById('score-percent'),
+            resultsHeadline: document.getElementById('results-headline'),
+            review: document.getElementById('review')
+        };
+
+        function showScreen(screenName) {
+            elements.setupScreen.classList.toggle('active', screenName === 'setup');
+            elements.quizScreen.classList.toggle('active', screenName === 'quiz');
+            elements.resultsScreen.classList.toggle('active', screenName === 'results');
         }
 
-        function parseTxtDatabase(text) {
-            const blocks = text.split(/^---$/m).map(b => b.trim()).filter(Boolean);
-            const parsed = [];
-            blocks.forEach((block, idx) => {
-                const lines = block.split('\n').map(l => l.trim()).filter(Boolean);
-                const q = { id: idx + 1, difficulty:'střední', question:'', options:[], explanation:'' };
+        function shuffle(array) {
+            const result = [...array];
+
+            for (let i = result.length - 1; i > 0; i--) {
+                const randomIndex = Math.floor(Math.random() * (i + 1));
+                [result[i], result[randomIndex]] = [result[randomIndex], result[i]];
+            }
+
+            return result;
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#039;');
+        }
+
+        function parseDatabase(text) {
+            const blocks = text
+                .replace(/\r\n/g, '\n')
+                .split(/^---\s*$/m)
+                .map(block => block.trim())
+                .filter(Boolean);
+
+            const questions = [];
+
+            blocks.forEach((block, blockIndex) => {
+                const lines = block
+                    .split('\n')
+                    .map(line => line.trim())
+                    .filter(Boolean);
+
+                const question = {
+                    id: blockIndex + 1,
+                    difficulty: 'střední',
+                    text: '',
+                    options: [],
+                    explanation: ''
+                };
+
                 lines.forEach(line => {
-                    if (line.startsWith('[OBTIZNOST:')) {
+                    if (line.toLowerCase().startsWith('[obtiznost:')) {
                         const match = line.match(/\[OBTIZNOST:\s*(.*?)\]/i);
-                        if (match) q.difficulty = match[1].trim();
+
+                        if (match) {
+                            question.difficulty = match[1].trim();
+                        }
                     } else if (line.startsWith('[Q]')) {
-                        q.question = line.replace('[Q]','').trim();
+                        question.text = line.replace(/^\[Q\]\s*/i, '').trim();
                     } else if (line.startsWith('[x]')) {
-                        q.options.push({ text: line.replace('[x]','').trim(), isCorrect:true });
+                        question.options.push({
+                            text: line.replace(/^\[x\]\s*/i, '').trim(),
+                            correct: true
+                        });
                     } else if (line.startsWith('[0]')) {
-                        q.options.push({ text: line.replace('[0]','').trim(), isCorrect:false });
+                        question.options.push({
+                            text: line.replace(/^\[0\]\s*/i, '').trim(),
+                            correct: false
+                        });
                     } else if (line.startsWith('[VYSVETLENI]')) {
-                        q.explanation = line.replace('[VYSVETLENI]','').trim();
+                        question.explanation = line
+                            .replace(/^\[VYSVETLENI\]\s*/i, '')
+                            .trim();
                     }
                 });
-                if (q.question && q.options.length > 0) parsed.push(q);
-            });
-            return parsed;
-        }
 
-        function loadDatabaseContent(txtContent, sourceName='vychozi') {
-            rawDatabaseQuestions = parseTxtDatabase(txtContent);
-            dbStatus.textContent = `Načteno ${rawDatabaseQuestions.length} otázek (Zdroj: ${sourceName})`;
-            dbStatus.className = 'badge-status loaded';
-            updateAvailableCount();
-        }
+                const correctAnswers = question.options.filter(option => option.correct);
 
-        async function initDatabase(fileName = DEFAULT_DB_FILE) {
-            try {
-                const response = await fetch(fileName);
-                if (response.ok) {
-                    const text = await response.text();
-                    loadDatabaseContent(text, fileName);
-                    return;
+                if (
+                    question.text &&
+                    question.options.length >= 2 &&
+                    correctAnswers.length === 1
+                ) {
+                    questions.push(question);
                 }
-            } catch (e) {
-                console.log('Soubor nelze načíst přes HTTP/fetch, používám výchozí obsaženou databázi.');
+            });
+
+            return questions;
+        }
+
+        function normalizeDifficulty(value) {
+            return String(value || '')
+                .trim()
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '');
+        }
+
+        function getFilteredQuestions() {
+            if (settings.difficulty === 'vse') {
+                return [...allQuestions];
             }
-            loadDatabaseContent(DEFAULT_DATABASE_TXT, 'vestavěná databáze AI Act');
+
+            const selectedDifficulty = normalizeDifficulty(settings.difficulty);
+
+            return allQuestions.filter(question => {
+                return normalizeDifficulty(question.difficulty) === selectedDifficulty;
+            });
         }
 
         function updateAvailableCount() {
-            const diff = difficultySelect.value;
-            let available = rawDatabaseQuestions;
-            if (diff !== 'vse') available = rawDatabaseQuestions.filter(q => q.difficulty.toLowerCase() === diff.toLowerCase());
-            availableCountMsg.textContent = `Dostupných otázek pro tuto obtížnost: ${available.length}`;
-            if (available.length > 0) {
-                countInput.max = available.length;
-                if (parseInt(countInput.value || '0', 10) > available.length) countInput.value = available.length;
+            const filtered = getFilteredQuestions();
+            const available = filtered.length;
+
+            elements.availableCount.textContent =
+                `Dostupných otázek pro tuto obtížnost: ${available}`;
+
+            elements.countInput.max = Math.max(available, 1);
+
+            if (available === 0) {
+                elements.countInput.value = 1;
+                settings.count = 1;
+                return;
+            }
+
+            let count = Number(elements.countInput.value) || 1;
+
+            if (count > available) {
+                count = available;
+                elements.countInput.value = count;
+            }
+
+            if (count < 1) {
+                count = 1;
+                elements.countInput.value = count;
+            }
+
+            settings.count = count;
+            updateCountPills();
+        }
+
+        function updateDifficultyPills() {
+            document
+                .querySelectorAll('[data-difficulty]')
+                .forEach(button => {
+                    button.classList.toggle(
+                        'active',
+                        button.dataset.difficulty === settings.difficulty
+                    );
+                });
+        }
+
+        function updateCountPills() {
+            document
+                .querySelectorAll('[data-count]')
+                .forEach(button => {
+                    const value = button.dataset.count;
+
+                    const active =
+                        value === 'all'
+                            ? Number(elements.countInput.value) === Number(elements.countInput.max)
+                            : Number(value) === Number(elements.countInput.value);
+
+                    button.classList.toggle('active', active);
+                });
+        }
+
+        function setDifficulty(value) {
+            settings.difficulty = value;
+            updateDifficultyPills();
+            updateAvailableCount();
+        }
+
+        function setCount(value) {
+            const available = getFilteredQuestions().length;
+
+            if (value === 'all') {
+                settings.count = available;
+                elements.countInput.value = Math.max(available, 1);
             } else {
-                countInput.value = 0;
+                const count = Math.max(
+                    1,
+                    Math.min(Number(value) || 1, Math.max(available, 1))
+                );
+
+                settings.count = count;
+                elements.countInput.value = count;
+            }
+
+            updateCountPills();
+        }
+
+        function setStatus(message, isError = false) {
+            elements.dbStatus.textContent = message;
+            elements.dbStatus.classList.toggle('error', isError);
+        }
+
+        function loadDatabaseText(text, sourceName) {
+            const parsedQuestions = parseDatabase(text);
+
+            if (!parsedQuestions.length) {
+                allQuestions = [];
+                setStatus(
+                    `Soubor ${sourceName} neobsahuje platné otázky.`,
+                    true
+                );
+                updateAvailableCount();
+                return false;
+            }
+
+            allQuestions = parsedQuestions;
+
+            setStatus(
+                `Načteno ${parsedQuestions.length} otázek: ${sourceName}`
+            );
+
+            updateAvailableCount();
+            return true;
+        }
+
+        async function loadDatabaseFile(fileName) {
+            setStatus(`Načítám databázi: ${fileName}...`);
+
+            try {
+                const response = await fetch(
+                    encodeURI(fileName),
+                    { cache: 'no-store' }
+                );
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const text = await response.text();
+                loadDatabaseText(text, fileName);
+            } catch (error) {
+                console.error(error);
+                allQuestions = [];
+                setStatus(
+                    `Soubor ${fileName} se nepodařilo načíst.`,
+                    true
+                );
+                updateAvailableCount();
             }
         }
 
-        dbSourceSelect.addEventListener('change', async (e) => {
-            const selected = e.target.value || DEFAULT_DB_FILE;
-            dbStatus.textContent = `Načítám databázi: ${selected}...`;
-            await initDatabase(selected);
+        function populateFileSelect() {
+            elements.sourceSelect.innerHTML = '';
+
+            QUESTION_FILES.forEach(fileName => {
+                const option = document.createElement('option');
+                option.value = fileName;
+                option.textContent =
+                    fileName === DEFAULT_FILE
+                        ? `${fileName} (výchozí)`
+                        : fileName;
+
+                if (fileName === DEFAULT_FILE) {
+                    option.selected = true;
+                }
+
+                elements.sourceSelect.appendChild(option);
+            });
+        }
+
+        function prepareQuiz() {
+            let questions = getFilteredQuestions();
+
+            if (!questions.length) {
+                alert(
+                    'Pro zvolenou obtížnost nejsou k dispozici žádné otázky.'
+                );
+                return false;
+            }
+
+            if (settings.shuffleQuestions) {
+                questions = shuffle(questions);
+            }
+
+            const count = Math.min(
+                Number(elements.countInput.value) || questions.length,
+                questions.length
+            );
+
+            quizQuestions = questions.slice(0, count).map(question => {
+                const copy = {
+                    ...question,
+                    options: settings.shuffleAnswers
+                        ? shuffle(question.options)
+                        : [...question.options]
+                };
+
+                return copy;
+            });
+
+            currentQuestionIndex = 0;
+            selectedAnswers = {};
+
+            return true;
+        }
+
+        function difficultyClass(difficulty) {
+            const normalized = normalizeDifficulty(difficulty);
+
+            if (normalized.includes('lehka')) {
+                return 'difficulty-lehka';
+            }
+
+            if (normalized.includes('stredni')) {
+                return 'difficulty-stredni';
+            }
+
+            return 'difficulty-tezka';
+        }
+
+        function renderQuestion() {
+            const question = quizQuestions[currentQuestionIndex];
+
+            if (!question) {
+                return;
+            }
+
+            const total = quizQuestions.length;
+            const selectedAnswer = selectedAnswers[currentQuestionIndex];
+
+            elements.progressText.textContent =
+                `Otázka ${currentQuestionIndex + 1} z ${total}`;
+
+            elements.progressBar.style.width =
+                `${((currentQuestionIndex + 1) / total) * 100}%`;
+
+            elements.questionText.textContent = question.text;
+
+            elements.difficultyBadge.textContent = question.difficulty;
+            elements.difficultyBadge.className =
+                `difficulty-badge ${difficultyClass(question.difficulty)}`;
+
+            elements.answers.innerHTML = '';
+
+            question.options.forEach((option, optionIndex) => {
+                const answer = document.createElement('div');
+                answer.className = 'answer';
+
+                if (selectedAnswer === optionIndex) {
+                    answer.classList.add('selected');
+                }
+
+                if (Number.isInteger(selectedAnswer)) {
+                    if (option.correct) {
+                        answer.classList.add('correct');
+                    }
+
+                    if (selectedAnswer === optionIndex && !option.correct) {
+                        answer.classList.add('incorrect');
+                    }
+                }
+
+                answer.innerHTML = `
+                    <span class="answer-letter">
+                        ${String.fromCharCode(65 + optionIndex)}
+                    </span>
+                    <span>${escapeHtml(option.text)}</span>
+                `;
+
+                answer.addEventListener('click', () => {
+                    if (Number.isInteger(selectedAnswers[currentQuestionIndex])) {
+                        return;
+                    }
+
+                    selectedAnswers[currentQuestionIndex] = optionIndex;
+                    renderQuestion();
+
+                    if (settings.instantFeedback) {
+                        showExplanation();
+                    }
+                });
+
+                elements.answers.appendChild(answer);
+            });
+
+            const hasAnswer = Number.isInteger(selectedAnswer);
+
+            elements.nextButton.disabled = !hasAnswer;
+            elements.previousButton.style.visibility =
+                currentQuestionIndex === 0 ? 'hidden' : 'visible';
+
+            if (!hasAnswer || !settings.instantFeedback) {
+                elements.explanation.classList.remove('visible');
+            }
+        }
+
+        function showExplanation() {
+            const question = quizQuestions[currentQuestionIndex];
+
+            elements.explanationText.textContent =
+                question.explanation || 'Vysvětlení není k dispozici.';
+
+            elements.explanation.classList.add('visible');
+        }
+
+        function startQuiz() {
+            if (!allQuestions.length) {
+                alert(
+                    'Databáze neobsahuje žádné platné otázky. Zkontrolujte vybraný soubor.'
+                );
+                return;
+            }
+
+            settings.instantFeedback =
+                document.getElementById('instant-feedback').checked;
+
+            settings.shuffleQuestions =
+                document.getElementById('shuffle-questions').checked;
+
+            settings.shuffleAnswers =
+                document.getElementById('shuffle-answers').checked;
+
+            if (!prepareQuiz()) {
+                return;
+            }
+
+            showScreen('quiz');
+            renderQuestion();
+        }
+
+        function goToNextQuestion() {
+            if (!Number.isInteger(selectedAnswers[currentQuestionIndex])) {
+                return;
+            }
+
+            if (currentQuestionIndex < quizQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function goToPreviousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        }
+
+        function showResults() {
+            let correctCount = 0;
+
+            quizQuestions.forEach((question, questionIndex) => {
+                const selectedIndex = selectedAnswers[questionIndex];
+                const correctIndex = question.options.findIndex(
+                    option => option.correct
+                );
+
+                if (selectedIndex === correctIndex) {
+                    correctCount++;
+                }
+            });
+
+            const total = quizQuestions.length;
+            const percent = total
+                ? Math.round((correctCount / total) * 100)
+                : 0;
+
+            elements.scoreNumber.textContent =
+                `${correctCount} / ${total}`;
+
+            elements.scorePercent.textContent = `${percent} %`;
+
+            if (percent >= 80) {
+                elements.resultsHeadline.textContent =
+                    'Skvělý výsledek!';
+            } else if (percent >= 50) {
+                elements.resultsHeadline.textContent =
+                    'Dobrý výsledek, ale je co zlepšovat.';
+            } else {
+                elements.resultsHeadline.textContent =
+                    'Zkuste si test zopakovat.';
+            }
+
+            elements.review.innerHTML = '';
+
+            quizQuestions.forEach((question, questionIndex) => {
+                const selectedIndex = selectedAnswers[questionIndex];
+                const correctIndex = question.options.findIndex(
+                    option => option.correct
+                );
+
+                const item = document.createElement('div');
+
+                item.className =
+                    `review-item ${
+                        selectedIndex === correctIndex
+                            ? 'correct'
+                            : 'incorrect'
+                    }`;
+
+                const selectedText =
+                    selectedIndex === undefined
+                        ? 'Bez odpovědi'
+                        : question.options[selectedIndex]?.text || 'Neznámá odpověď';
+
+                const correctText =
+                    question.options[correctIndex]?.text || 'Neznámá odpověď';
+
+                item.innerHTML = `
+                    <div class="review-question">
+                        ${questionIndex + 1}. ${escapeHtml(question.text)}
+                    </div>
+                    <div class="review-user">
+                        Vaše odpověď: ${escapeHtml(selectedText)}
+                    </div>
+                    <div class="review-correct">
+                        Správná odpověď: ${escapeHtml(correctText)}
+                    </div>
+                `;
+
+                elements.review.appendChild(item);
+            });
+
+            showScreen('results');
+        }
+
+        document
+            .querySelectorAll('[data-difficulty]')
+            .forEach(button => {
+                button.addEventListener('click', () => {
+                    setDifficulty(button.dataset.difficulty);
+                });
+            });
+
+        document
+            .querySelectorAll('[data-count]')
+            .forEach(button => {
+                button.addEventListener('click', () => {
+                    setCount(button.dataset.count);
+                });
+            });
+
+        elements.countInput.addEventListener('input', () => {
+            const available = getFilteredQuestions().length;
+            let count = Number(elements.countInput.value) || 1;
+
+            count = Math.max(1, Math.min(count, Math.max(available, 1)));
+
+            elements.countInput.value = count;
+            settings.count = count;
+            updateCountPills();
         });
 
-        dropzone.addEventListener('click', () => fileInput.click());
-        fileInput.addEventListener('change', (e) => {
-            const file = e.target.files?.[0];
-            if (!file) return;
+        elements.sourceSelect.addEventListener('change', event => {
+            loadDatabaseFile(event.target.value);
+        });
+
+        elements.startButton.addEventListener('click', startQuiz);
+        elements.nextButton.addEventListener('click', goToNextQuestion);
+        elements.previousButton.addEventListener('click', goToPreviousQuestion);
+
+        elements.restartButton.addEventListener('click', () => {
+            showScreen('setup');
+        });
+
+        elements.configButton.addEventListener('click', () => {
+            showScreen('setup');
+        });
+
+        elements.dropzone.addEventListener('click', event => {
+            if (event.target !== elements.fileInput) {
+                elements.fileInput.click();
+            }
+        });
+
+        elements.fileInput.addEventListener('change', event => {
+            const file = event.target.files?.[0];
+
+            if (!file) {
+                return;
+            }
+
             const reader = new FileReader();
-            reader.onload = (ev) => loadDatabaseContent(String(ev.target?.result || ''), file.name);
-            reader.readAsText(file, 'utf-8');
+
+            reader.onload = event => {
+                const text = String(event.target.result || '');
+                loadDatabaseText(text, file.name);
+            };
+
+            reader.onerror = () => {
+                setStatus('Soubor se nepodařilo přečíst.', true);
+            };
+
+            reader.readAsText(file, 'UTF-8');
         });
 
-        (async () => {
-            await loadTxtFilesToSelector();
-            await initDatabase(DEFAULT_DB_FILE);
-        })();
+        elements.dropzone.addEventListener('dragover', event => {
+            event.preventDefault();
+            elements.dropzone.classList.add('dragover');
+        });
+
+        elements.dropzone.addEventListener('dragleave', () => {
+            elements.dropzone.classList.remove('dragover');
+        });
+
+        elements.dropzone.addEventListener('drop', event => {
+            event.preventDefault();
+            elements.dropzone.classList.remove('dragover');
+
+            const file = event.dataTransfer.files?.[0];
+
+            if (!file) {
+                return;
+            }
+
+            if (!file.name.toLowerCase().endsWith('.txt')) {
+                setStatus('Lze použít pouze soubor .txt.', true);
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = event => {
+                const text = String(event.target.result || '');
+                loadDatabaseText(text, file.name);
+            };
+
+            reader.onerror = () => {
+                setStatus('Soubor se nepodařilo přečíst.', true);
+            };
+
+            reader.readAsText(file, 'UTF-8');
+        });
+
+        async function init() {
+            populateFileSelect();
+            setDifficulty('vse');
+            setCount('10');
+            await loadDatabaseFile(DEFAULT_FILE);
+        }
+
+        init();
     </script>
 </body>
 </html>
