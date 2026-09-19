@@ -762,6 +762,9 @@ const QUESTION_FILES = [
 
         const DEFAULT_FILE = 'databaze_otazek_ai_act.txt';
 
+        /* Výchozí počet otázek v testu (musí odpovídat hodnotě v count-input). */
+        const DEFAULT_COUNT = 10;
+
         let allQuestions = [];
         let quizQuestions = [];
         let currentQuestionIndex = 0;
@@ -1639,8 +1642,13 @@ const QUESTION_FILES = [
         async function init() {
             populateFileSelect();
             setDifficulty('vse');
-            setCount('10');
+
+            /*
+             * Výchozí počet otázek se nastavuje až po načtení databáze.
+             * Dokud nejsou otázky k dispozici, ořízl by se na 1.
+             */
             await loadDatabaseFile(DEFAULT_FILE);
+            setCount(DEFAULT_COUNT);
         }
 
         init();
