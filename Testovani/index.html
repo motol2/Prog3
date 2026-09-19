@@ -463,6 +463,83 @@ const QUESTION_FILES = [
             color: #86efac;
         }
 
+        .quiz-header-tools {
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+
+        .btn-small {
+            min-height: 34px;
+            padding: .4rem .8rem;
+            font-size: .85rem;
+        }
+
+        /* Dialog s klíčem správných odpovědí */
+        .modal {
+            position: fixed;
+            inset: 0;
+            z-index: 50;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(2, 6, 23, .75);
+        }
+
+        .modal[hidden] {
+            display: none;
+        }
+
+        .modal-card {
+            width: 100%;
+            max-width: 620px;
+            max-height: 85vh;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: #1e293b;
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .5);
+        }
+
+        .modal-card h3 {
+            margin-top: 0;
+        }
+
+        .key-output {
+            padding: 1rem;
+            margin: 0 0 1rem;
+            color: #a5b4fc;
+            background: rgba(15, 23, 42, .85);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: Consolas, "Courier New", monospace;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            white-space: pre-wrap;
+            word-break: break-word;
+            user-select: all;
+        }
+
+        .key-meta {
+            margin-bottom: 1.25rem;
+            color: var(--muted);
+            font-size: .85rem;
+            line-height: 1.6;
+        }
+
+        .modal-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+            min-width: 140px;
+        }
+
         @media (max-width: 640px) {
             .container {
                 padding: 1.25rem;
@@ -478,6 +555,14 @@ const QUESTION_FILES = [
             .quiz-actions .btn,
             .results-actions .btn {
                 width: 100%;
+            }
+
+            .quiz-header-tools {
+                justify-content: space-between;
+            }
+
+            .modal-actions {
+                flex-direction: column;
             }
         }
     </style>
@@ -570,9 +655,17 @@ const QUESTION_FILES = [
         <section id="screen-quiz" class="screen">
             <div class="quiz-header">
                 <strong id="progress-text">Otázka 1 z 1</strong>
-                <span id="difficulty-badge" class="difficulty-badge difficulty-stredni">
-                    Střední
-                </span>
+
+                <div class="quiz-header-tools">
+                    <span id="difficulty-badge" class="difficulty-badge difficulty-stredni">
+                        Střední
+                    </span>
+
+                    <button id="key-button-quiz" class="btn btn-secondary btn-small"
+                        title="Zobrazit klíč správných odpovědí tohoto testu">
+                        🔑 Klíč
+                    </button>
+                </div>
             </div>
 
             <div class="progress-container">
@@ -619,12 +712,40 @@ const QUESTION_FILES = [
                     🔄 Opakovat test
                 </button>
 
+                <button id="key-button-results" class="btn btn-secondary">
+                    🔑 Klíč
+                </button>
+
                 <button id="config-button" class="btn btn-secondary">
                     ⚙️ Změnit nastavení
                 </button>
             </div>
         </section>
     </main>
+
+    <div id="key-modal" class="modal" hidden>
+        <div class="modal-card">
+            <h3>🔑 Klíč správných odpovědí</h3>
+
+            <pre id="key-output" class="key-output"></pre>
+
+            <div id="key-meta" class="key-meta"></div>
+
+            <div class="modal-actions">
+                <button id="key-download-button" class="btn">
+                    💾 Uložit jako .txt
+                </button>
+
+                <button id="key-copy-button" class="btn btn-secondary">
+                    📋 Kopírovat
+                </button>
+
+                <button id="key-close-button" class="btn btn-secondary">
+                    Zavřít
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script>
         /*
@@ -645,6 +766,11 @@ const QUESTION_FILES = [
         let quizQuestions = [];
         let currentQuestionIndex = 0;
         let selectedAnswers = {};
+
+        /* Název databáze, ze které je sestaven aktuální test - jde do klíče. */
+        let currentSourceName = '';
+        let quizSourceName = '';
+        let quizCreatedAt = null;
 
         const settings = {
             difficulty: 'vse',
@@ -685,7 +811,16 @@ const QUESTION_FILES = [
             scoreNumber: document.getElementById('score-number'),
             scorePercent: document.getElementById('score-percent'),
             resultsHeadline: document.getElementById('results-headline'),
-            review: document.getElementById('review')
+            review: document.getElementById('review'),
+
+            keyButtonQuiz: document.getElementById('key-button-quiz'),
+            keyButtonResults: document.getElementById('key-button-results'),
+            keyModal: document.getElementById('key-modal'),
+            keyOutput: document.getElementById('key-output'),
+            keyMeta: document.getElementById('key-meta'),
+            keyDownloadButton: document.getElementById('key-download-button'),
+            keyCopyButton: document.getElementById('key-copy-button'),
+            keyCloseButton: document.getElementById('key-close-button')
         };
 
         function showScreen(screenName) {
@@ -887,6 +1022,8 @@ const QUESTION_FILES = [
         function loadDatabaseText(text, sourceName) {
             const parsedQuestions = parseDatabase(text);
 
+            currentSourceName = sourceName;
+
             if (!parsedQuestions.length) {
                 allQuestions = [];
                 setStatus(
@@ -984,6 +1121,9 @@ const QUESTION_FILES = [
 
             currentQuestionIndex = 0;
             selectedAnswers = {};
+
+            quizSourceName = currentSourceName;
+            quizCreatedAt = new Date();
 
             return true;
         }
@@ -1210,6 +1350,166 @@ const QUESTION_FILES = [
             showScreen('results');
         }
 
+        /* ---------- Klíč správných odpovědí ---------- */
+
+        /*
+         * 'a' = klíč malými písmeny (1a, 2c),
+         * 'A' = velkými, tedy stejně jako se písmena zobrazují v testu.
+         */
+        const KEY_LETTER_CASE = 'a';
+
+        function difficultyLabel(value) {
+            return value === 'vse' ? 'všechny' : value;
+        }
+
+        function formatTimestamp(date) {
+            return date.toLocaleString('cs-CZ', {
+                day: 'numeric',
+                month: 'numeric',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function buildAnswerKey() {
+            const firstLetterCode = KEY_LETTER_CASE === 'A' ? 65 : 97;
+
+            return quizQuestions.map((question, questionIndex) => {
+                const correctIndex = question.options.findIndex(
+                    option => option.correct
+                );
+
+                const letter = correctIndex >= 0
+                    ? String.fromCharCode(firstLetterCode + correctIndex)
+                    : '?';
+
+                return `${questionIndex + 1}${letter}`;
+            });
+        }
+
+        function buildKeyFileText() {
+            const key = buildAnswerKey();
+            const created = quizCreatedAt || new Date();
+
+            return [
+                'KLÍČ SPRÁVNÝCH ODPOVĚDÍ',
+                '',
+                `Databáze:     ${quizSourceName || '(neznámá)'}`,
+                `Obtížnost:    ${difficultyLabel(settings.difficulty)}`,
+                `Počet otázek: ${key.length}`,
+                `Vygenerováno: ${formatTimestamp(created)}`,
+                '',
+                key.join(', '),
+                '',
+                'Pozor: otázky i odpovědi se míchají, klíč proto platí pouze',
+                'pro tento jeden vygenerovaný test.',
+                ''
+            ].join('\r\n');
+        }
+
+        function buildKeyFileName() {
+            const created = quizCreatedAt || new Date();
+            const pad = value => String(value).padStart(2, '0');
+
+            const stamp =
+                `${created.getFullYear()}-${pad(created.getMonth() + 1)}-` +
+                `${pad(created.getDate())}_${pad(created.getHours())}` +
+                `${pad(created.getMinutes())}`;
+
+            const base = (quizSourceName || 'test')
+                .replace(/\.txt$/i, '')
+                .normalize('NFD')
+                .replace(/[̀-ͯ]/g, '')
+                .replace(/[^a-zA-Z0-9_-]+/g, '_')
+                .replace(/^_+|_+$/g, '');
+
+            return `klic_${base || 'test'}_${stamp}.txt`;
+        }
+
+        function openKeyModal() {
+            if (!quizQuestions.length) {
+                alert('Klíč je k dispozici až po spuštění testu.');
+                return;
+            }
+
+            const key = buildAnswerKey();
+
+            elements.keyOutput.textContent = key.join(', ');
+
+            elements.keyMeta.innerHTML = `
+                Databáze: <strong>${escapeHtml(quizSourceName || '(neznámá)')}</strong><br>
+                Obtížnost: <strong>${escapeHtml(difficultyLabel(settings.difficulty))}</strong>,
+                počet otázek: <strong>${key.length}</strong><br>
+                Vygenerováno: <strong>${escapeHtml(formatTimestamp(quizCreatedAt || new Date()))}</strong><br>
+                Klíč platí pouze pro tento test – otázky i odpovědi se míchají.
+            `;
+
+            elements.keyModal.hidden = false;
+            elements.keyDownloadButton.focus();
+        }
+
+        function closeKeyModal() {
+            elements.keyModal.hidden = true;
+        }
+
+        function downloadKey() {
+            /* BOM na začátku, aby Poznámkový blok zobrazil diakritiku správně. */
+            const blob = new Blob(
+                ['﻿' + buildKeyFileText()],
+                { type: 'text/plain;charset=utf-8' }
+            );
+
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+
+            link.href = url;
+            link.download = buildKeyFileName();
+
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+
+            URL.revokeObjectURL(url);
+        }
+
+        async function copyKey() {
+            const text = elements.keyOutput.textContent;
+            const originalLabel = elements.keyCopyButton.textContent;
+            let copied = false;
+
+            try {
+                await navigator.clipboard.writeText(text);
+                copied = true;
+            } catch (error) {
+                /* Záloha pro starší prohlížeče a nezabezpečené připojení. */
+                const helper = document.createElement('textarea');
+
+                helper.value = text;
+                helper.style.position = 'fixed';
+                helper.style.opacity = '0';
+
+                document.body.appendChild(helper);
+                helper.select();
+
+                try {
+                    copied = document.execCommand('copy');
+                } catch (fallbackError) {
+                    copied = false;
+                }
+
+                helper.remove();
+            }
+
+            elements.keyCopyButton.textContent = copied
+                ? '✅ Zkopírováno'
+                : '❌ Nelze zkopírovat';
+
+            setTimeout(() => {
+                elements.keyCopyButton.textContent = originalLabel;
+            }, 1500);
+        }
+
         document
             .querySelectorAll('[data-difficulty]')
             .forEach(button => {
@@ -1251,6 +1551,24 @@ const QUESTION_FILES = [
 
         elements.configButton.addEventListener('click', () => {
             showScreen('setup');
+        });
+
+        elements.keyButtonQuiz.addEventListener('click', openKeyModal);
+        elements.keyButtonResults.addEventListener('click', openKeyModal);
+        elements.keyDownloadButton.addEventListener('click', downloadKey);
+        elements.keyCopyButton.addEventListener('click', copyKey);
+        elements.keyCloseButton.addEventListener('click', closeKeyModal);
+
+        elements.keyModal.addEventListener('click', event => {
+            if (event.target === elements.keyModal) {
+                closeKeyModal();
+            }
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && !elements.keyModal.hidden) {
+                closeKeyModal();
+            }
         });
 
         elements.dropzone.addEventListener('click', event => {
