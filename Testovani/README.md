@@ -2,6 +2,8 @@
 
 Tento adresář obsahuje různé sady testovacích otázek a materiálů.
 
+[https://motol2.github.io/Prog3/Testovani/](https://motol2.github.io/Prog3/Testovani/)
+
 ## Dostupné sady
 
 ### Sada 1: EU AI Act
