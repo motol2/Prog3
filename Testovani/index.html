@@ -216,10 +216,11 @@
                 <label>Databáze otázek (.txt)</label>
                 <div class="file-dropzone" id="dropzone">
                     <span class="icon">📁</span>
-                    <p>Přetáhněte sem soubor <strong>*.txt</strong> nebo klikněte pro výběr</p>
-                    <input type="file" id="file-input" accept=".txt" style="display: none;">
+                    <p id="file-help-text">Přetáhněte sem soubor <strong>*.txt</strong> nebo použijte tlačítko níže</p>
+                    <label for="file-input" id="btn-pick-file" class="btn btn-secondary" style="max-width: 280px; margin: 0 auto 1rem;">Vybrat soubor</label>
                     <div id="db-status" class="badge-status loaded">Načítání výchozí databáze (AI Act)...</div>
                 </div>
+                <input type="file" id="file-input" aria-describedby="file-help-text" accept=".txt" style="position:absolute; width:1px; height:1px; margin:-1px; padding:0; border:0; overflow:hidden; clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap;">
             </div>
 
             <div class="form-group">
@@ -295,19 +296,22 @@
     </div>
 
     <script>
-        const DEFAULT_DATABASE_TXT = `# Databáze otázek pro testovací aplikaci - Téma: EU AI Act (20 otázek)`;
         const DEFAULT_DB_FILE = 'databaze_otazek_ai_act.txt';
+        const QUESTION_FILES_MANIFEST = './question-files.json';
 
         let rawDatabaseQuestions = [];
         let activeQuizQuestions = [];
         let currentQuestionIndex = 0;
         let userAnswers = {};
+        let currentSourceValue = DEFAULT_DB_FILE;
+        let uploadedDatabaseState = null;
         let quizConfig = { difficulty:'vse', count:10, instantFeedback:true, shuffleQ:true, shuffleA:true };
 
         const screenSetup = document.getElementById('screen-setup');
         const screenQuiz = document.getElementById('screen-quiz');
         const screenResults = document.getElementById('screen-results');
         const dropzone = document.getElementById('dropzone');
+        const btnPickFile = document.getElementById('btn-pick-file');
         const fileInput = document.getElementById('file-input');
         const dbStatus = document.getElementById('db-status');
         const dbSourceSelect = document.getElementById('db-source-select');
@@ -321,18 +325,39 @@
         const btnRestart = document.getElementById('btn-restart');
         const btnConfig = document.getElementById('btn-config');
 
+        function requiredElementsPresent() {
+            return Boolean(
+                screenSetup && screenQuiz && screenResults &&
+                dropzone && fileInput && dbStatus &&
+                btnPickFile &&
+                dbSourceSelect && difficultySelect && countInput &&
+                availableCountMsg && btnStart && btnPrev && btnNext &&
+                btnRestart && btnConfig
+            );
+        }
+
+        function normalizeTxtBasename(fileName) {
+            if (typeof fileName !== 'string') return null;
+            const trimmed = fileName.trim();
+            if (!/^[a-zA-Z0-9._-]+\.txt$/i.test(trimmed)) return null;
+            return trimmed;
+        }
+
         async function loadTxtFilesToSelector() {
             const options = new Set([DEFAULT_DB_FILE]);
             try {
-                const response = await fetch('./');
-                const html = await response.text();
-                const matches = [...html.matchAll(/href="([^"]+\.txt)"/gi)];
-                matches.forEach(m => {
-                    const file = m[1].split('/').pop();
-                    if (file) options.add(file);
+                const response = await fetch(QUESTION_FILES_MANIFEST);
+                if (!response.ok) throw new Error(`Manifest nenalezen (${response.status})`);
+                const files = await response.json();
+                if (!Array.isArray(files)) throw new Error('Manifest nemá očekávaný formát pole');
+                files.forEach(file => {
+                    const normalized = normalizeTxtBasename(file);
+                    if (normalized) options.add(normalized);
                 });
             } catch (e) {
-                console.log('Nepodařilo se načíst seznam .txt souborů, ponechávám výchozí.');
+                dbStatus.textContent = 'Manifest souborů se nepodařilo načíst, používám výchozí databázi.';
+                dbStatus.className = 'badge-status';
+                console.warn('Nepodařilo se načíst manifest souborů:', e);
             }
 
             dbSourceSelect.innerHTML = '';
@@ -346,6 +371,7 @@
         }
 
         function parseTxtDatabase(text) {
+            if (typeof text !== 'string' || !text.trim()) return [];
             const blocks = text.split(/^---$/m).map(b => b.trim()).filter(Boolean);
             const parsed = [];
             blocks.forEach((block, idx) => {
@@ -370,25 +396,39 @@
             return parsed;
         }
 
-        function loadDatabaseContent(txtContent, sourceName='vychozi') {
+        function loadDatabaseContent(txtContent, sourceName = 'vychozi') {
             rawDatabaseQuestions = parseTxtDatabase(txtContent);
-            dbStatus.textContent = `Načteno ${rawDatabaseQuestions.length} otázek (Zdroj: ${sourceName})`;
-            dbStatus.className = 'badge-status loaded';
+            if (!rawDatabaseQuestions.length) {
+                dbStatus.textContent = `Soubor "${sourceName}" neobsahuje validní otázky.`;
+                dbStatus.className = 'badge-status';
+                availableCountMsg.textContent = 'Databáze neobsahuje žádné validní otázky.';
+            } else {
+                dbStatus.textContent = `Načteno ${rawDatabaseQuestions.length} otázek (Zdroj: ${sourceName})`;
+                dbStatus.className = 'badge-status loaded';
+            }
             updateAvailableCount();
         }
 
         async function initDatabase(fileName = DEFAULT_DB_FILE) {
-            try {
-                const response = await fetch(fileName);
-                if (response.ok) {
-                    const text = await response.text();
-                    loadDatabaseContent(text, fileName);
-                    return;
-                }
-            } catch (e) {
-                console.log('Soubor nelze načíst přes HTTP/fetch, používám výchozí obsaženou databázi.');
+            const safeFileName = normalizeTxtBasename(fileName);
+            if (!safeFileName) {
+                dbStatus.textContent = `Neplatný název databáze "${fileName}".`;
+                dbStatus.className = 'badge-status';
+                return false;
             }
-            loadDatabaseContent(DEFAULT_DATABASE_TXT, 'vestavěná databáze AI Act');
+            try {
+                const response = await fetch(safeFileName);
+                if (!response.ok) throw new Error(`Soubor ${safeFileName} nebyl načten (${response.status})`);
+                const text = await response.text();
+                loadDatabaseContent(text, safeFileName);
+                if (rawDatabaseQuestions.length > 0) return true;
+                throw new Error(`Soubor ${safeFileName} neobsahuje validní otázky`);
+            } catch (e) {
+                console.warn('Soubor nelze načíst přes HTTP/fetch.', e);
+            }
+            dbStatus.textContent = `Nepodařilo se načíst databázi "${safeFileName}". Zvolte jiný zdroj nebo nahrajte validní .txt soubor.`;
+            dbStatus.className = 'badge-status';
+            return false;
         }
 
         function updateAvailableCount() {
@@ -402,26 +442,418 @@
             } else {
                 countInput.value = 0;
             }
+            syncCountChipState();
         }
 
         dbSourceSelect.addEventListener('change', async (e) => {
             const selected = e.target.value || DEFAULT_DB_FILE;
+            if (selected === '__uploaded__') {
+                if (uploadedDatabaseState?.questions?.length) {
+                    rawDatabaseQuestions = uploadedDatabaseState.questions.map(q => ({ ...q, options: q.options.map(o => ({ ...o })) }));
+                    dbStatus.textContent = `Načteno ${rawDatabaseQuestions.length} otázek (Zdroj: ${uploadedDatabaseState.name})`;
+                    dbStatus.className = 'badge-status loaded';
+                    currentSourceValue = '__uploaded__';
+                    updateAvailableCount();
+                } else {
+                    dbSourceSelect.value = currentSourceValue;
+                    dbStatus.textContent = 'Nahraná databáze není k dispozici.';
+                    dbStatus.className = 'badge-status';
+                }
+                return;
+            }
+            if (!normalizeTxtBasename(selected)) {
+                dbSourceSelect.value = currentSourceValue;
+                dbStatus.textContent = `Neplatný název databáze "${selected}".`;
+                dbStatus.className = 'badge-status';
+                return;
+            }
+            const previousState = getDatabaseStateSnapshot();
+            const previousSource = currentSourceValue;
             dbStatus.textContent = `Načítám databázi: ${selected}...`;
-            await initDatabase(selected);
+            const loaded = await initDatabase(selected);
+            if (!loaded) {
+                restoreDatabaseStateSnapshot(previousState);
+                dbSourceSelect.value = previousSource;
+                return;
+            }
+            currentSourceValue = selected;
         });
 
-        dropzone.addEventListener('click', () => fileInput.click());
+        function getDatabaseStateSnapshot() {
+            return {
+                sourceValue: dbSourceSelect.value,
+                questions: rawDatabaseQuestions.map(q => ({ ...q, options: q.options.map(o => ({ ...o })) })),
+                statusText: dbStatus.textContent,
+                statusClass: dbStatus.className,
+                availableText: availableCountMsg.textContent,
+                countValue: countInput.value,
+                countMax: countInput.max
+            };
+        }
+
+        function restoreDatabaseStateSnapshot(snapshot) {
+            dbSourceSelect.value = snapshot.sourceValue;
+            rawDatabaseQuestions = snapshot.questions;
+            dbStatus.textContent = snapshot.statusText;
+            dbStatus.className = snapshot.statusClass;
+            availableCountMsg.textContent = snapshot.availableText;
+            countInput.value = snapshot.countValue;
+            countInput.max = snapshot.countMax;
+            syncCountChipState();
+        }
+
+        function handleFile(file) {
+            if (!file || !file.name.toLowerCase().endsWith('.txt')) {
+                alert('Prosím vyberte textový soubor s příponou .txt');
+                fileInput.value = '';
+                return;
+            }
+            const previousState = getDatabaseStateSnapshot();
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                loadDatabaseContent(String(ev.target?.result || ''), file.name);
+                if (!rawDatabaseQuestions.length) {
+                    restoreDatabaseStateSnapshot(previousState);
+                    dbStatus.textContent = `Nahraný soubor "${file.name}" je neplatný. Ponechána předchozí databáze.`;
+                    dbStatus.className = 'badge-status';
+                    fileInput.value = '';
+                    return;
+                }
+                const uploadedValue = '__uploaded__';
+                let uploadedOption = dbSourceSelect.querySelector(`option[value="${uploadedValue}"]`);
+                if (!uploadedOption) {
+                    uploadedOption = document.createElement('option');
+                    uploadedOption.value = uploadedValue;
+                    dbSourceSelect.appendChild(uploadedOption);
+                }
+                uploadedOption.textContent = `${file.name} (nahraný soubor)`;
+                dbSourceSelect.value = uploadedValue;
+                uploadedDatabaseState = {
+                    name: file.name,
+                    questions: rawDatabaseQuestions.map(q => ({ ...q, options: q.options.map(o => ({ ...o })) }))
+                };
+                currentSourceValue = uploadedValue;
+                fileInput.value = '';
+            };
+            reader.onerror = () => {
+                restoreDatabaseStateSnapshot(previousState);
+                dbStatus.textContent = `Soubor "${file.name}" se nepodařilo přečíst. Ponechána předchozí databáze.`;
+                dbStatus.className = 'badge-status';
+                fileInput.value = '';
+            };
+            reader.readAsText(file, 'utf-8');
+        }
+
+        let dropzoneDragCounter = 0;
+        dropzone.addEventListener('dragenter', (e) => {
+            e.preventDefault();
+            dropzoneDragCounter++;
+            dropzone.classList.add('dragover');
+        });
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.classList.add('dragover');
+        });
+        dropzone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropzoneDragCounter = Math.max(0, dropzoneDragCounter - 1);
+            if (dropzoneDragCounter === 0) dropzone.classList.remove('dragover');
+        });
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropzoneDragCounter = 0;
+            dropzone.classList.remove('dragover');
+            if (e.dataTransfer.files.length > 0) handleFile(e.dataTransfer.files[0]);
+        });
         fileInput.addEventListener('change', (e) => {
             const file = e.target.files?.[0];
             if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (ev) => loadDatabaseContent(String(ev.target?.result || ''), file.name);
-            reader.readAsText(file, 'utf-8');
+            handleFile(file);
         });
 
+        const difficultyPills = Array.from(document.querySelectorAll('#difficulty-pills .pill-btn'));
+        const countChipButtons = Array.from(document.querySelectorAll('#count-chips .pill-btn'));
+
+        function syncDifficultyPills(selectedValue = difficultySelect.value) {
+            difficultyPills.forEach(p => {
+                p.classList.toggle('active', (p.getAttribute('data-value') || 'vse') === selectedValue);
+            });
+        }
+
+        function syncCountChipState() {
+            const maxCount = Number(countInput.max || 0);
+            const currentValue = String(parseInt(countInput.value || '0', 10));
+            countChipButtons.forEach(chip => {
+                const dataCount = chip.getAttribute('data-count');
+                const isAllChip = dataCount === 'all';
+                const chipValue = isAllChip ? String(maxCount) : String(parseInt(dataCount || '0', 10));
+                chip.classList.toggle('active', chipValue === currentValue && (!isAllChip || maxCount > 0));
+            });
+        }
+
+        function normalizeCountInput() {
+            const maxCount = Number(countInput.max || 0);
+            if (maxCount <= 0) {
+                countInput.value = '0';
+                return;
+            }
+            const parsed = parseInt(countInput.value || '', 10);
+            const normalized = Number.isNaN(parsed) ? 1 : Math.min(Math.max(parsed, 1), maxCount);
+            countInput.value = String(normalized);
+        }
+
+        difficultySelect.addEventListener('change', () => {
+            syncDifficultyPills(difficultySelect.value);
+            updateAvailableCount();
+        });
+
+        difficultyPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                difficultySelect.value = pill.getAttribute('data-value') || 'vse';
+                syncDifficultyPills(difficultySelect.value);
+                updateAvailableCount();
+            });
+        });
+
+        countChipButtons.forEach(chip => {
+            chip.addEventListener('click', () => {
+                const countAttr = chip.getAttribute('data-count');
+                const maxCount = Number(countInput.max || 0);
+                if (maxCount <= 0) countInput.value = '0';
+                else if (countAttr === 'all') countInput.value = String(maxCount);
+                else countInput.value = String(Math.min(parseInt(countAttr || '1', 10), maxCount));
+                syncCountChipState();
+            });
+        });
+
+        countInput.addEventListener('input', () => {
+            syncCountChipState();
+        });
+        countInput.addEventListener('change', () => {
+            normalizeCountInput();
+            syncCountChipState();
+        });
+
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+            document.getElementById(screenId)?.classList.add('active');
+        }
+
+        function shuffleArray(items) {
+            for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [items[i], items[j]] = [items[j], items[i]];
+            }
+        }
+
+        function selectAnswer(optIndex) {
+            userAnswers[currentQuestionIndex] = optIndex;
+            renderQuestion();
+        }
+
+        function renderQuestion() {
+            const q = activeQuizQuestions[currentQuestionIndex];
+            const total = activeQuizQuestions.length;
+            if (!q || total < 1) return;
+
+            document.getElementById('quiz-progress-text').textContent = `Otázka ${currentQuestionIndex + 1} z ${total}`;
+            document.getElementById('progress-bar').style.width = `${((currentQuestionIndex + 1) / total) * 100}%`;
+
+            const badge = document.getElementById('quiz-difficulty-badge');
+            badge.textContent = q.difficulty;
+            badge.className = 'badge-difficulty ' + (
+                q.difficulty.toLowerCase().includes('lehk') ? 'diff-lehka' :
+                q.difficulty.toLowerCase().includes('střed') ? 'diff-stredni' : 'diff-tezka'
+            );
+
+            document.getElementById('quiz-question-text').textContent = q.question;
+            const answersContainer = document.getElementById('quiz-answers');
+            answersContainer.innerHTML = '';
+
+            const explanationBox = document.getElementById('quiz-explanation');
+            explanationBox.style.display = 'none';
+
+            const selectedOptIndex = userAnswers[currentQuestionIndex];
+            const isAnswered = selectedOptIndex !== undefined;
+
+            q.options.forEach((opt, idx) => {
+                const card = document.createElement('div');
+                card.className = 'answer-card';
+                const letter = String.fromCharCode(65 + idx);
+                const letterDiv = document.createElement('div');
+                letterDiv.className = 'answer-letter';
+                letterDiv.textContent = letter;
+                const textDiv = document.createElement('div');
+                textDiv.style.flex = '1';
+                textDiv.style.fontWeight = '500';
+                textDiv.textContent = opt.text;
+                card.appendChild(letterDiv);
+                card.appendChild(textDiv);
+
+                if (isAnswered) {
+                    card.classList.add('disabled');
+                    if (quizConfig.instantFeedback) {
+                        if (opt.isCorrect) card.classList.add('correct');
+                        if (idx === selectedOptIndex && !opt.isCorrect) card.classList.add('incorrect');
+                    } else if (idx === selectedOptIndex) {
+                        card.classList.add('selected');
+                    }
+                } else {
+                    card.addEventListener('click', () => selectAnswer(idx));
+                }
+                answersContainer.appendChild(card);
+            });
+
+            btnPrev.style.visibility = currentQuestionIndex > 0 ? 'visible' : 'hidden';
+            if (isAnswered) {
+                btnNext.disabled = false;
+                if (quizConfig.instantFeedback && q.explanation) {
+                    document.getElementById('quiz-explanation-text').textContent = q.explanation;
+                    explanationBox.style.display = 'block';
+                }
+            } else {
+                btnNext.disabled = true;
+            }
+            btnNext.textContent = currentQuestionIndex === total - 1 ? 'Dokončit test 🏆' : 'Další otázka ➡️';
+        }
+
+        function finishQuiz() {
+            let correctCount = 0;
+            activeQuizQuestions.forEach((q, qIdx) => {
+                const userChoice = userAnswers[qIdx];
+                if (userChoice !== undefined && q.options[userChoice]?.isCorrect) correctCount++;
+            });
+
+            const total = activeQuizQuestions.length;
+            const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+            document.getElementById('results-score-num').textContent = `${correctCount} / ${total}`;
+            document.getElementById('results-score-percent').textContent = `${percentage}%`;
+
+            const headline = document.getElementById('results-headline');
+            if (percentage >= 90) headline.textContent = '🏆 Vynikající! Téma ovládáš na jedničku.';
+            else if (percentage >= 70) headline.textContent = '👏 Velmi dobrý výkon! Znáš většinu odpovědí.';
+            else if (percentage >= 50) headline.textContent = '👍 Dobrý pokus! Ještě je pár věcí k procvičení.';
+            else headline.textContent = '📚 Ještě je potřeba si látku trochu zopakovat.';
+
+            const reviewContainer = document.getElementById('results-review-list');
+            reviewContainer.innerHTML = '';
+            activeQuizQuestions.forEach((q, qIdx) => {
+                const userChoiceIdx = userAnswers[qIdx];
+                const userOpt = userChoiceIdx !== undefined ? q.options[userChoiceIdx] : null;
+                const correctOpt = q.options.find(o => o.isCorrect);
+                const isCorrect = userOpt && userOpt.isCorrect;
+
+                const item = document.createElement('div');
+                item.className = `review-item ${isCorrect ? 'is-correct' : 'is-incorrect'}`;
+
+                const title = document.createElement('div');
+                title.className = 'q-title';
+                title.textContent = `${qIdx + 1}. ${q.question}`;
+                item.appendChild(title);
+
+                const userAnswer = document.createElement('div');
+                userAnswer.className = `review-ans ${isCorrect ? 'correct-choice' : 'user-choice'}`;
+                const userAnswerStrong = document.createElement('strong');
+                userAnswerStrong.textContent = 'Tvoje odpověď:';
+                userAnswer.textContent = `${isCorrect ? '✅' : '❌'} `;
+                userAnswer.appendChild(userAnswerStrong);
+                userAnswer.append(` ${userOpt ? userOpt.text : 'Nezodpovězeno'}`);
+                item.appendChild(userAnswer);
+
+                if (!isCorrect) {
+                    const correctAnswer = document.createElement('div');
+                    correctAnswer.className = 'review-ans correct-choice';
+                    const correctAnswerStrong = document.createElement('strong');
+                    correctAnswerStrong.textContent = 'Správná odpověď:';
+                    correctAnswer.textContent = '✔️ ';
+                    correctAnswer.appendChild(correctAnswerStrong);
+                    correctAnswer.append(` ${correctOpt ? correctOpt.text : ''}`);
+                    item.appendChild(correctAnswer);
+                }
+
+                if (q.explanation) {
+                    const explanation = document.createElement('div');
+                    explanation.style.fontSize = '0.88rem';
+                    explanation.style.color = 'var(--text-muted)';
+                    explanation.style.marginTop = '0.5rem';
+                    explanation.style.background = 'rgba(0,0,0,0.2)';
+                    explanation.style.padding = '0.5rem 0.75rem';
+                    explanation.style.borderRadius = '6px';
+                    explanation.textContent = `💡 Vysvětlení: ${q.explanation}`;
+                    item.appendChild(explanation);
+                }
+
+                reviewContainer.appendChild(item);
+            });
+
+            showScreen('screen-results');
+        }
+
+        btnStart.addEventListener('click', () => {
+            normalizeCountInput();
+            quizConfig.difficulty = difficultySelect.value;
+            const parsedCount = parseInt(countInput.value || '', 10);
+            quizConfig.count = Number.isNaN(parsedCount) ? 1 : parsedCount;
+            quizConfig.instantFeedback = document.getElementById('opt-instant-feedback').checked;
+            quizConfig.shuffleQ = document.getElementById('opt-shuffle-q').checked;
+            quizConfig.shuffleA = document.getElementById('opt-shuffle-a').checked;
+
+            if (!rawDatabaseQuestions.length) {
+                alert('Nebyly nalezeny žádné validní otázky. Nahrajte prosím správný .txt soubor.');
+                return;
+            }
+            if (quizConfig.count < 1) {
+                alert('Počet otázek musí být alespoň 1.');
+                return;
+            }
+
+            let pool = [...rawDatabaseQuestions];
+            if (quizConfig.difficulty !== 'vse') pool = pool.filter(q => q.difficulty.toLowerCase() === quizConfig.difficulty.toLowerCase());
+            if (!pool.length) {
+                alert('Pro vybranou obtížnost nejsou v databázi žádné otázky!');
+                return;
+            }
+            if (quizConfig.shuffleQ) shuffleArray(pool);
+            activeQuizQuestions = pool.slice(0, Math.min(quizConfig.count, pool.length)).map(q => {
+                const options = q.options.map(o => ({ ...o }));
+                if (quizConfig.shuffleA) shuffleArray(options);
+                return { ...q, options };
+            });
+
+            currentQuestionIndex = 0;
+            userAnswers = {};
+            showScreen('screen-quiz');
+            renderQuestion();
+        });
+
+        btnNext.addEventListener('click', () => {
+            if (currentQuestionIndex < activeQuizQuestions.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                finishQuiz();
+            }
+        });
+
+        btnPrev.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        });
+
+        btnRestart.addEventListener('click', () => btnStart.click());
+        btnConfig.addEventListener('click', () => showScreen('screen-setup'));
+
         (async () => {
+            if (!requiredElementsPresent()) {
+                console.error('Aplikace nelze inicializovat: chybí některé požadované elementy v HTML.');
+                return;
+            }
             await loadTxtFilesToSelector();
             await initDatabase(DEFAULT_DB_FILE);
+            syncDifficultyPills(difficultySelect.value);
+            syncCountChipState();
         })();
     </script>
 </body>
