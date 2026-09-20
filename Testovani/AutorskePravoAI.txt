@@ -1,0 +1,208 @@
+# Databáze otázek pro testovací aplikaci - Téma: Autorské právo a AI (20 otázek)
+# Zdroj: Vitalii Fenynets, Maksym Kravets, Marek Řehák, Dominik Pavelka
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co obecně chrání autorské právo?
+[0] Pouze nápady a myšlenky.
+[x] Originální tvůrčí díla (text, obraz, hudba, software).
+[0] Pouze výrobky a technické patenty.
+[0] Všechny informace zveřejněné na internetu.
+[VYSVETLENI] Autorské právo chrání konkrétní vyjádření tvůrčí činnosti, nikoli samotnou myšlenku. Nápad může použít kdokoli, ale hotové dílo už je chráněné.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Kdo vlastní autorská práva k obrázku, který kompletně vymyslela a nakreslila umělá inteligence bez tvůrčího zásahu člověka?
+[0] Samotná umělá inteligence.
+[0] Počítač, na kterém byl program spuštěn.
+[x] Podle současných pravidel nikdo, protože AI není člověk.
+[0] Člověk, který napsal krátký jednoslovný pokyn k vytvoření.
+[VYSVETLENI] Autorské dílo vzniká jen z tvůrčí činnosti člověka. Pokud za výstupem není žádný lidský tvůrčí vklad, dílo v právním smyslu nevzniká a nikdo k němu nemá autorská práva.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co to znamená, když se řekne, že AI využívá „trénovací data“?
+[0] Znamená to, že AI sleduje výsledky sportovních zápasů.
+[0] Je to označení pro tajná hesla uživatelů internetu.
+[x] Znamená to, že se AI učí tvořit na základě obrovského množství cizích textů a obrázků z internetu.
+[0] Znamená to, že si AI sama vymýšlí data, aby nemusela nic stahovat.
+[VYSVETLENI] Generativní modely se učí ze statistických vzorů v obrovských sbírkách existujícího obsahu. Právě původ těchto dat je jádrem většiny sporů o autorská práva.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co může být problémem při trénování AI na cizích autorských dílech?
+[0] Vysoká spotřeba elektřiny v datovém centru.
+[0] Pomalé připojení k internetu při stahování.
+[x] Možné porušení autorských práv majitelů těchto děl.
+[0] Nutnost používat větší monitor.
+[VYSVETLENI] Pokud jsou chráněná díla rozmnožena a použita k trénování bez licence nebo zákonné výjimky, může jít o zásah do práv autorů. Přesně kvůli tomu vzniklo v EU pravidlo o vytěžování dat a možnosti výhrady.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Dostávají autoři (např. spisovatelé nebo malíři) automaticky peníze, když se AI učí z jejich děl?
+[x] Ne, tvůrci AI většinou díla stáhnou z internetu a použijí je k učení zdarma.
+[0] Ano, AI jim za každé přečtení pošle peníze na bankovní účet.
+[0] Ano, ale dostávají zaplaceno pouze ve virtuální měně.
+[0] Vždy ano, protože to nařizuje zákon o internetu.
+[VYSVETLENI] Žádná automatická odměna za trénování neexistuje. Autoři musí buď uzavřít licenční smlouvu, nebo využít výhradu práv (opt-out) a použití svých děl zakázat.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Může být umělá inteligence odsouzena a jít do vězení za zkopírování cizího díla?
+[0] Ano, ale jen na velmi krátkou dobu.
+[0] Ano, může dostat virtuální trest smazáním dat.
+[x] Ne, umělá inteligence není osoba a nenese právní odpovědnost za své činy.
+[0] Záleží na tom, jak silný má počítač procesor.
+[VYSVETLENI] AI nemá právní subjektivitu, takže nemůže být pachatelem ani nositelem povinností. Odpovědnost vždy nese konkrétní člověk nebo firma – uživatel nebo provozovatel systému.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Kdo může být autorem díla podle tradičního pojetí autorského práva?
+[0] Pouze počítač, který dílo vytvořil.
+[x] Fyzická osoba, která dílo svou tvůrčí činností vytvořila.
+[0] Pouze firma, která zaměstnává tvůrce.
+[0] Jakýkoliv uživatel internetu, který dílo najde.
+[VYSVETLENI] Autorem je vždy konkrétní člověk. Firma může získat práva k užití díla (licencí nebo ze zaměstnaneckého poměru), ale autorem se stát nemůže.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Může být text vytvořený pomocí AI automaticky považován za dílo chráněné autorským právem?
+[0] Ano, vždy – jde o původní text.
+[0] Ne, nikdy, bez ohledu na okolnosti.
+[x] Záleží na konkrétních okolnostech a míře lidské tvůrčí činnosti.
+[0] Ano, pokud byl vytvořen placenou verzí AI.
+[VYSVETLENI] Rozhoduje, kolik vlastní tvůrčí práce do výsledku vložil člověk. Jednoslovný prompt nestačí, ale výrazná autorská úprava, výběr a uspořádání výstupu už chráněné dílo založit mohou.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Je možné použít cizí fotografii z internetu bez svolení autora jen proto, že je veřejně dostupná?
+[0] Ano, vždy – co je na internetu, je volné.
+[0] Ano, pokud u ní není uvedena značka copyrightu.
+[0] Ano, pokud ji předtím upraví AI.
+[x] Ne vždy – veřejná dostupnost neznamená automaticky volné užití.
+[VYSVETLENI] Ochrana vzniká okamžikem vytvoření díla, bez nutnosti registrace nebo značky ©. K užití je potřeba licence, svolení autora, nebo musí jít o zákonnou výjimku (např. citace).
+
+---
+
+[OBTIZNOST: střední]
+[Q] Pokud AI vytvoří obrázek napodobující styl konkrétního žijícího umělce, může vzniknout právní problém?
+[0] Ne, protože AI nemůže porušovat zákony.
+[x] Ano, podle okolností mohou vzniknout otázky autorského práva nebo jiných práv.
+[0] Ne, pokud je výsledný obrázek barevný.
+[0] Ano, ale pouze pokud je obrázek vytištěný.
+[VYSVETLENI] Samotný umělecký styl chráněný autorským právem není. Problém ale může nastat, pokud výsledek převezme konkrétní prvky díla, nebo pokud se zasáhne do práv k osobnosti či ochranné známky umělce.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co znamená licence k autorskému dílu?
+[0] Potvrzení, že dílo vytvořila AI.
+[0] Úplný zákaz používání díla kýmkoliv.
+[x] Povolení neboli oprávnění k určitému způsobu užití díla.
+[0] Automatický převod vlastnictví počítače, na kterém dílo vzniklo.
+[VYSVETLENI] Licence je smlouva, kterou autor umožní někomu jinému dílo využít – v dohodnutém rozsahu, na dohodnutou dobu a způsobem, který si strany ujednají. Autorství tím na nabyvatele nepřechází.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co se stane, když umělá inteligence vygeneruje obrázek, na kterém je okopírovaný podpis nebo vodoznak skutečného malíře?
+[x] Je to velký problém a pravděpodobně jde o porušení práv původního malíře.
+[0] Je to v pořádku, protože AI to udělala omylem.
+[0] Malíř musí firmě s AI zaplatit za reklamu svého jména.
+[0] Obrázek se automaticky smaže z celého internetu.
+[VYSVETLENI] Podpis nebo vodoznak v generovaném obrázku je silná indicie, že se model naučil konkrétní chráněná díla a část jejich obsahu reprodukuje. Zároveň může jít o klamavé označení původu díla.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Kdo nese odpovědnost, pokud uživatel zadá komerčnímu generátoru obrázků příkaz vytvořit kopii chráněného loga a výsledek pak komerčně využije?
+[0] Výhradně tvůrce trénovacího datasetu.
+[0] Pouze provozovatel datového centra, kde model běží.
+[x] Uživatel, který pokyn zadal a výsledek použil; spoluodpovědnost může nést i provozovatel podle podmínek služby.
+[0] Nikdo, protože AI generovaný obsah je vždy legální.
+[VYSVETLENI] Rozhodující je záměr a vlastní jednání uživatele – ten dal pokyn a dílo šířil. Podmínky většiny služeb navíc odpovědnost za způsob užití výstupu výslovně přenášejí na uživatele.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Proč je pro tvůrce AI modelů výhodné uzavírat licenční smlouvy přímo s vydavateli médií nebo obrazovými bankami (např. OpenAI s Axel Springer nebo Reddit)?
+[0] Protože to v EU zákon nařizuje všem firmám nad 50 zaměstnanců.
+[0] Umožňuje jim to snížit spotřebu elektrické energie modelů na polovinu.
+[x] Zajišťují si přístup ke kvalitním ověřeným datům a chrání se před budoucími žalobami za porušení autorských práv.
+[0] Získávají tím monopol na celosvětový internetový provoz.
+[VYSVETLENI] Licencovaná data jsou právně čistá a obvykle kvalitnější než náhodně stažený obsah. Smlouva zároveň odstraňuje riziko drahého soudního sporu s vydavatelem.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaký význam má směrnice EU o autorském právu na jednotném digitálním trhu (DSM) ve vztahu k vytěžování textů a dat (TDM)?
+[0] Úplně zakazuje používání vyhledávačů na území Evropské unie.
+[0] Dává všem firmám právo kopírovat jakýkoliv obsah bez omezení.
+[x] Zavádí výjimky pro vytěžování textů a dat a umožňuje nositelům práv uplatnit výhradu (opt-out).
+[0] Nařizuje povinné zpoplatnění každého vyhledávacího dotazu na webu.
+[VYSVETLENI] Směrnice povoluje TDM pro vědecký výzkum a v širší podobě i pro ostatní účely – tam si ale autor může užití svých děl výslovně vyhradit a tím ho zakázat.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co znamená takzvaný „opt-out“ v kontextu vytěžování dat pro AI podle evropské legislativy?
+[0] Možnost uživatele trvale smazat svůj profil ze sociální sítě.
+[0] Povinnost AI modelu vypnout se v noci kvůli úspoře energie.
+[x] Právo nositelů autorských práv výslovným a strojově čitelným způsobem vyhradit, že jejich díla nesmějí být využita k trénování AI.
+[0] Automatické odhlášení z odběru newsletterů.
+[VYSVETLENI] Výhrada musí být vyjádřena tak, aby ji stroj rozpoznal – typicky v souboru robots.txt nebo v metadatech webu. Pokud ji autor neuplatní, na jeho díla TDM výjimka dopadá.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co primárně vyžaduje EU AI Act od poskytovatelů obecných AI modelů (GPAI) ve vztahu k trénovacím datům?
+[0] Povinnost zveřejnit kompletní zdrojový kód modelu i seznam všech uživatelů.
+[x] Povinnost zveřejnit dostatečně podrobné shrnutí obsahu chráněného autorským právem, který byl použit k trénování.
+[0] Zákaz používat jakákoliv data vytvořená po roce 2020.
+[0] Povinnost platit licenční poplatky všem občanům EU.
+[VYSVETLENI] AI Act cílí na transparentnost: autoři mají mít reálnou možnost zjistit, zda a jak byla jejich tvorba využita, a případně uplatnit svá práva.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaký je hlavní rozdíl mezi americkým konceptem „fair use“ a evropským přístupem k užití chráněných děl v AI?
+[0] Evropský přístup povoluje vše bez omezení, zatímco americký vše zakazuje.
+[x] Fair use je flexibilní a posuzuje se případ od případu podle čtyř kritérií, zatímco Evropa spoléhá na přesně definované zákonné výjimky.
+[0] V Evropě neexistují žádná autorská práva na digitální obsah.
+[0] Americký systém vyžaduje předchozí písemný souhlas u každého obrázku na internetu.
+[VYSVETLENI] V USA soud váží účel užití, povahu díla, rozsah převzetí a dopad na trh. V EU je naopak uzavřený výčet výjimek – co v něm není, je bez licence nepřípustné.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Může být zdrojový kód vygenerovaný umělou inteligencí chráněn autorským právem?
+[0] Ano, vždy, protože se jedná o počítačový program.
+[0] Ne, autorský zákon se na zdrojový kód nikdy nevztahuje.
+[x] Záleží na míře tvůrčího lidského zásahu, úprav a integrace ze strany programátora.
+[0] Pouze v případě, že byl napsán v jazyce Python.
+[VYSVETLENI] Platí stejné pravidlo jako u textu nebo obrazu: rozhoduje lidská tvůrčí činnost. Vygenerovaný úryvek sám o sobě chráněn není, výsledná aplikace s vlastní architekturou a úpravami ano.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaké riziko vzniká, když generativní AI „memoruje“ a následně doslovně reprodukuje části trénovacích dat?
+[0] Žádné, protože internetová data jsou vždy veřejně přístupná.
+[0] Zlepšuje to rychlost fungování modelu.
+[x] Může docházet k neoprávněnému šíření chráněného obsahu a k porušení autorských práv či GDPR.
+[0] Automaticky to ruší licence ostatních uživatelů služby.
+[VYSVETLENI] Model, který místo zobecnění vydá doslovný úryvek, fakticky rozmnožuje cizí dílo. Pokud jde navíc o osobní údaje z trénovacích dat, přidává se k porušení autorských práv i problém podle GDPR.
