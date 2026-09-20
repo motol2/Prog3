@@ -1,0 +1,128 @@
+# Databáze otázek pro testovací aplikaci - Téma: Autonomní vozidla (12 otázek)
+# Zdroj: Šimon Kubala, Lukáš Jiránek, Antonín Povolný
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] K čemu slouží kamery v autonomním automobilu?
+[x] Ke snímání okolí, rozpoznávání jízdních pruhů, čtení dopravních značek a detekci chodců.
+[0] K ukládání záběrů do palubního deníku pro pozdější sdílení na internetu.
+[0] K promítání okolní krajiny na displej pro pobavení posádky.
+[0] K diagnostice motoru a kontrole stavu provozních kapalin.
+[VYSVETLENI] Kamera je jediný senzor, který vidí barvy a čte text, takže bez ní by vůz nerozpoznal semafor ani značku. Zato špatně snáší tmu, oslnění a silný déšť.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co musí autonomní vozidlo vyhodnotit před změnou jízdního pruhu?
+[0] Pouze svou aktuální rychlost.
+[x] Situaci kolem vozidla, ostatní účastníky provozu a dostupný prostor.
+[0] Především stav paliva nebo baterie.
+[0] Jen vzdálenost od nejbližší křižovatky.
+[VYSVETLENI] Nestačí zjistit, že je vedlejší pruh volný teď. Systém musí odhadnout i rychlost přijíždějících vozidel, aby mezera zůstala dostatečná i v okamžiku dokončení manévru.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co znamená, když autonomní systém „detekuje“ chodce?
+[0] Systém automaticky ví, kam chodec za několik sekund půjde.
+[x] Systém rozpoznal objekt jako chodce na základě dostupných dat.
+[0] Vozidlo musí okamžitě změnit jízdní pruh.
+[0] Chodec dostane automaticky přednost bez ohledu na situaci.
+[VYSVETLENI] Detekce je pouze klasifikace s určitou mírou jistoty, nikoli jistota. Odhad toho, kam chodec půjde dál, řeší až samostatná predikční část systému.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Proč autonomní vozidlo sleduje také okolní vozidla?
+[0] Aby zjistilo jejich značku a cenu.
+[x] Aby mohlo reagovat na jejich pohyb a přizpůsobit tomu svou jízdu.
+[0] Aby určilo, kdo je jejich majitelem.
+[0] Aby automaticky převzalo jejich navigační systém.
+[VYSVETLENI] Provoz je interakce – vůz musí předvídat, že někdo zabrzdí nebo se zařadí před něj. Bez sledování ostatních by dokázal reagovat až na hotovou situaci, tedy pozdě.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co se může stát, pokud autonomní systém špatně vyhodnotí objekt na silnici?
+[0] Vozidlo automaticky změní svou trasu bez ohledu na okolí.
+[0] Systém vždy okamžitě vypne celý automobil.
+[x] Může nesprávně zareagovat, například změnou rychlosti nebo směru.
+[0] Vozidlo automaticky odešle objekt k analýze výrobci.
+[VYSVETLENI] Chyba funguje oběma směry: přehlédnutá překážka znamená riziko srážky, zatímco neexistující překážka vyvolá takzvané fantomové brzdění, které ohrozí vozidla jedoucí za ním.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaký význam mají mapové podklady pro autonomní vozidla?
+[0] Nahrazují všechny senzory během jízdy.
+[0] Slouží pouze k zobrazení názvu aktuální ulice.
+[0] Umožňují vozidlu jezdit bez znalosti aktuální polohy.
+[x] Poskytují informace o silnicích, pruzích, křižovatkách a dalších prvcích prostředí.
+[VYSVETLENI] Podrobná mapa funguje jako předem známý kontext – vůz ví, co má očekávat za zatáčkou. Senzory ale nahradit nemůže, protože mapa nezachytí aktuální provoz ani uzavírku.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Proč může být hustý déšť problémem pro některé senzory?
+[0] Déšť automaticky vypíná navigační systém.
+[0] Vozidlo při dešti nemůže používat elektrický pohon.
+[x] Kapky vody a zhoršená viditelnost mohou ovlivnit kvalitu získaných dat.
+[0] Senzory při dešti vždy přestanou fungovat úplně.
+[VYSVETLENI] Kapky rozptylují laserový paprsek lidaru a zhoršují obraz z kamery. Radar si s deštěm poradí výrazně lépe, což je jeden z důvodů, proč se senzory kombinují.
+
+---
+
+[OBTIZNOST: střední]
+[Q] K čemu slouží strojové učení u autonomních vozidel?
+[0] K tomu, aby vozidlo nemuselo používat žádné senzory.
+[0] K automatickému zvýšení maximální rychlosti.
+[0] Především k ukládání navigačních map do paměti.
+[x] K tomu, aby se systém naučil rozpoznávat a vyhodnocovat různé situace z dat.
+[VYSVETLENI] Všechny podoby chodce, cyklisty nebo značky by nešlo popsat pevnými pravidly. Model se je proto naučí z obrovského množství reálných příkladů.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co je důležité při testování autonomního vozidla?
+[0] Testovat pouze jízdu za ideálního počasí.
+[0] Zaměřit se především na maximální rychlost.
+[0] Testovat pouze schopnost vozidla zaparkovat na jednom místě.
+[x] Ověřovat chování systému v různých dopravních a provozních situacích.
+[VYSVETLENI] Rozhodující jsou vzácné a nejasné situace – noc, mlha, poškozené značení, nepředvídatelný chodec. Právě v nich systémy selhávají, nikoli na prázdné dálnici za slunečného dne.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč má autonomní automobil tolik různých senzorů a kamer?
+[x] Kvůli redundanci a fúzi senzorů, aby se data vzájemně doplňovala i za špatného počasí.
+[0] Aby se zvýšila spotřeba baterie a auto jelo plynuleji.
+[0] Pouze proto, aby byl interiér vozu plně digitalizovaný.
+[0] Aby auto splnilo podmínky pro získání sportovní licence.
+[VYSVETLENI] Každý typ senzoru má jinou slabinu: kamera vidí barvy, ale ne ve tmě, lidar přesně měří tvar, ale trpí v dešti, radar spolehlivě určí rychlost i v mlze. Fúze jejich dat dává obraz, který by žádný z nich sám neposkytl.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč se autonomní automobily nejdříve zkoušejí v počítačové simulaci?
+[0] Aby se ušetřila elektrická energie v bateriích reálných vozidel.
+[0] K otestování, zda budou cestující spokojeni s barvou karoserie.
+[x] Aby bylo možné projet miliony kilometrů a extrémní krizové scénáře bez rizika nehody.
+[0] Protože zákony zcela zakazují vývoj autonomních systémů na fyzických autech.
+[VYSVETLENI] Nebezpečná situace se dá v simulaci zopakovat tisíckrát a pokaždé mírně pozměnit. Na reálné silnici by čekání na takovou situaci trvalo roky a její vyvolání by ohrozilo lidi.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jak se autonomní vozidlo rozhoduje, zda má zabrzdit, nebo uhnout?
+[0] Okamžitě předá řízení vzdálenému operátorovi přes internet a čeká na pokyn.
+[0] Náhodně vybere jeden z naučených manévrů bez ohledu na okolní překážky.
+[x] Palubní počítač v reálném čase propočítá trajektorie i brzdnou dráhu a vybere manévr s nejnižším rizikem.
+[0] Vždy povinně zastaví na místě, bez možnosti změnit směr jízdy.
+[VYSVETLENI] Jde o výpočet, ne o morální úvahu: systém vygeneruje možné dráhy, ohodnotí je podle rizika a proveditelnosti a vybere nejlepší. Celé to musí stihnout v řádu milisekund.

@@ -1,0 +1,110 @@
+# Databáze otázek pro testovací aplikaci - Téma: AI ve škole (10 otázek)
+# Zdroj: Šimon Křeperát, Mark Nahornyi, Jáchym Viták
+# Pozn.: Zadání otázek vychází ze studentských odevzdání, distraktory byly přepracovány
+#        na věrohodné (studenty často zastávané) omyly - původní varianty byly návodné.
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je „prompt“ při práci s generativní AI?
+[0] Textová odpověď, kterou model vygeneruje.
+[x] Zadání nebo pokyn, kterým uživatel popíše, co od AI chce.
+[0] Nastavení, kterým se volí verze použitého jazykového modelu.
+[0] Údaj o tom, kolik dat bylo použito k natrénování modelu.
+[VYSVETLENI] Prompt je vstup, nikoli výstup – výstupu se říká odpověď. Formulace promptu přitom ovlivňuje kvalitu výsledku víc než volba konkrétního modelu.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Proč je důležité ověřovat informace získané od AI?
+[0] Protože AI odpovídá spolehlivě jen na otázky z matematiky a techniky.
+[0] Protože AI ke každé odpovědi uvádí zdroj, který je ale nutné dohledat ručně.
+[x] Protože AI může vytvořit věcně nesprávnou informaci, která zní přesvědčivě.
+[0] Protože se odpověď po položení další otázky automaticky smaže.
+[VYSVETLENI] Jazykový model generuje pravděpodobné pokračování textu, ne ověřený fakt. Sebejistý tón odpovědi proto o její správnosti nevypovídá vůbec nic – tomuto jevu se říká halucinace.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jak může AI pomoci učiteli při přípravě výuky?
+[0] Může samostatně rozhodnout o klasifikaci žáků podle jejich předchozích výsledků.
+[0] Může zaručit, že vygenerovaný test bude odpovídat školnímu vzdělávacímu programu.
+[0] Může zaručit, že vytvořené výukové materiály budou věcně bez chyb.
+[x] Může navrhnout aktivity, otázky nebo varianty výkladu, které učitel posoudí a upraví.
+[VYSVETLENI] AI je zde generátor návrhů, nikoli garant správnosti. Odbornou i didaktickou odpovědnost nese pořád učitel, který musí výstup zkontrolovat a přizpůsobit své třídě.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaký způsob používání AI nejlépe podporuje učení žáka?
+[0] Nechat AI vypracovat úkol a výsledek si pak pozorně přečíst.
+[x] Nechat si vysvětlit látku, procvičovat s ní a požádat o zpětnou vazbu k vlastnímu řešení.
+[0] Zadat úkol AI, odevzdat výstup a dodatečně si ho od AI nechat vysvětlit.
+[0] Používat AI pouze ke kontrole pravopisu v už hotové práci.
+[VYSVETLENI] Pozorné přečtení hotového řešení vytváří iluzi porozumění – látka působí srozumitelně, ale žák ji sám vyřešit neumí. Učení vzniká až z vlastního pokusu a následné opravy.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Proč není vhodné zadávat do veřejného AI nástroje citlivé osobní údaje?
+[x] Protože se mohou uložit na serverech provozovatele a být dál zpracovány mimo kontrolu uživatele.
+[0] Protože jazykové modely neumí zpracovat údaje ve formátu rodného čísla nebo data narození.
+[0] Protože AI takový dotaz vždy automaticky odmítne a neodpoví na něj.
+[0] Protože osobní údaje výrazně zpomalují generování odpovědi.
+[VYSVETLENI] Řada služeb konverzace ukládá a může je využít k dalšímu trénování. Jakmile údaj odešlete, ztrácíte nad ním kontrolu a zpětně ho odstranit zpravidla nelze.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jak může AI podpořit individualizaci výuky?
+[0] Umožní zadat všem žákům stejný materiál a ušetřit tím učiteli čas.
+[0] Z odpovědí žáka spolehlivě určí jeho studijní předpoklady a doporučí mu obor.
+[x] Může témuž učivu dát vysvětlení a procvičení přizpůsobené tempu a mezerám konkrétního žáka.
+[0] Odstraní potřebu zjišťovat, v čem žák chybuje, protože chybu opraví sama.
+[VYSVETLENI] Individualizace znamená přizpůsobit cestu k cíli, ne cíl sám. AI zvládne připravit jiné vysvětlení nebo jinou sadu příkladů, ale posoudit, co konkrétní žák potřebuje, musí učitel.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co je při používání AI ve škole důležité z hlediska ochrany soukromí?
+[0] Používat AI výhradně pod celým jménem žáka, aby bylo dohledatelné, kdo ji použil.
+[0] Vkládat do AI celé zadání včetně jmen, aby byla odpověď co nejpřesnější.
+[0] Ukládat všechny konverzace s AI do školního systému pro případ pozdější kontroly.
+[x] Nevkládat do AI údaje o sobě ani o spolužácích, které k vyřešení úkolu nejsou potřeba.
+[VYSVETLENI] Platí zásada minimalizace: zpracovat jen to, co je nezbytné. Obzvlášť citlivé je vkládání údajů o spolužácích – ti k tomu nedali souhlas a rozhodnutí za ně žák udělat nemůže.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Které zadání pro AI povede nejspíše k nejužitečnější odpovědi při učení?
+[0] „Napiš mi vše, co víš o fotosyntéze.“
+[0] „Jsi špičkový biolog s třiceti lety praxe. Vysvětli fotosyntézu.“
+[x] „Vysvětli mi fotosyntézu pro žáka střední školy, uveď jeden příklad a na závěr mi dej tři kontrolní otázky.“
+[0] „Vysvětli mi fotosyntézu co nejpodrobněji a nejdelším možným textem.“
+[VYSVETLENI] Rozhoduje konkrétnost: cílové publikum, rozsah a požadovaný formát výstupu. Delší ani „prestižněji“ znějící zadání kvalitu samo o sobě nezvýší, kdežto kontrolní otázky navíc donutí žáka ověřit si vlastní porozumění.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co znamená transparentní používání AI při školní práci?
+[0] Stačí výstup AI přeformulovat vlastními slovy, pak už se uvádět nemusí.
+[x] Uvést, že a jakým způsobem byla AI při práci použita, pokud to pravidla vyžadují.
+[0] Uvést AI v seznamu literatury jako autora použitého zdroje.
+[0] Použití AI oznámit až ve chvíli, kdy se na ně učitel výslovně zeptá.
+[VYSVETLENI] Transparentnost znamená sdělit to předem a z vlastní iniciativy. AI přitom není autor ani citovatelný zdroj – uvádí se jako použitý nástroj spolu s popisem, k čemu konkrétně sloužila.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč je problematické odevzdat jako domácí úkol pouze výstup AI?
+[0] Protože text vytvořený AI lze vždy spolehlivě odhalit detektorem.
+[0] Protože výstup AI obsahuje skryté znaky, kterými se práce automaticky označí.
+[x] Protože žák neprokáže vlastní porozumění učivu, které má úkol ověřit.
+[0] Protože školní řád zakazuje použití AI za všech okolností.
+[VYSVETLENI] Jde o pedagogický, nikoli technický problém. Detektory AI textu jsou nespolehlivé a označují i poctivé práce, takže argument „nepoznají to“ míří vedle – smyslem úkolu je doložit, že látce rozumím.

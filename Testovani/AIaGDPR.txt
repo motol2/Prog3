@@ -1,0 +1,188 @@
+# Databáze otázek pro testovací aplikaci - Téma: AI a GDPR (18 otázek)
+# Zdroj: Tomáš Filip, Anastasiia Balanets, Marek Miláček
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je GDPR?
+[0] Program pro vytváření umělé inteligence.
+[x] Evropské nařízení, které chrání osobní údaje a upravuje jejich zpracování.
+[0] Systém pro bezpečné ukládání hesel v počítači.
+[0] Pravidlo, které platí pouze pro používání sociálních sítí.
+[VYSVETLENI] GDPR (Obecné nařízení o ochraně osobních údajů) platí od roku 2018 v celé EU a stanoví, za jakých podmínek smí kdokoli pracovat s údaji o lidech.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co jsou osobní údaje?
+[x] Informace, podle kterých lze přímo nebo nepřímo určit konkrétní fyzickou osobu.
+[0] Pouze informace o počasí a teplotě.
+[0] Data, která nemají žádný vztah k žádné osobě.
+[0] Pouze názvy počítačových programů a aplikací.
+[VYSVETLENI] Klíčové je slovo „nepřímo“ – osobním údajem není jen jméno, ale i IP adresa, číslo zákazníka nebo kombinace údajů, ze které lze člověka dohledat.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Který z následujících údajů je osobním údajem?
+[0] Teplota vzduchu naměřená ve městě.
+[0] Počet obyvatel krajského města.
+[x] Jméno a adresa konkrétní osoby.
+[0] Název počítačové hry.
+[VYSVETLENI] Osobní údaj se musí vztahovat ke konkrétnímu člověku. Statistické a obecné údaje o prostředí nebo o skupině lidí pod GDPR nespadají.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Proč je důležité chránit osobní údaje?
+[0] Aby byl internet rychlejší.
+[0] Aby počítač spotřeboval méně energie.
+[x] Aby nedošlo k jejich zneužití, například ke krádeži identity nebo podvodu.
+[0] Aby umělá inteligence pracovala pomaleji.
+[VYSVETLENI] Z uniklých údajů lze sestavit profil člověka, vydávat se za něj nebo ho cíleně manipulovat. Následky bývají pro konkrétní osobu velmi obtížně napravitelné.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Může AI pracovat s osobními údaji?
+[x] Ano, ale musí být dodržena pravidla GDPR.
+[0] Ne, umělá inteligence nesmí s osobními údaji pracovat nikdy.
+[0] Ano, zcela bez jakýchkoliv pravidel.
+[0] Pouze v počítačových hrách a simulacích.
+[VYSVETLENI] GDPR žádnou technologii nezakazuje, pouze stanoví podmínky. AI je z pohledu nařízení jen další způsob zpracování údajů a platí pro ni stejná pravidla jako pro člověka nebo tabulkový procesor.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Kdo musí chránit osobní údaje?
+[0] Pouze učitelé ve školách.
+[0] Pouze programátoři, kteří píší software.
+[0] Pouze výrobci počítačů a serverů.
+[x] Organizace a firmy, které osobní údaje zpracovávají.
+[VYSVETLENI] Povinnost má správce, tedy ten, kdo určuje účel a prostředky zpracování, a také zpracovatel, který pro něj s údaji technicky nakládá.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Kdo je subjektem údajů podle GDPR?
+[0] Počítač nebo server, na kterém jsou data uložena.
+[0] Programátor, který vytvořil umělou inteligenci.
+[x] Fyzická osoba, ke které se osobní údaje vztahují a kterou lze podle nich určit.
+[0] Každý počítač připojený k internetu.
+[VYSVETLENI] Subjekt údajů je vždy živý člověk – ten, o kom data vypovídají. Právě jemu GDPR přiznává práva, například na přístup k údajům nebo jejich výmaz.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co musí firma splnit, aby mohla zpracovávat osobní údaje?
+[x] Musí mít pro zpracování právní důvod (právní titul).
+[0] Musí všechny údaje zveřejnit na internetu.
+[0] Údaje nikdy nesmí smazat.
+[0] Musí údaje rozeslat všem svým zaměstnancům.
+[VYSVETLENI] GDPR uznává šest právních důvodů – například souhlas, plnění smlouvy nebo zákonnou povinnost. Bez některého z nich je zpracování protiprávní, i kdyby bylo technicky bezchybné.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co je anonymizace osobních údajů?
+[0] Pouhé přejmenování souboru s osobními údaji.
+[0] Uložení osobních údajů do počítače bez hesla.
+[0] Odeslání osobních údajů jiné osobě přes internet.
+[x] Úprava údajů tak, aby konkrétní osobu nebylo možné rozumně identifikovat.
+[VYSVETLENI] Anonymizace musí být nevratná. Pokud se dá původní osoba jakkoli dohledat zpět, o anonymizaci nejde a údaje dál podléhají GDPR.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká práva má člověk podle GDPR ke svým osobním údajům?
+[0] Nemá žádné právo rozhodovat o jejich používání.
+[x] Má právo požadovat přístup ke svým údajům a za určitých podmínek také jejich opravu nebo výmaz.
+[0] Může kdykoliv vypnout všechny AI systémy v celé Evropské unii.
+[0] Má právo získat všechna osobní data ostatních lidí.
+[VYSVETLENI] Kromě přístupu, opravy a výmazu má člověk také právo na omezení zpracování, na přenositelnost údajů a právo vznést námitku proti zpracování.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co by člověk neměl zadávat do veřejného AI nástroje?
+[x] Citlivé osobní údaje, například rodné číslo, hesla nebo obsah osobních dokumentů.
+[0] Obecnou otázku na vysvětlení probíraného učiva.
+[0] Jednoduchý matematický příklad bez osobních údajů.
+[0] Obecný text, který neobsahuje žádné osobní informace.
+[VYSVETLENI] Vložená data mohou být uložena na serverech provozovatele a u některých služeb i využita k dalšímu trénování. Nad údaji, které jednou odešlete, ztrácíte kontrolu.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Proč může být AI z pohledu GDPR problematická?
+[0] Protože vždy vypne počítač, na kterém běží.
+[x] Protože dokáže zpracovávat obrovské množství osobních údajů a odvozovat z nich další informace.
+[0] Protože AI neumí pracovat s žádnými daty.
+[0] Protože GDPR zakazuje všechny počítače.
+[VYSVETLENI] Riziko není jen v objemu dat, ale i v tom, že model dokáže z nesouvisejících údajů odvodit citlivé informace, které člověk nikdy vědomě neposkytl.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co může hrozit organizaci při závažném porušení GDPR?
+[0] Počítač se automaticky vypne a už ho nepůjde zapnout.
+[0] Uživatel automaticky přijde o přístup ke všem internetovým službám.
+[x] Vysoké správní pokuty a další nápravná opatření podle pravidel GDPR.
+[0] AI se okamžitě smaže ze všech počítačů v Evropské unii.
+[VYSVETLENI] Pokuty mohou dosáhnout až 20 milionů eur, nebo 4 % celosvětového ročního obratu firmy – podle toho, která částka je vyšší. Dozorový úřad může zpracování také zcela zakázat.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jak GDPR primárně reguluje plně automatizované rozhodování, které má na člověka právní účinky?
+[x] Osoba má právo nebýt předmětem plně automatizovaného rozhodnutí.
+[0] GDPR zcela zakazuje jakékoli automatizované rozhodování v EU.
+[0] GDPR se na automatizované rozhodování bez internetu nevztahuje.
+[0] Lidé musí vždy zaplatit administrativní poplatek za posouzení úředníkem.
+[VYSVETLENI] Z tohoto práva existují výjimky (souhlas, plnění smlouvy, zákon), ale i tehdy má člověk nárok na lidský zásah, na vysvětlení rozhodnutí a na možnost je napadnout.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč představuje „právo na výmaz“ specifickou technickou výzvu u natrénovaných modelů strojového učení?
+[0] Osobní údaje jsou v modelu uloženy v běžných textových souborech.
+[0] Evropské zákony zakazují vývojářům modifikovat zdrojové kódy.
+[x] Osobní údaje jsou často hluboce zapsány v matematických vahách modelu.
+[0] Smazání dat z natrénovaného modelu zničí celý operační systém.
+[VYSVETLENI] V modelu neexistuje řádek, který by šel smazat – informace je rozprostřena mezi miliardy parametrů. Spolehlivé odstranění často znamená model přetrénovat, což je velmi drahé.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Který princip GDPR jde přímo proti tendenci vývojářů AI shromažďovat co nejvíce dat pro kvalitnější trénink?
+[0] Princip maximalizace dlouhodobého finančního zisku.
+[0] Princip neomezeného a volného sdílení informací.
+[x] Princip minimalizace zpracovávaných osobních údajů.
+[0] Princip povinného ukládání všech dat v cloudu.
+[VYSVETLENI] Minimalizace znamená zpracovávat jen ta data, která jsou pro daný účel skutečně nezbytná. Sbírat údaje „pro jistotu, ať je máme“ je podle GDPR nepřípustné.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaký je z hlediska GDPR rozdíl mezi anonymizovanými a pseudonymizovanými daty při trénování AI?
+[0] Anonymizovaná data podléhají GDPR, pseudonymizovaná nikoliv.
+[0] Mezi oběma typy není z pohledu GDPR žádný formální rozdíl.
+[x] Pseudonymizovaná data stále podléhají GDPR, zcela anonymizovaná nikoliv.
+[0] Pro trénink AI je legální využívat výhradně anonymizovaná data.
+[VYSVETLENI] U pseudonymizace se jméno nahradí kódem, ale s doplňujícím klíčem lze osobu zpětně určit – proto jde pořád o osobní údaj. Anonymizace je nevratná, a tak už GDPR nepodléhá.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Který formální proces musí organizace podle GDPR provést, než nasadí nový vysoce rizikový AI systém?
+[x] Posouzení vlivu na ochranu osobních údajů (DPIA).
+[0] Zaplacení zvláštní daně z umělé inteligence Evropské komisi.
+[0] Získání výslovného souhlasu vlády daného členského státu.
+[0] Zveřejnění veškerých trénovacích dat volně ke stažení.
+[VYSVETLENI] DPIA se dělá předem: organizace popíše zpracování, vyhodnotí rizika pro práva lidí a navrhne opatření. Pokud vysoké riziko zůstane, musí věc konzultovat s dozorovým úřadem.

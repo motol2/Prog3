@@ -1,0 +1,120 @@
+# Databáze otázek pro testovací aplikaci - Téma: Agentní programování (11 otázek)
+# Zdroj: Ondřej Borovička, Petr Škarvan
+# Pozn.: Zadání otázek vychází ze studentských odevzdání, část distraktorů byla
+#        přepracována na věrohodné omyly - původní varianty byly návodné.
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je softwarový agent?
+[0] Grafické rozhraní, které uživateli zobrazuje výstupy jiného programu.
+[x] Program, který vnímá své prostředí, rozhoduje se a provádí v něm akce.
+[0] Služba běžící na pozadí, která v pravidelných intervalech spouští naplánované úlohy.
+[0] Databázový systém, který na zadaný dotaz vrací uložená data.
+[VYSVETLENI] Podstatná je trojice vnímání – rozhodnutí – akce. Naplánovaná úloha se sice spouští sama, ale nerozhoduje se podle toho, co v prostředí zjistí.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] K čemu slouží paměť (memory) u AI agenta?
+[0] Ukládá uživatelská hesla, aby se agent nemusel opakovaně přihlašovat.
+[0] Zvětšuje kontextové okno modelu, takže se do něj vejde delší text.
+[x] Umožňuje uchovat klíčové informace z předchozích kroků a navázat na ně.
+[0] Vytváří zálohy souborů, se kterými agent během úkolu pracoval.
+[VYSVETLENI] Paměť je samostatná vrstva vedle modelu – rozhoduje, které dřívější informace se do omezeného kontextu vrátí. Kontextové okno samotné tím nijak nezvětšuje.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co znamená autonomie agenta?
+[0] Schopnost pracovat bez přístupu k jazykovému modelu.
+[0] Schopnost fungovat zcela bez omezení a přidělených oprávnění.
+[0] Schopnost spustit se automaticky po startu operačního systému.
+[x] Schopnost provádět kroky bez toho, aby každý z nich musel řídit člověk.
+[VYSVETLENI] Autonomie se týká rozhodování o postupu, nikoli rozsahu práv. I vysoce autonomní agent může mít záměrně velmi úzce omezená oprávnění.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co je to AI agent?
+[0] Program, který slouží pouze k zobrazování textu a přijímání vstupů od uživatele.
+[0] Skript, který v cloudu spouští předdefinované úlohy bez využití jazykových modelů.
+[x] Systém nad jazykovým modelem, který umí plánovat a používat nástroje ke splnění úkolu.
+[0] Jazykový model doplněný o větší kontextové okno a rychlejší generování odpovědí.
+[VYSVETLENI] Agenta nedělá větší model ani delší kontext, ale schopnost rozložit si úkol na kroky a volat k jejich provedení vnější nástroje.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Čím se agent liší od běžné výměny otázka–odpověď s jazykovým modelem?
+[x] Provádí více kroků za sebou a sám rozhoduje, jak bude postupovat dál.
+[0] Odpovídá bez využití jazykového modelu, pouze podle pevně daných pravidel.
+[0] Používá vždy výkonnější a dražší model, než jaký je dostupný v chatu.
+[0] Pracuje výhradně v offline režimu, bez připojení k síti.
+[VYSVETLENI] Model může být úplně stejný. Rozdíl je v tom, že agent po každé akci vyhodnotí výsledek a podle něj se rozhodne, co udělá v dalším kroku.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Podle čeho se agent rozhoduje o svém dalším kroku?
+[0] Podle pořadí kroků, které pevně stanovil vývojář při psaní programu.
+[0] Výhradně podle původního zadání od uživatele, beze změny v průběhu úkolu.
+[x] Podle informací o aktuálním stavu, zadaného cíle a dostupných nástrojů.
+[0] Podle statistiky úspěšnosti svých dřívějších úkolů u jiných uživatelů.
+[VYSVETLENI] Agent vyhodnocuje kontext průběžně, a proto si poradí i se situací, kterou vývojář dopředu nepředvídal. Právě tím se liší od pevně naprogramovaného postupu.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co znamená „tool calling“ u AI agenta?
+[0] Systém automaticky doinstaluje nové softwarové nástroje do počítače uživatele.
+[0] Model vygeneruje zdrojový kód funkce, který si uživatel sám spustí.
+[x] Model si vyžádá spuštění externí funkce a dál pracuje s jejím výstupem.
+[0] Nástroj v pravidelném intervalu volá model a předává mu nová data.
+[VYSVETLENI] Model funkci sám nevykonává – vydá strukturovaný požadavek, běhové prostředí ho provede a výsledek vrátí zpět do kontextu, se kterým model pokračuje.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jak postupuje AI agent, když má vyřešit složitější úkol?
+[0] Pokusí se celý úkol vyřešit najednou v jediné odpovědi.
+[0] Vyžádá si od uživatele přesný postup, který má krok za krokem dodržet.
+[0] Zvolí výkonnější model a předá mu zadání beze změny.
+[x] Rozloží zadání na menší dílčí kroky a ty pak postupně vykoná.
+[VYSVETLENI] Dekompozice úkolu má dvě výhody: každý dílčí krok je jednodušší a jeho výsledek lze průběžně ověřit dřív, než se chyba přenese do zbytku řešení.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co je smyčka agenta (agent loop)?
+[0] Opakované posílání téhož promptu modelu, dokud nevrátí dostatečně dlouhou odpověď.
+[0] Programová konstrukce zajišťující, že agent běží na pozadí nepřetržitě.
+[0] Postup, při kterém agent nejprve naplánuje všechny kroky a pak je bez přerušení vykoná.
+[x] Opakovaný cyklus pozorování, rozhodnutí, provedení akce a vyhodnocení výsledku.
+[VYSVETLENI] Klíčové je vyhodnocení po každé akci. Bez zpětné vazby by agent nepoznal, že krok selhal, a slepě by pokračoval podle původního plánu.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jak lze zvýšit bezpečnost agentního systému?
+[x] Omezit agentovi oprávnění a u rizikových akcí vyžadovat potvrzení člověkem.
+[0] Nechat agenta, aby si sám průběžně kontroloval, zda jsou jeho akce bezpečné.
+[0] Zakázat agentovi používat jakékoli externí nástroje.
+[0] Nechat agenta pracovat pouze lokálně, bez přístupu k internetu.
+[VYSVETLENI] Platí princip nejmenších oprávnění a lidské schválení u nevratných kroků. Kontrola samotným agentem nestačí – obsah, který agent zpracovává, ho může cíleně zmanipulovat.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaký je rozdíl mezi běžným skriptem a autonomním agentem?
+[0] Skript pracuje se soubory, zatímco agent výhradně s webovými službami.
+[0] Skript musí napsat programátor, zatímco agent si svůj kód vždy generuje sám.
+[x] Skript vykonává předem daný postup, zatímco agent volí další kroky podle situace.
+[0] Skript běží pouze na serveru, zatímco agent běží na počítači uživatele.
+[VYSVETLENI] Rozhodující je, kdo určuje posloupnost kroků: u skriptu jeho autor dopředu, u agenta on sám za běhu podle toho, co o stavu úkolu právě zjistil.
