@@ -10,6 +10,7 @@ Tento adresář obsahuje různé sady testovacích otázek a materiálů.
 - **Počet otázek:** 10
 - **Popis:** Otázky zaměřené na Nařízení EU o umělé inteligenci (EU AI Act)
 - **Odkaz:** [Sada EU AI Act](https://motol2.github.io/Prog3/Testovani/)
+- - **Odkaz (Daniel Horáček Verze):** [MotolQuiz](https://motolquiz.pages.dev)
 - **Status:** Aktivní ✓
 
 ---
