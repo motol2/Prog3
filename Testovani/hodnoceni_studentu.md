@@ -22,7 +22,7 @@ kolik práce bylo rovnou použitelné.
 | Vitalii Fenynets | Autorské právo a AI | 10 | 7 |
 | Šimon Kreperát | AI ve škole | 10 | 7 |
 | Ondřej Borovička | Agentní programování | 10 | 6 |
-| Tomáš Filip | AI a GDPR | 10 | 6 |
+| Tomáš Filip / Vojtěch Garčic | AI a GDPR | 10 | 6 |
 | Maksym Kravets | Autorské právo a AI | 10 | 5 |
 | Pavel Kubát | Metody strojového učení | 10 | 5 |
 | Dominik Pavelka | Autorské právo a AI | 5 | 3 |
