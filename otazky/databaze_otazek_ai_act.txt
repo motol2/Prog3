@@ -1,0 +1,207 @@
+# Databáze otázek pro testovací aplikaci - Téma: EU AI Act (20 otázek)
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je to EU AI Act (Akt o umělé inteligenci)?
+[x] První ucelený zákon na světě, který reguluje vývoj a využití umělé inteligence.
+[0] Program Evropské unie pro financování nákupu nových počítačů do škol.
+[0] Mezinárodní dohoda o zákazu výzkumu AI na univerzitách.
+[0] Soubor doporučení, která ale firmy nemusí vůbec dodržovat.
+[VYSVETLENI] AI Act je první právně závazný rámec pro regulaci AI na světě, schválený Evropskou unií v roce 2024.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Na jakém hlavním principu je AI Act postaven?
+[0] Na základě cenové dostupnosti technologií.
+[x] Na základě přístupu založeného na míře rizika (Risk-based approach).
+[0] Na úplném zákazu všech generativních nástrojů (jako ChatGPT).
+[0] Na povinnosti platit daň z každého vygenerovaného obrázku.
+[VYSVETLENI] AI Act rozděluje systémy AI podle toho, jak velké riziko představují pro práva a bezpečnost lidí (od minimálního po zakázané).
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Který z následujících systémů spadává do kategorie ZAKÁZANÉHO RIZIKA (Unacceptable Risk)?
+[0] Algoritmus na doporučování videí na YouTube.
+[0] Chatbot pro zákaznickou podporu v e-shopu.
+[x] Systém sociálního kreditování (hodnocení občanského chování vládou).
+[0] Hlasový asistent v mobilním telefonu.
+[VYSVETLENI] Sociální kreditování (hodnocení a znevýhodňování občanů na základě jejich chování) je v EU podle AI Actu plně zakázáno, protože porušuje základní lidská práva.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Představ si, že střední škola používá AI systém, který automaticky vyhodnocuje přijímací zkoušky a rozhoduje o přijetí žáků. Do jaké kategorie rizika tento systém patří?
+[0] Nepodléhá žádné regulaci.
+[0] Zakázané riziko (plně nelegální).
+[x] Vysoké riziko (High Risk).
+[0] Minimální riziko.
+[VYSVETLENI] AI používaná ve vzdělávání (např. při přijímacích zkouškách nebo hodnocení žáků) patří mezi vysoké riziko, protože může zásadně ovlivnit budoucnost člověka. Musí splňovat přísné požadavky na férovost, transparentnost a lidský dohled.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Do jaké kategorie rizika spadá většina běžně používaných AI aplikací, jako jsou spamové filtry v e-mailu nebo AI ve videohrách?
+[x] Minimální nebo žádné riziko.
+[0] Vysoké riziko.
+[0] Omezené riziko.
+[0] Zakázané riziko.
+[VYSVETLENI] Naprostá většina aplikací AI představuje minimální riziko a AI Act je dál ponechává bez dalších omezujících povinností.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Pokud někdo vytvoří realistické video (deepfake) známé osobnosti nebo spolužáka pomocí AI, jaká povinnost podle AI Actu platí?
+[0] Video musí být okamžitě smazáno ze všech serverů.
+[x] Autor musí viditelně označit, že jde o AI vygenerovaný/upravený obsah.
+[0] Nemusí dělat nic, pokud je video vtipné.
+[0] Je nutné zaplatit autorský poplatek Evropské unii.
+[VYSVETLENI] U tzv. omezeného rizika (kam spadají deepfakes a generovaný obsah) platí pravidlo transparentnosti – uživatel musí být jasně informován, že s ním komunikuje AI nebo že vidí vygenerovaný fotorealistický obsah.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Vývojáři velkých jazykových modelů (jako jsou tvůrci ChatGPT nebo Claude) mají podle AI Actu povinnost:
+[0] Zveřejnit kompletní zdrojový kód zdarma pro všechny.
+[0] Platit všem uživatelům za to, že jejich modely testují.
+[x] Respektovat autorská práva a zveřejnit shrnutí dat použitých pro trénování.
+[0] Zákaz trénovat modely na jakýchkoliv textech v češtině.
+[VYSVETLENI] Tvůrci obecných modelů AI (GPAI) musí zaručit dodržování autorských práv a poskytnout transparentní informace o tom, z jakých dat model trénovali.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Je podle AI Actu povoleno, aby zaměstnavatel nebo škola používvala AI k rozpoznávání emocí studentů či zaměstnanců v učebnách/na pracovišti?
+[0] Ano, bez jakýchkoliv omezení.
+[x] Ne, rozpoznávání emocí v práci a ve školách je zakázáno (až na specifické lékařské/bezpečnostní výjimky).
+[0] Ano, ale pouze se souhlasem třídního učitele.
+[0] Jen v případě, že se jedná o hodiny informatiky.
+[VYSVETLENI] Rozpoznávání emocí na pracovišti a ve vzdělávacích institucích je zařazeno mezi zakázané praktiky kvůli riziku zneužití a zásahu do soukromí.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Kdo musí dodržovat pravidla AI Actu?
+[0] Pouze firmy se sídlem v Evropské unii.
+[x] Jakákoliv firma na světě (např. z USA či Číny), pokud své AI systémy nabízí uživatelům v EU.
+[0] Pouze státní úřady a armáda.
+[0] Jen jednotlivci, kteří AI používají pro osobní potřebu.
+[VYSVETLENI] AI Act má tzv. extrateritoriální účinek – platí pro každého vývojáře a poskytovatele AI na světě, pokud jsou jeho služby využívány na území EU.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co hrozí firmám, které vědomě poruší nejpřísnější zákazy v AI Actu (např. nasadí zakázané systémy biometrie)?
+[0] Pouze písemné varování.
+[0] Zákaz používání internetu na 1 rok.
+[x] Vysoká finanční pokuta (až 35 milionů eur nebo 7 % z celosvětového ročního obratu).
+[0] Zrušení společnosti.
+[VYSVETLENI] Za závažné porušení pravidel AI Actu hrozí astronomické pokuty, které mohou dosáhnout desítek milionů eur nebo určitého procenta z celosvětového obratu firmy.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Automobilka vyvíjí plně autonomní auto (bez řidiče), jehož AI systém řídí zatáčení, brzdění a vyhýbání se překážkám. Do jaké kategorie rizika spadá AI řízení tohoto vozidla?
+[0] Minimální riziko, protože auta jsou běžná.
+[0] Zakázané riziko, plně autonomní auta jsou v EU nelegální.
+[x] Vysoké riziko (High Risk), protože chyba systému může ohrozit lidské životy a zdraví.
+[0] Omezené riziko bez nutnosti testování.
+[VYSVETLENI] AI systémy sloužící jako bezpečnostní komponenty v dopravě (autonomní auta, vlaky, letadla) spadají pod VYSOKÉ RIZIKO. Podléhají přísným bezpečnostním certifikacím a auditům před uvedením do provozu.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Městský podnik dopravy plánuje nasadit AI systém pro automatické řízení semaforů a křižovatek v celém městě. Pod jakou oblast AI Actu tento systém spadá?
+[0] Pod zábavní systém a videohry.
+[x] Pod kritickou infrastrukturu (High Risk), kde by výpadek mohl ohrozit bezpečnost dopravy.
+[0] Pod zakázané praktiky biometrického sledování.
+[0] Tento systém nereguluje žádný zákon.
+[VYSVETLENI] AI používaná při správě a provozu kritické infrastruktury (doprava, zásobování vodou, elektřina) je zařazena do VYSOKÉHO RIZIKA, protože její selhání může způsobit nehody nebo kolaps služeb.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Policie chce na náměstí nainstalovat AI kamery s živým rozpoznáváním obličejů v reálném čase k běžné kontrole kolemjdoucích občanů. Je to podle AI Actu dovoleno?
+[0] Ano, je to běžná preventivní praxe bez omezení.
+[x] Ne, plošná živá biometrická identifikace na veřejnosti je ZAKÁZÁNA (až na velmi přísné výjimky jako terorismus s povolením soudu).
+[0] Ano, pokud kamery spravuje soukromá bezpečnostní služba.
+[0] Jen v případě, že jsou občané předem upozorněni letákem.
+[VYSVETLENI] Dálková biometrická identifikace v reálném čase na veřejně přístupných místech je v EU zásadně zakázána. Výjimky (např. hledání uneseného dítěte či teroristická hrozba) vyžadují předchozí souhlas soudu.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Výrobce vyrobil dětskou hračku s AI hlasovým asistentem, která tajně využívá podvědomé zvuky a manipulaci k tomu, aby přiměla dítě k nebezpečnému jednání. Jak AI Act hodnotí tuto hračku?
+[x] Jako zakázané riziko (Unacceptable Risk) – manipulativní a klamavé AI systémy poškozující zranitelné osoby jsou zakázány.
+[0] Jako vysoké riziko – hračka se smí prodávat od 18 let.
+[0] Jako omezené riziko – stačí na krabici napsat upozornění.
+[0] Jako minimální riziko, hračky se neregulují.
+[VYSVETLENI] AI systémy, které využívají podvědomé (subliminální) techniky nebo zneužívají věk a handicap k manipulaci lidí, spadají do ZAKÁZANÉHO RIZIKA.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Banka nasadí AI systém, který posuzuje žádosti občanů o hypotéku a půjčky a automaticky určuje jejich bonitu (kreditní skóre). Jaké povinnosti banka má podle AI Actu?
+[0] Žádné, bankovnictví má výjimku ze zákona.
+[x] Musí zajistit, že systém spadá pod vysoké riziko (dokládat kvalitu trénovacích dat, transparentnost a lidský dohled).
+[0] Musí systém okamžitě vypnout, posuzování půjček AI je nelegální.
+[0] Stačí, když klientovi pošle e-mail.
+[VYSVETLENI] AI používaná k posuzování úvěruschopnosti a hodnocení bonity fyzických osob spadá pod VYSOKÉ RIZIKO, aby se zamezilo diskriminaci a neoprávněnému zamítání financí.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Firma používá AI algoritmus při náborovém řízení k automatickému vyřazování životopisů a hodnocení videopohovorů uchazečů o práci. Co platí pro tento AI systém?
+[0] Spadá pod minimální riziko.
+[x] Spadá pod vysoké riziko (High Risk) – firma musí garantovat, že AI nediskriminuje na základě pohlaví, věku či rasy.
+[0] Je zcela zakázaný na celém území EU.
+[0] Nevyžaduje žádnou kontrolu ze strany člověka.
+[VYSVETLENI] AI používaná v zaměstnávání, při náboru pracovníků a rozhodování o povýšení je kategorizována jako VYSOKÉ RIZIKO kváli ochrane práv zaměstnanců na trhu práce.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Generátor obrázků (jako Midjourney nebo DALL-E) vygeneroval fotorealistickou fotografii. Jaká technická povinnost platí pro tvůrce tohoto AI nástroje podle AI Actu?
+[0] Výrobce musí za každý vygenerovaný obrázek zaplatit poplatek 1 EUR.
+[x] Výstup musí obsahovat strojově čitelný vodoznak/označení, že jde o AI vygenerovaný obsah.
+[0] Obrázek se nesmí nikde na internetu publikovat.
+[0] Výrobce musí do obrázku ručně nakreslit červený křížek.
+[VYSVETLENI] Poskytovatelé AI generujících audio, foto či video obsah musejí zajistit, aby byl výstup strojově čitelný a označený jako uměle vytvořený (např. pomocí digitálního vodoznaku).
+
+---
+
+[OBTIZNOST: těžká]
+[Q] V nemocnici pomáhá AI software lékařům analyzovat mamografické snímky a odhalovat raná stadia rakoviny. Jaký přístup AI Act k tomuto lékařskému AI softwaru vyžaduje?
+[0] Považuje ho za zakázaný, protože AI nesmí léčit lidi.
+[x] Považuje ho za vysoké riziko (High Risk) – vyžaduje přísné certifikace, přesná trénovací data a konečné rozhodnutí vždy dělá lékař.
+[0] Považuje ho za omezené riziko, stačí mít u počítače návod k použití.
+[0] Lékařský software nereguluje AI Act, ale pouze stavební zákon.
+[VYSVETLENI] AI jako zdravotnický prostředek podléhá regulaci VYSOKÉHO RIZIKA. Musí být vysoce přesná, prověřená a konečné diagnózy musí schvalovat kvalifikovaný zdravotnický personál.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Soudní systém plánuje využívat AI k vyhodnocování důkazů a předpovídání rizika, zda obžalovaný spáchá opakovaně trestný čin. Jak s tímto AI Act nakládá?
+[0] Umožňuje AI rozhodovat o trestu bez účasti soudce.
+[x] Zařazuje tyto systémy pod vysoké riziko (High Risk) s nutností přísného lidského dohledu a ochrany spravedlivého procesu.
+[0] Považuje je za minimální riziko.
+[0] Povoluje je pouze pro dopravní přestupky.
+[VYSVETLENI] AI v oblastech spravedlnosti a právního státu patří mezi VYSOKÉ RIZIKO, aby byla garantována nezávislost soudnictví, spravedlivý proces a nedocházelo k chybnému odsuzování.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Logistická společnost testuje autonomní doručovací drony bez pilota pro doručování balíků ve městech. Co musí splňovat AI autopilot dronu?
+[0] Nemusí splňovat nic, drony do 5 kg nepodléhají zákonům.
+[x] Spadá pod bezpečnostní prvky v dopravě (High Risk) a musí splňovat přísná kritéria proti havárii a selhání.
+[0] Doručovací drony jsou v celém světě zakázány.
+[0] Dron musí mít na palubě živého holuba pro případ poruchy.
+[VYSVETLENI] AI systémy zajišťující autonomní navigaci a bezpečnost letu bezpilotních dronů v obydlených oblastech spadají pod VYSOKÉ RIZIKO z důvodu ochrany zdraví a majetku občanů na zemi.

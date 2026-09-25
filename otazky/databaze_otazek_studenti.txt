@@ -1,0 +1,639 @@
+# Databáze otázek pro testovací aplikaci - studentské otázky (6 témat, 60 otázek)
+# Z každého tématu je vybráno 10 reprezentativních otázek pokrývajících celou šíři látky.
+# Kompletní sady jednotlivých témat jsou v samostatných souborech.
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+# ==========================================================================
+# 1. Autorské právo a AI
+# Autoři: Vitalii Fenynets, Maksym Kravets, Marek Řehák, Dominik Pavelka
+# ==========================================================================
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co obecně chrání autorské právo?
+[0] Pouze nápady a myšlenky.
+[x] Originální tvůrčí díla (text, obraz, hudba, software).
+[0] Pouze výrobky a technické patenty.
+[0] Všechny informace zveřejněné na internetu.
+[VYSVETLENI] Autorské právo chrání konkrétní vyjádření tvůrčí činnosti, nikoli samotnou myšlenku. Nápad může použít kdokoli, ale hotové dílo už je chráněné.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Kdo vlastní autorská práva k obrázku, který kompletně vymyslela a nakreslila umělá inteligence bez tvůrčího zásahu člověka?
+[0] Samotná umělá inteligence.
+[0] Počítač, na kterém byl program spuštěn.
+[x] Podle současných pravidel nikdo, protože AI není člověk.
+[0] Člověk, který napsal krátký jednoslovný pokyn k vytvoření.
+[VYSVETLENI] Autorské dílo vzniká jen z tvůrčí činnosti člověka. Pokud za výstupem není žádný lidský tvůrčí vklad, dílo v právním smyslu nevzniká a nikdo k němu nemá autorská práva.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Dostávají autoři (např. spisovatelé nebo malíři) automaticky peníze, když se AI učí z jejich děl?
+[x] Ne, tvůrci AI většinou díla stáhnou z internetu a použijí je k učení zdarma.
+[0] Ano, AI jim za každé přečtení pošle peníze na bankovní účet.
+[0] Ano, ale dostávají zaplaceno pouze ve virtuální měně.
+[0] Vždy ano, protože to nařizuje zákon o internetu.
+[VYSVETLENI] Žádná automatická odměna za trénování neexistuje. Autoři musí buď uzavřít licenční smlouvu, nebo využít výhradu práv (opt-out) a použití svých děl zakázat.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Může být text vytvořený pomocí AI automaticky považován za dílo chráněné autorským právem?
+[0] Ano, vždy – jde o původní text.
+[0] Ne, nikdy, bez ohledu na okolnosti.
+[x] Záleží na konkrétních okolnostech a míře lidské tvůrčí činnosti.
+[0] Ano, pokud byl vytvořen placenou verzí AI.
+[VYSVETLENI] Rozhoduje, kolik vlastní tvůrčí práce do výsledku vložil člověk. Jednoslovný prompt nestačí, ale výrazná autorská úprava, výběr a uspořádání výstupu už chráněné dílo založit mohou.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Je možné použít cizí fotografii z internetu bez svolení autora jen proto, že je veřejně dostupná?
+[0] Ano, vždy – co je na internetu, je volné.
+[0] Ano, pokud u ní není uvedena značka copyrightu.
+[0] Ano, pokud ji předtím upraví AI.
+[x] Ne vždy – veřejná dostupnost neznamená automaticky volné užití.
+[VYSVETLENI] Ochrana vzniká okamžikem vytvoření díla, bez nutnosti registrace nebo značky ©. K užití je potřeba licence, svolení autora, nebo musí jít o zákonnou výjimku (např. citace).
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co znamená licence k autorskému dílu?
+[0] Potvrzení, že dílo vytvořila AI.
+[0] Úplný zákaz používání díla kýmkoliv.
+[x] Povolení neboli oprávnění k určitému způsobu užití díla.
+[0] Automatický převod vlastnictví počítače, na kterém dílo vzniklo.
+[VYSVETLENI] Licence je smlouva, kterou autor umožní někomu jinému dílo využít – v dohodnutém rozsahu, na dohodnutou dobu a způsobem, který si strany ujednají. Autorství tím na nabyvatele nepřechází.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Kdo nese odpovědnost, pokud uživatel zadá komerčnímu generátoru obrázků příkaz vytvořit kopii chráněného loga a výsledek pak komerčně využije?
+[0] Výhradně tvůrce trénovacího datasetu.
+[0] Pouze provozovatel datového centra, kde model běží.
+[x] Uživatel, který pokyn zadal a výsledek použil; spoluodpovědnost může nést i provozovatel podle podmínek služby.
+[0] Nikdo, protože AI generovaný obsah je vždy legální.
+[VYSVETLENI] Rozhodující je záměr a vlastní jednání uživatele – ten dal pokyn a dílo šířil. Podmínky většiny služeb navíc odpovědnost za způsob užití výstupu výslovně přenášejí na uživatele.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaký význam má směrnice EU o autorském právu na jednotném digitálním trhu (DSM) ve vztahu k vytěžování textů a dat (TDM)?
+[0] Úplně zakazuje používání vyhledávačů na území Evropské unie.
+[0] Dává všem firmám právo kopírovat jakýkoliv obsah bez omezení.
+[x] Zavádí výjimky pro vytěžování textů a dat a umožňuje nositelům práv uplatnit výhradu (opt-out).
+[0] Nařizuje povinné zpoplatnění každého vyhledávacího dotazu na webu.
+[VYSVETLENI] Směrnice povoluje TDM pro vědecký výzkum a v širší podobě i pro ostatní účely – tam si ale autor může užití svých děl výslovně vyhradit a tím ho zakázat.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co primárně vyžaduje EU AI Act od poskytovatelů obecných AI modelů (GPAI) ve vztahu k trénovacím datům?
+[0] Povinnost zveřejnit kompletní zdrojový kód modelu i seznam všech uživatelů.
+[x] Povinnost zveřejnit dostatečně podrobné shrnutí obsahu chráněného autorským právem, který byl použit k trénování.
+[0] Zákaz používat jakákoliv data vytvořená po roce 2020.
+[0] Povinnost platit licenční poplatky všem občanům EU.
+[VYSVETLENI] AI Act cílí na transparentnost: autoři mají mít reálnou možnost zjistit, zda a jak byla jejich tvorba využita, a případně uplatnit svá práva.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Může být zdrojový kód vygenerovaný umělou inteligencí chráněn autorským právem?
+[0] Ano, vždy, protože se jedná o počítačový program.
+[0] Ne, autorský zákon se na zdrojový kód nikdy nevztahuje.
+[x] Záleží na míře tvůrčího lidského zásahu, úprav a integrace ze strany programátora.
+[0] Pouze v případě, že byl napsán v jazyce Python.
+[VYSVETLENI] Platí stejné pravidlo jako u textu nebo obrazu: rozhoduje lidská tvůrčí činnost. Vygenerovaný úryvek sám o sobě chráněn není, výsledná aplikace s vlastní architekturou a úpravami ano.
+
+# ==========================================================================
+# 2. AI a GDPR
+# Autoři: Tomáš Filip, Anastasiia Balanets, Marek Miláček
+# ==========================================================================
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je GDPR?
+[0] Program pro vytváření umělé inteligence.
+[x] Evropské nařízení, které chrání osobní údaje a upravuje jejich zpracování.
+[0] Systém pro bezpečné ukládání hesel v počítači.
+[0] Pravidlo, které platí pouze pro používání sociálních sítí.
+[VYSVETLENI] GDPR (Obecné nařízení o ochraně osobních údajů) platí od roku 2018 v celé EU a stanoví, za jakých podmínek smí kdokoli pracovat s údaji o lidech.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co jsou osobní údaje?
+[x] Informace, podle kterých lze přímo nebo nepřímo určit konkrétní fyzickou osobu.
+[0] Pouze informace o počasí a teplotě.
+[0] Data, která nemají žádný vztah k žádné osobě.
+[0] Pouze názvy počítačových programů a aplikací.
+[VYSVETLENI] Klíčové je slovo „nepřímo“ – osobním údajem není jen jméno, ale i IP adresa, číslo zákazníka nebo kombinace údajů, ze které lze člověka dohledat.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Může AI pracovat s osobními údaji?
+[x] Ano, ale musí být dodržena pravidla GDPR.
+[0] Ne, umělá inteligence nesmí s osobními údaji pracovat nikdy.
+[0] Ano, zcela bez jakýchkoliv pravidel.
+[0] Pouze v počítačových hrách a simulacích.
+[VYSVETLENI] GDPR žádnou technologii nezakazuje, pouze stanoví podmínky. AI je z pohledu nařízení jen další způsob zpracování údajů a platí pro ni stejná pravidla jako pro člověka nebo tabulkový procesor.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co musí firma splnit, aby mohla zpracovávat osobní údaje?
+[x] Musí mít pro zpracování právní důvod (právní titul).
+[0] Musí všechny údaje zveřejnit na internetu.
+[0] Údaje nikdy nesmí smazat.
+[0] Musí údaje rozeslat všem svým zaměstnancům.
+[VYSVETLENI] GDPR uznává šest právních důvodů – například souhlas, plnění smlouvy nebo zákonnou povinnost. Bez některého z nich je zpracování protiprávní, i kdyby bylo technicky bezchybné.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co je anonymizace osobních údajů?
+[0] Pouhé přejmenování souboru s osobními údaji.
+[0] Uložení osobních údajů do počítače bez hesla.
+[0] Odeslání osobních údajů jiné osobě přes internet.
+[x] Úprava údajů tak, aby konkrétní osobu nebylo možné rozumně identifikovat.
+[VYSVETLENI] Anonymizace musí být nevratná. Pokud se dá původní osoba jakkoli dohledat zpět, o anonymizaci nejde a údaje dál podléhají GDPR.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká práva má člověk podle GDPR ke svým osobním údajům?
+[0] Nemá žádné právo rozhodovat o jejich používání.
+[x] Má právo požadovat přístup ke svým údajům a za určitých podmínek také jejich opravu nebo výmaz.
+[0] Může kdykoliv vypnout všechny AI systémy v celé Evropské unii.
+[0] Má právo získat všechna osobní data ostatních lidí.
+[VYSVETLENI] Kromě přístupu, opravy a výmazu má člověk také právo na omezení zpracování, na přenositelnost údajů a právo vznést námitku proti zpracování.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co by člověk neměl zadávat do veřejného AI nástroje?
+[x] Citlivé osobní údaje, například rodné číslo, hesla nebo obsah osobních dokumentů.
+[0] Obecnou otázku na vysvětlení probíraného učiva.
+[0] Jednoduchý matematický příklad bez osobních údajů.
+[0] Obecný text, který neobsahuje žádné osobní informace.
+[VYSVETLENI] Vložená data mohou být uložena na serverech provozovatele a u některých služeb i využita k dalšímu trénování. Nad údaji, které jednou odešlete, ztrácíte kontrolu.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jak GDPR primárně reguluje plně automatizované rozhodování, které má na člověka právní účinky?
+[x] Osoba má právo nebýt předmětem plně automatizovaného rozhodnutí.
+[0] GDPR zcela zakazuje jakékoli automatizované rozhodování v EU.
+[0] GDPR se na automatizované rozhodování bez internetu nevztahuje.
+[0] Lidé musí vždy zaplatit administrativní poplatek za posouzení úředníkem.
+[VYSVETLENI] Z tohoto práva existují výjimky (souhlas, plnění smlouvy, zákon), ale i tehdy má člověk nárok na lidský zásah, na vysvětlení rozhodnutí a na možnost je napadnout.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč představuje „právo na výmaz“ specifickou technickou výzvu u natrénovaných modelů strojového učení?
+[0] Osobní údaje jsou v modelu uloženy v běžných textových souborech.
+[0] Evropské zákony zakazují vývojářům modifikovat zdrojové kódy.
+[x] Osobní údaje jsou často hluboce zapsány v matematických vahách modelu.
+[0] Smazání dat z natrénovaného modelu zničí celý operační systém.
+[VYSVETLENI] V modelu neexistuje řádek, který by šel smazat – informace je rozprostřena mezi miliardy parametrů. Spolehlivé odstranění často znamená model přetrénovat, což je velmi drahé.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Který formální proces musí organizace podle GDPR provést, než nasadí nový vysoce rizikový AI systém?
+[x] Posouzení vlivu na ochranu osobních údajů (DPIA).
+[0] Zaplacení zvláštní daně z umělé inteligence Evropské komisi.
+[0] Získání výslovného souhlasu vlády daného členského státu.
+[0] Zveřejnění veškerých trénovacích dat volně ke stažení.
+[VYSVETLENI] DPIA se dělá předem: organizace popíše zpracování, vyhodnotí rizika pro práva lidí a navrhne opatření. Pokud vysoké riziko zůstane, musí věc konzultovat s dozorovým úřadem.
+
+# ==========================================================================
+# 3. Autonomní vozidla
+# Autoři: Šimon Kubala, Lukáš Jiránek, Antonín Povolný
+# ==========================================================================
+
+---
+
+[OBTIZNOST: lehká]
+[Q] K čemu slouží kamery v autonomním automobilu?
+[x] Ke snímání okolí, rozpoznávání jízdních pruhů, čtení dopravních značek a detekci chodců.
+[0] K ukládání záběrů do palubního deníku pro pozdější sdílení na internetu.
+[0] K promítání okolní krajiny na displej pro pobavení posádky.
+[0] K diagnostice motoru a kontrole stavu provozních kapalin.
+[VYSVETLENI] Kamera je jediný senzor, který vidí barvy a čte text, takže bez ní by vůz nerozpoznal semafor ani značku. Zato špatně snáší tmu, oslnění a silný déšť.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co znamená, když autonomní systém „detekuje“ chodce?
+[0] Systém automaticky ví, kam chodec za několik sekund půjde.
+[x] Systém rozpoznal objekt jako chodce na základě dostupných dat.
+[0] Vozidlo musí okamžitě změnit jízdní pruh.
+[0] Chodec dostane automaticky přednost bez ohledu na situaci.
+[VYSVETLENI] Detekce je pouze klasifikace s určitou mírou jistoty, nikoli jistota. Odhad toho, kam chodec půjde dál, řeší až samostatná predikční část systému.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Proč autonomní vozidlo sleduje také okolní vozidla?
+[0] Aby zjistilo jejich značku a cenu.
+[x] Aby mohlo reagovat na jejich pohyb a přizpůsobit tomu svou jízdu.
+[0] Aby určilo, kdo je jejich majitelem.
+[0] Aby automaticky převzalo jejich navigační systém.
+[VYSVETLENI] Provoz je interakce – vůz musí předvídat, že někdo zabrzdí nebo se zařadí před něj. Bez sledování ostatních by dokázal reagovat až na hotovou situaci, tedy pozdě.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co se může stát, pokud autonomní systém špatně vyhodnotí objekt na silnici?
+[0] Vozidlo automaticky změní svou trasu bez ohledu na okolí.
+[0] Systém vždy okamžitě vypne celý automobil.
+[x] Může nesprávně zareagovat, například změnou rychlosti nebo směru.
+[0] Vozidlo automaticky odešle objekt k analýze výrobci.
+[VYSVETLENI] Chyba funguje oběma směry: přehlédnutá překážka znamená riziko srážky, zatímco neexistující překážka vyvolá takzvané fantomové brzdění, které ohrozí vozidla jedoucí za ním.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaký význam mají mapové podklady pro autonomní vozidla?
+[0] Nahrazují všechny senzory během jízdy.
+[0] Slouží pouze k zobrazení názvu aktuální ulice.
+[0] Umožňují vozidlu jezdit bez znalosti aktuální polohy.
+[x] Poskytují informace o silnicích, pruzích, křižovatkách a dalších prvcích prostředí.
+[VYSVETLENI] Podrobná mapa funguje jako předem známý kontext – vůz ví, co má očekávat za zatáčkou. Senzory ale nahradit nemůže, protože mapa nezachytí aktuální provoz ani uzavírku.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Proč může být hustý déšť problémem pro některé senzory?
+[0] Déšť automaticky vypíná navigační systém.
+[0] Vozidlo při dešti nemůže používat elektrický pohon.
+[x] Kapky vody a zhoršená viditelnost mohou ovlivnit kvalitu získaných dat.
+[0] Senzory při dešti vždy přestanou fungovat úplně.
+[VYSVETLENI] Kapky rozptylují laserový paprsek lidaru a zhoršují obraz z kamery. Radar si s deštěm poradí výrazně lépe, což je jeden z důvodů, proč se senzory kombinují.
+
+---
+
+[OBTIZNOST: střední]
+[Q] K čemu slouží strojové učení u autonomních vozidel?
+[0] K tomu, aby vozidlo nemuselo používat žádné senzory.
+[0] K automatickému zvýšení maximální rychlosti.
+[0] Především k ukládání navigačních map do paměti.
+[x] K tomu, aby se systém naučil rozpoznávat a vyhodnocovat různé situace z dat.
+[VYSVETLENI] Všechny podoby chodce, cyklisty nebo značky by nešlo popsat pevnými pravidly. Model se je proto naučí z obrovského množství reálných příkladů.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč má autonomní automobil tolik různých senzorů a kamer?
+[x] Kvůli redundanci a fúzi senzorů, aby se data vzájemně doplňovala i za špatného počasí.
+[0] Aby se zvýšila spotřeba baterie a auto jelo plynuleji.
+[0] Pouze proto, aby byl interiér vozu plně digitalizovaný.
+[0] Aby auto splnilo podmínky pro získání sportovní licence.
+[VYSVETLENI] Každý typ senzoru má jinou slabinu: kamera vidí barvy, ale ne ve tmě, lidar přesně měří tvar, ale trpí v dešti, radar spolehlivě určí rychlost i v mlze. Fúze jejich dat dává obraz, který by žádný z nich sám neposkytl.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč se autonomní automobily nejdříve zkoušejí v počítačové simulaci?
+[0] Aby se ušetřila elektrická energie v bateriích reálných vozidel.
+[0] K otestování, zda budou cestující spokojeni s barvou karoserie.
+[x] Aby bylo možné projet miliony kilometrů a extrémní krizové scénáře bez rizika nehody.
+[0] Protože zákony zcela zakazují vývoj autonomních systémů na fyzických autech.
+[VYSVETLENI] Nebezpečná situace se dá v simulaci zopakovat tisíckrát a pokaždé mírně pozměnit. Na reálné silnici by čekání na takovou situaci trvalo roky a její vyvolání by ohrozilo lidi.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jak se autonomní vozidlo rozhoduje, zda má zabrzdit, nebo uhnout?
+[0] Okamžitě předá řízení vzdálenému operátorovi přes internet a čeká na pokyn.
+[0] Náhodně vybere jeden z naučených manévrů bez ohledu na okolní překážky.
+[x] Palubní počítač v reálném čase propočítá trajektorie i brzdnou dráhu a vybere manévr s nejnižším rizikem.
+[0] Vždy povinně zastaví na místě, bez možnosti změnit směr jízdy.
+[VYSVETLENI] Jde o výpočet, ne o morální úvahu: systém vygeneruje možné dráhy, ohodnotí je podle rizika a proveditelnosti a vybere nejlepší. Celé to musí stihnout v řádu milisekund.
+
+# ==========================================================================
+# 4. AI ve škole
+# Autoři: Šimon Křeperát, Mark Nahornyi, Jáchym Viták
+# ==========================================================================
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je „prompt“ při práci s generativní AI?
+[0] Textová odpověď, kterou model vygeneruje.
+[x] Zadání nebo pokyn, kterým uživatel popíše, co od AI chce.
+[0] Nastavení, kterým se volí verze použitého jazykového modelu.
+[0] Údaj o tom, kolik dat bylo použito k natrénování modelu.
+[VYSVETLENI] Prompt je vstup, nikoli výstup – výstupu se říká odpověď. Formulace promptu přitom ovlivňuje kvalitu výsledku víc než volba konkrétního modelu.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Proč je důležité ověřovat informace získané od AI?
+[0] Protože AI odpovídá spolehlivě jen na otázky z matematiky a techniky.
+[0] Protože AI ke každé odpovědi uvádí zdroj, který je ale nutné dohledat ručně.
+[x] Protože AI může vytvořit věcně nesprávnou informaci, která zní přesvědčivě.
+[0] Protože se odpověď po položení další otázky automaticky smaže.
+[VYSVETLENI] Jazykový model generuje pravděpodobné pokračování textu, ne ověřený fakt. Sebejistý tón odpovědi proto o její správnosti nevypovídá vůbec nic – tomuto jevu se říká halucinace.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jak může AI pomoci učiteli při přípravě výuky?
+[0] Může samostatně rozhodnout o klasifikaci žáků podle jejich předchozích výsledků.
+[0] Může zaručit, že vygenerovaný test bude odpovídat školnímu vzdělávacímu programu.
+[0] Může zaručit, že vytvořené výukové materiály budou věcně bez chyb.
+[x] Může navrhnout aktivity, otázky nebo varianty výkladu, které učitel posoudí a upraví.
+[VYSVETLENI] AI je zde generátor návrhů, nikoli garant správnosti. Odbornou i didaktickou odpovědnost nese pořád učitel, který musí výstup zkontrolovat a přizpůsobit své třídě.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaký způsob používání AI nejlépe podporuje učení žáka?
+[0] Nechat AI vypracovat úkol a výsledek si pak pozorně přečíst.
+[x] Nechat si vysvětlit látku, procvičovat s ní a požádat o zpětnou vazbu k vlastnímu řešení.
+[0] Zadat úkol AI, odevzdat výstup a dodatečně si ho od AI nechat vysvětlit.
+[0] Používat AI pouze ke kontrole pravopisu v už hotové práci.
+[VYSVETLENI] Pozorné přečtení hotového řešení vytváří iluzi porozumění – látka působí srozumitelně, ale žák ji sám vyřešit neumí. Učení vzniká až z vlastního pokusu a následné opravy.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Proč není vhodné zadávat do veřejného AI nástroje citlivé osobní údaje?
+[x] Protože se mohou uložit na serverech provozovatele a být dál zpracovány mimo kontrolu uživatele.
+[0] Protože jazykové modely neumí zpracovat údaje ve formátu rodného čísla nebo data narození.
+[0] Protože AI takový dotaz vždy automaticky odmítne a neodpoví na něj.
+[0] Protože osobní údaje výrazně zpomalují generování odpovědi.
+[VYSVETLENI] Řada služeb konverzace ukládá a může je využít k dalšímu trénování. Jakmile údaj odešlete, ztrácíte nad ním kontrolu a zpětně ho odstranit zpravidla nelze.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jak může AI podpořit individualizaci výuky?
+[0] Umožní zadat všem žákům stejný materiál a ušetřit tím učiteli čas.
+[0] Z odpovědí žáka spolehlivě určí jeho studijní předpoklady a doporučí mu obor.
+[x] Může témuž učivu dát vysvětlení a procvičení přizpůsobené tempu a mezerám konkrétního žáka.
+[0] Odstraní potřebu zjišťovat, v čem žák chybuje, protože chybu opraví sama.
+[VYSVETLENI] Individualizace znamená přizpůsobit cestu k cíli, ne cíl sám. AI zvládne připravit jiné vysvětlení nebo jinou sadu příkladů, ale posoudit, co konkrétní žák potřebuje, musí učitel.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co je při používání AI ve škole důležité z hlediska ochrany soukromí?
+[0] Používat AI výhradně pod celým jménem žáka, aby bylo dohledatelné, kdo ji použil.
+[0] Vkládat do AI celé zadání včetně jmen, aby byla odpověď co nejpřesnější.
+[0] Ukládat všechny konverzace s AI do školního systému pro případ pozdější kontroly.
+[x] Nevkládat do AI údaje o sobě ani o spolužácích, které k vyřešení úkolu nejsou potřeba.
+[VYSVETLENI] Platí zásada minimalizace: zpracovat jen to, co je nezbytné. Obzvlášť citlivé je vkládání údajů o spolužácích – ti k tomu nedali souhlas a rozhodnutí za ně žák udělat nemůže.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Které zadání pro AI povede nejspíše k nejužitečnější odpovědi při učení?
+[0] „Napiš mi vše, co víš o fotosyntéze.“
+[0] „Jsi špičkový biolog s třiceti lety praxe. Vysvětli fotosyntézu.“
+[x] „Vysvětli mi fotosyntézu pro žáka střední školy, uveď jeden příklad a na závěr mi dej tři kontrolní otázky.“
+[0] „Vysvětli mi fotosyntézu co nejpodrobněji a nejdelším možným textem.“
+[VYSVETLENI] Rozhoduje konkrétnost: cílové publikum, rozsah a požadovaný formát výstupu. Delší ani „prestižněji“ znějící zadání kvalitu samo o sobě nezvýší, kdežto kontrolní otázky navíc donutí žáka ověřit si vlastní porozumění.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co znamená transparentní používání AI při školní práci?
+[0] Stačí výstup AI přeformulovat vlastními slovy, pak už se uvádět nemusí.
+[x] Uvést, že a jakým způsobem byla AI při práci použita, pokud to pravidla vyžadují.
+[0] Uvést AI v seznamu literatury jako autora použitého zdroje.
+[0] Použití AI oznámit až ve chvíli, kdy se na ně učitel výslovně zeptá.
+[VYSVETLENI] Transparentnost znamená sdělit to předem a z vlastní iniciativy. AI přitom není autor ani citovatelný zdroj – uvádí se jako použitý nástroj spolu s popisem, k čemu konkrétně sloužila.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč je problematické odevzdat jako domácí úkol pouze výstup AI?
+[0] Protože text vytvořený AI lze vždy spolehlivě odhalit detektorem.
+[0] Protože výstup AI obsahuje skryté znaky, kterými se práce automaticky označí.
+[x] Protože žák neprokáže vlastní porozumění učivu, které má úkol ověřit.
+[0] Protože školní řád zakazuje použití AI za všech okolností.
+[VYSVETLENI] Jde o pedagogický, nikoli technický problém. Detektory AI textu jsou nespolehlivé a označují i poctivé práce, takže argument „nepoznají to“ míří vedle – smyslem úkolu je doložit, že látce rozumím.
+
+# ==========================================================================
+# 5. Agentní programování
+# Autoři: Ondřej Borovička, Petr Škarvan
+# ==========================================================================
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je softwarový agent?
+[0] Grafické rozhraní, které uživateli zobrazuje výstupy jiného programu.
+[x] Program, který vnímá své prostředí, rozhoduje se a provádí v něm akce.
+[0] Služba běžící na pozadí, která v pravidelných intervalech spouští naplánované úlohy.
+[0] Databázový systém, který na zadaný dotaz vrací uložená data.
+[VYSVETLENI] Podstatná je trojice vnímání – rozhodnutí – akce. Naplánovaná úloha se sice spouští sama, ale nerozhoduje se podle toho, co v prostředí zjistí.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] K čemu slouží paměť (memory) u AI agenta?
+[0] Ukládá uživatelská hesla, aby se agent nemusel opakovaně přihlašovat.
+[0] Zvětšuje kontextové okno modelu, takže se do něj vejde delší text.
+[x] Umožňuje uchovat klíčové informace z předchozích kroků a navázat na ně.
+[0] Vytváří zálohy souborů, se kterými agent během úkolu pracoval.
+[VYSVETLENI] Paměť je samostatná vrstva vedle modelu – rozhoduje, které dřívější informace se do omezeného kontextu vrátí. Kontextové okno samotné tím nijak nezvětšuje.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co znamená autonomie agenta?
+[0] Schopnost pracovat bez přístupu k jazykovému modelu.
+[0] Schopnost fungovat zcela bez omezení a přidělených oprávnění.
+[0] Schopnost spustit se automaticky po startu operačního systému.
+[x] Schopnost provádět kroky bez toho, aby každý z nich musel řídit člověk.
+[VYSVETLENI] Autonomie se týká rozhodování o postupu, nikoli rozsahu práv. I vysoce autonomní agent může mít záměrně velmi úzce omezená oprávnění.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co je to AI agent?
+[0] Program, který slouží pouze k zobrazování textu a přijímání vstupů od uživatele.
+[0] Skript, který v cloudu spouští předdefinované úlohy bez využití jazykových modelů.
+[x] Systém nad jazykovým modelem, který umí plánovat a používat nástroje ke splnění úkolu.
+[0] Jazykový model doplněný o větší kontextové okno a rychlejší generování odpovědí.
+[VYSVETLENI] Agenta nedělá větší model ani delší kontext, ale schopnost rozložit si úkol na kroky a volat k jejich provedení vnější nástroje.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Podle čeho se agent rozhoduje o svém dalším kroku?
+[0] Podle pořadí kroků, které pevně stanovil vývojář při psaní programu.
+[0] Výhradně podle původního zadání od uživatele, beze změny v průběhu úkolu.
+[x] Podle informací o aktuálním stavu, zadaného cíle a dostupných nástrojů.
+[0] Podle statistiky úspěšnosti svých dřívějších úkolů u jiných uživatelů.
+[VYSVETLENI] Agent vyhodnocuje kontext průběžně, a proto si poradí i se situací, kterou vývojář dopředu nepředvídal. Právě tím se liší od pevně naprogramovaného postupu.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co znamená „tool calling“ u AI agenta?
+[0] Systém automaticky doinstaluje nové softwarové nástroje do počítače uživatele.
+[0] Model vygeneruje zdrojový kód funkce, který si uživatel sám spustí.
+[x] Model si vyžádá spuštění externí funkce a dál pracuje s jejím výstupem.
+[0] Nástroj v pravidelném intervalu volá model a předává mu nová data.
+[VYSVETLENI] Model funkci sám nevykonává – vydá strukturovaný požadavek, běhové prostředí ho provede a výsledek vrátí zpět do kontextu, se kterým model pokračuje.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jak postupuje AI agent, když má vyřešit složitější úkol?
+[0] Pokusí se celý úkol vyřešit najednou v jediné odpovědi.
+[0] Vyžádá si od uživatele přesný postup, který má krok za krokem dodržet.
+[0] Zvolí výkonnější model a předá mu zadání beze změny.
+[x] Rozloží zadání na menší dílčí kroky a ty pak postupně vykoná.
+[VYSVETLENI] Dekompozice úkolu má dvě výhody: každý dílčí krok je jednodušší a jeho výsledek lze průběžně ověřit dřív, než se chyba přenese do zbytku řešení.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co je smyčka agenta (agent loop)?
+[0] Opakované posílání téhož promptu modelu, dokud nevrátí dostatečně dlouhou odpověď.
+[0] Programová konstrukce zajišťující, že agent běží na pozadí nepřetržitě.
+[0] Postup, při kterém agent nejprve naplánuje všechny kroky a pak je bez přerušení vykoná.
+[x] Opakovaný cyklus pozorování, rozhodnutí, provedení akce a vyhodnocení výsledku.
+[VYSVETLENI] Klíčové je vyhodnocení po každé akci. Bez zpětné vazby by agent nepoznal, že krok selhal, a slepě by pokračoval podle původního plánu.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jak lze zvýšit bezpečnost agentního systému?
+[x] Omezit agentovi oprávnění a u rizikových akcí vyžadovat potvrzení člověkem.
+[0] Nechat agenta, aby si sám průběžně kontroloval, zda jsou jeho akce bezpečné.
+[0] Zakázat agentovi používat jakékoli externí nástroje.
+[0] Nechat agenta pracovat pouze lokálně, bez přístupu k internetu.
+[VYSVETLENI] Platí princip nejmenších oprávnění a lidské schválení u nevratných kroků. Kontrola samotným agentem nestačí – obsah, který agent zpracovává, ho může cíleně zmanipulovat.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaký je rozdíl mezi běžným skriptem a autonomním agentem?
+[0] Skript pracuje se soubory, zatímco agent výhradně s webovými službami.
+[0] Skript musí napsat programátor, zatímco agent si svůj kód vždy generuje sám.
+[x] Skript vykonává předem daný postup, zatímco agent volí další kroky podle situace.
+[0] Skript běží pouze na serveru, zatímco agent běží na počítači uživatele.
+[VYSVETLENI] Rozhodující je, kdo určuje posloupnost kroků: u skriptu jeho autor dopředu, u agenta on sám za běhu podle toho, co o stavu úkolu právě zjistil.
+
+# ==========================================================================
+# 6. Metody strojového učení
+# Autoři: Tomáš Jandák, Vincent Procházka, Pavel Kubát
+# ==========================================================================
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je hlavním cílem strojového učení?
+[0] Zrychlit běh programů tím, že se jejich kód automaticky optimalizuje.
+[x] Umožnit počítačům učit se z dat a zlepšovat se bez explicitně naprogramovaného postupu.
+[0] Nahradit databáze novým způsobem ukládání velkých objemů dat.
+[0] Zapsat znalosti experta do sady pravidel „když–pak“, kterou počítač vykoná.
+[VYSVETLENI] Poslední možnost popisuje expertní systémy – starší přístup k AI, kde pravidla psal člověk. Strojové učení je opak: pravidla si model odvodí sám z příkladů.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaký je hlavní princip učení s učitelem (supervised learning)?
+[x] Model se trénuje na datech, u kterých známe správné odpovědi (štítky).
+[0] Model sám hledá skryté vzory v datech bez jakéhokoli hodnocení.
+[0] Algoritmus se učí metodou pokus–omyl na základě odměn a trestů.
+[0] Člověk musí ručně naprogramovat každou rozhodovací podmínku v kódu.
+[VYSVETLENI] „Učitelem“ jsou zde připravené správné odpovědi, se kterými model porovnává své předpovědi. Zbylé dvě možnosti popisují učení bez učitele a zpětnovazební učení.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Která z následujících úloh představuje typický příklad klasifikace?
+[0] Odhad prodejní ceny bytu na základě jeho rozlohy.
+[x] Rozpoznání, zda je na fotografii pes, nebo kočka.
+[0] Shlukování zákazníků e-shopu do předem neznámých skupin podle chování.
+[0] Nalezení optimální trasy pro autonomní vozidlo ve městě.
+[VYSVETLENI] Klasifikace přiřazuje vstup do jedné z předem daných tříd. Odhad ceny je regrese (spojitá hodnota), shlukování je učení bez učitele a hledání trasy je optimalizační úloha.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jak se nazývá metoda učení bez učitele, která sdružuje podobné datové body k sobě?
+[0] Lineární regrese.
+[x] Shlukování (clustering).
+[0] Zpětná propagace chyby.
+[0] Rozhodovací strom.
+[VYSVETLENI] Shlukování hledá strukturu v datech, aniž by dopředu vědělo, jaké skupiny má najít. Ostatní tři metody potřebují ke svému učení známé správné odpovědi.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co ve strojovém učení znamená pojem „přeučení“ (overfitting)?
+[0] Model se trénoval příliš krátce a nedokáže rozpoznat žádný vzor.
+[0] Počítač spotřeboval veškerou operační paměť a přestal odpovídat.
+[x] Model se naučil trénovací data nazpaměť včetně šumu a na nových datech selhává.
+[0] Model dosahuje perfektních výsledků výhradně na neznámých testovacích datech.
+[VYSVETLENI] Přeučený model vypadá při trénování skvěle – chybovost je téměř nulová. Problém se projeví až na datech, která nikdy neviděl, protože si zapamatoval i náhodné odchylky.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jak se nazývá rozdělení dostupných dat na trénovací a testovací část?
+[0] Normalizace dat.
+[x] Rozdělení dat (data split).
+[0] Augmentace dat.
+[0] Anotace dat.
+[VYSVETLENI] Testovací data model během učení vidět nesmí – jinak by se jeho výsledek nedal považovat za důkaz, že umí zobecňovat, a ne jen memorovat.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co je hlavním principem algoritmu K-NN (K nejbližších sousedů)?
+[x] Zařadí nový objekt do té třídy, do které patří většina jeho K nejbližších sousedů.
+[0] Vytvoří kaskádu podmínek typu „když–pak“ pro klasifikaci.
+[0] Trénuje neuronovou síť pomocí zpětného šíření chyby.
+[0] Shlukuje data do skupin bez použití jakýchkoli vzdáleností.
+[VYSVETLENI] K-NN si nic nepředpočítává – veškerá práce nastává až v okamžiku dotazu, kdy algoritmus spočítá vzdálenosti k trénovacím bodům a nechá nejbližší sousedy hlasovat.
+
+---
+
+[OBTIZNOST: střední]
+[Q] K čemu v rozhodovacím stromu slouží takzvané listy (leaf nodes)?
+[0] Obsahují podmínky a otázky pro další dělení dat.
+[0] Slouží k uložení trénovacích dat, která nebyla při učení použita.
+[x] Obsahují finální rozhodnutí, tedy předpovězenou třídu nebo hodnotu.
+[0] Představují kořenový uzel celého stromu.
+[VYSVETLENI] Cesta stromem vede od kořene přes vnitřní uzly s podmínkami až do listu. V listu už se nerozhoduje, pouze se přečte výsledek.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč je u algoritmu K-NN důležité provést normalizaci nebo standardizaci příznaků?
+[0] Aby se automaticky odstranily všechny chybějící hodnoty v datech.
+[0] Normalizace je nutná k tomu, aby se K-NN choval jako rozhodovací strom.
+[0] Bez normalizace nelze algoritmus na běžném počítači vůbec spustit.
+[x] Protože algoritmus počítá vzdálenosti a příznaky s velkým rozsahem by jinak výsledek zcela ovládly.
+[VYSVETLENI] Stojí-li vedle sebe plat v desítkách tisíc a věk v desítkách let, rozdíl v platu vzdálenost naprosto převáží. Po převedení na srovnatelný rozsah přispívají oba příznaky vyváženě.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co je základním stavebním kamenem umělých neuronových sítí?
+[0] Databázový dotaz SQL pro vyhledávání shodných záznamů.
+[0] Náhodný generátor čísel bez jakýchkoli vah či parametrů.
+[x] Umělý neuron (perceptron), který počítá vážený součet vstupů a aplikuje aktivační funkci.
+[0] Pevně definovaný seznam pravidel typu „když–pak“ vytvořený expertem.
+[VYSVETLENI] Učení sítě spočívá v postupné úpravě vah těchto vážených součtů. Aktivační funkce do výpočtu vnáší nelinearitu – bez ní by i hluboká síť uměla jen to, co jediná lineární vrstva.

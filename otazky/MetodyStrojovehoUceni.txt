@@ -1,0 +1,190 @@
+# Databáze otázek pro testovací aplikaci - Téma: Metody strojového učení (18 otázek)
+# Zdroj: Tomáš Jandák, Vincent Procházka, Pavel Kubát
+# Pozn.: Zadání otázek vychází ze studentských odevzdání, u části otázek byly
+#        distraktory přepracovány na věrohodné omyly - původní byly návodné.
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je hlavním cílem strojového učení?
+[0] Zrychlit běh programů tím, že se jejich kód automaticky optimalizuje.
+[x] Umožnit počítačům učit se z dat a zlepšovat se bez explicitně naprogramovaného postupu.
+[0] Nahradit databáze novým způsobem ukládání velkých objemů dat.
+[0] Zapsat znalosti experta do sady pravidel „když–pak“, kterou počítač vykoná.
+[VYSVETLENI] Poslední možnost popisuje expertní systémy – starší přístup k AI, kde pravidla psal člověk. Strojové učení je opak: pravidla si model odvodí sám z příkladů.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co z následujícího je příkladem využití strojového učení v běžném životě?
+[0] Seřazení souborů ve složce podle abecedy.
+[0] Kontrola pravopisu porovnáním slov s pevným slovníkem.
+[x] Rozpoznávání obličeje pro odemknutí telefonu.
+[0] Automatické zálohování fotek do cloudu v nastavený čas.
+[VYSVETLENI] Ostatní možnosti jsou automatizace podle pevných pravidel, která nikdo neučil z dat. Rozpoznání obličeje se naopak natrénovalo na velkém množství snímků.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaký je hlavní princip učení s učitelem (supervised learning)?
+[x] Model se trénuje na datech, u kterých známe správné odpovědi (štítky).
+[0] Model sám hledá skryté vzory v datech bez jakéhokoli hodnocení.
+[0] Algoritmus se učí metodou pokus–omyl na základě odměn a trestů.
+[0] Člověk musí ručně naprogramovat každou rozhodovací podmínku v kódu.
+[VYSVETLENI] „Učitelem“ jsou zde připravené správné odpovědi, se kterými model porovnává své předpovědi. Zbylé dvě možnosti popisují učení bez učitele a zpětnovazební učení.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Které zařízení se nejčastěji používá k náročnému trénování modelů strojového učení?
+[0] Rychlý SSD disk, protože trénování je omezeno hlavně čtením dat.
+[0] Velká operační paměť, protože celý dataset musí být načtený najednou.
+[x] Grafická karta (GPU).
+[0] Výkonná síťová karta, protože trénování probíhá vždy v cloudu.
+[VYSVETLENI] Trénování je z velké části násobení matic a GPU je zvládá paralelně v tisících jader. Rychlý disk i dostatek paměti pomáhají, ale úzkým hrdlem je výpočetní výkon.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Která z následujících úloh představuje typický příklad klasifikace?
+[0] Odhad prodejní ceny bytu na základě jeho rozlohy.
+[x] Rozpoznání, zda je na fotografii pes, nebo kočka.
+[0] Shlukování zákazníků e-shopu do předem neznámých skupin podle chování.
+[0] Nalezení optimální trasy pro autonomní vozidlo ve městě.
+[VYSVETLENI] Klasifikace přiřazuje vstup do jedné z předem daných tříd. Odhad ceny je regrese (spojitá hodnota), shlukování je učení bez učitele a hledání trasy je optimalizační úloha.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jak se nazývá metoda učení bez učitele, která sdružuje podobné datové body k sobě?
+[0] Lineární regrese.
+[x] Shlukování (clustering).
+[0] Zpětná propagace chyby.
+[0] Rozhodovací strom.
+[VYSVETLENI] Shlukování hledá strukturu v datech, aniž by dopředu vědělo, jaké skupiny má najít. Ostatní tři metody potřebují ke svému učení známé správné odpovědi.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co ve strojovém učení znamená pojem „přeučení“ (overfitting)?
+[0] Model se trénoval příliš krátce a nedokáže rozpoznat žádný vzor.
+[0] Počítač spotřeboval veškerou operační paměť a přestal odpovídat.
+[x] Model se naučil trénovací data nazpaměť včetně šumu a na nových datech selhává.
+[0] Model dosahuje perfektních výsledků výhradně na neznámých testovacích datech.
+[VYSVETLENI] Přeučený model vypadá při trénování skvěle – chybovost je téměř nulová. Problém se projeví až na datech, která nikdy neviděl, protože si zapamatoval i náhodné odchylky.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jak se nazývá rozdělení dostupných dat na trénovací a testovací část?
+[0] Normalizace dat.
+[x] Rozdělení dat (data split).
+[0] Augmentace dat.
+[0] Anotace dat.
+[VYSVETLENI] Testovací data model během učení vidět nesmí – jinak by se jeho výsledek nedal považovat za důkaz, že umí zobecňovat, a ne jen memorovat.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co udává přesnost (accuracy) u úlohy rozpoznávání obrázků?
+[0] Jak jistý si je model u své nejpravděpodobnější odpovědi.
+[0] Jaký podíl trénovacích dat model při učení skutečně využil.
+[x] Jaký podíl obrázků model zařadil správně.
+[0] Jaký podíl skutečně pozitivních případů se modelu podařilo zachytit.
+[VYSVETLENI] Poslední možnost popisuje jinou metriku – úplnost (recall). U nevyvážených dat bývá accuracy zavádějící: při 99 % zdravých pacientů dosáhne 99 % i model, který nemoc nikdy neodhalí.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co je hlavním principem algoritmu K-NN (K nejbližších sousedů)?
+[x] Zařadí nový objekt do té třídy, do které patří většina jeho K nejbližších sousedů.
+[0] Vytvoří kaskádu podmínek typu „když–pak“ pro klasifikaci.
+[0] Trénuje neuronovou síť pomocí zpětného šíření chyby.
+[0] Shlukuje data do skupin bez použití jakýchkoli vzdáleností.
+[VYSVETLENI] K-NN si nic nepředpočítává – veškerá práce nastává až v okamžiku dotazu, kdy algoritmus spočítá vzdálenosti k trénovacím bodům a nechá nejbližší sousedy hlasovat.
+
+---
+
+[OBTIZNOST: střední]
+[Q] K čemu v rozhodovacím stromu slouží takzvané listy (leaf nodes)?
+[0] Obsahují podmínky a otázky pro další dělení dat.
+[0] Slouží k uložení trénovacích dat, která nebyla při učení použita.
+[x] Obsahují finální rozhodnutí, tedy předpovězenou třídu nebo hodnotu.
+[0] Představují kořenový uzel celého stromu.
+[VYSVETLENI] Cesta stromem vede od kořene přes vnitřní uzly s podmínkami až do listu. V listu už se nerozhoduje, pouze se přečte výsledek.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Která vlastnost je typickou výhodou rozhodovacích stromů?
+[x] Jsou snadno interpretovatelné a dají se vizualizovat i pro neodborného uživatele.
+[0] Vyžadují extrémně náročný výpočet při předpovídání nových dat.
+[0] Nefungují na kategorických datech.
+[0] Vždy dávají lepší výsledky než hluboké neuronové sítě.
+[VYSVETLENI] U stromu lze u každé předpovědi ukázat konkrétní cestu podmínkami, která k ní vedla. Právě to je výhoda tam, kde musí být rozhodnutí zdůvodnitelné – třeba v medicíně nebo při schvalování úvěru.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaký vliv má volba velmi malé hodnoty K (například K = 1) u algoritmu K-NN?
+[x] Model je velmi citlivý na šum v datech a hrozí jeho přeučení.
+[0] Model bude mít silnou tendenci k podučení (underfitting).
+[0] Klasifikace bude zcela nezávislá na nejbližších sousedech.
+[0] Výpočet bude trvat výrazně déle než při vysokém K.
+[VYSVETLENI] Při K = 1 rozhoduje jediný nejbližší bod, takže o výsledku může rozhodnout i jedna chybně označená položka. Vysoké K naopak výsledek vyhlazuje a vede k podučení.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč je u algoritmu K-NN důležité provést normalizaci nebo standardizaci příznaků?
+[0] Aby se automaticky odstranily všechny chybějící hodnoty v datech.
+[0] Normalizace je nutná k tomu, aby se K-NN choval jako rozhodovací strom.
+[0] Bez normalizace nelze algoritmus na běžném počítači vůbec spustit.
+[x] Protože algoritmus počítá vzdálenosti a příznaky s velkým rozsahem by jinak výsledek zcela ovládly.
+[VYSVETLENI] Stojí-li vedle sebe plat v desítkách tisíc a věk v desítkách let, rozdíl v platu vzdálenost naprosto převáží. Po převedení na srovnatelný rozsah přispívají oba příznaky vyváženě.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co znamená prořezávání (pruning) u rozhodovacích stromů?
+[0] Smazání poloviny trénovacích dat ještě před začátkem trénování.
+[0] Převod rozhodovacího stromu na vícerozměrný graf.
+[x] Odstranění nadbytečných větví stromu s cílem zabránit přeučení a zlepšit zobecnění.
+[0] Propojení všech listů stromu do jednoho cyklu.
+[VYSVETLENI] Nezastavený strom roste, dokud každý list neobsahuje jediný trénovací vzorek – tedy dokud se data nenaučí nazpaměť. Prořezání větví, které nepřinášejí zlepšení na nových datech, tomu zabrání.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jakou metriku vzdálenosti algoritmus K-NN běžně používá pro spojité proměnné?
+[0] Giniho index.
+[x] Eukleidovskou vzdálenost.
+[0] Entropii.
+[0] Kosinovou podobnost textových vektorů.
+[VYSVETLENI] Eukleidovská vzdálenost je běžná „vzdálenost vzdušnou čarou“ v prostoru příznaků. Giniho index a entropie nejsou metriky vzdálenosti, ale míry nečistoty používané u rozhodovacích stromů.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co udává Giniho index nebo entropie při stavbě rozhodovacího stromu?
+[0] Rychlost připojení k internetu během trénování modelu.
+[0] Počet sousedů, které má algoritmus K-NN vzít v úvahu.
+[0] Přesnou vzdálenost mezi dvěma body v prostoru příznaků.
+[x] Míru nečistoty dat v daném uzlu; pomáhají určit nejlepší rozdělení.
+[VYSVETLENI] Uzel obsahující jedinou třídu je zcela „čistý“, uzel s rovnoměrnou směsí tříd je nejvíce nečistý. Algoritmus zkouší různá rozdělení a vybírá to, které nečistotu sníží nejvíc.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co je základním stavebním kamenem umělých neuronových sítí?
+[0] Databázový dotaz SQL pro vyhledávání shodných záznamů.
+[0] Náhodný generátor čísel bez jakýchkoli vah či parametrů.
+[x] Umělý neuron (perceptron), který počítá vážený součet vstupů a aplikuje aktivační funkci.
+[0] Pevně definovaný seznam pravidel typu „když–pak“ vytvořený expertem.
+[VYSVETLENI] Učení sítě spočívá v postupné úpravě vah těchto vážených součtů. Aktivační funkce do výpočtu vnáší nelinearitu – bez ní by i hluboká síť uměla jen to, co jediná lineární vrstva.
