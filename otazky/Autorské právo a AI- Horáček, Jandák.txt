@@ -1,0 +1,159 @@
+[OBTIZNOST: lehká]
+[Q] Kdo může být podle českého autorského zákona autorem díla?
+[0] Jakýkoliv počítačový program nebo algoritmus.
+[x] Pouze fyzická osoba (člověk), která dílo vytvořila.
+[0] Právnická osoba, například technologická společnost.
+[0] Umělá inteligence, pokud dosáhne obecné inteligence (AGI).
+[VYSVETLENI] Podle § 5 českého autorského zákona (a obecně kontinentálního práva) je autorem výhradně fyzická osoba, která dílo svou tvůrčí činností vytvořila. AI nemá právní subjektivitu ani schopnost být nositelem autorských práv.
+
+[OBTIZNOST: lehká]
+[Q] Požívá čistý výstup generativní AI (např. obrázek z Midjourney bez dalších úprav) autorskoprávní ochranu?
+[0] Ano, autorem se automaticky stává společnost provozující daný model.
+[0] Ano, autorství automaticky připadá uživateli, který zadal prompt.
+[x] Zpravidla ne, protože nevznikl přímou tvůrčí činností člověka.
+[0] Ano, ale ochrana trvá pouze 1 rok od vygenerování.
+[VYSVETLENI] Aby dílo požívalo autorskoprávní ochrany, musí jít o jedinečný výsledek tvůrčí činnosti člověka. Samotné vygenerování obsahu algoritmem tuto podmínku nesplňuje.
+
+[OBTIZNOST: lehká]
+[Q] Co je to autorské právo?
+[x] Právní odvětví chránící práva autorů k jejich literárním, uměleckým a vědeckým dílům.
+[0] Poplatek, který musí každý platit za připojení k internetu.
+[0] Certifikát, který potvrzuje, že program napsala umělá inteligence.
+[0] Soubor pravidel, která zakazují používání jakéhokoliv softwaru.
+[VYSVETLENI] Autorské právo je součástí práva duševního vlastnictví a dává tvůrcům výlučná osobnostní a majetková práva k jejich originálním výtvorům.
+
+[OBTIZNOST: lehká]
+[Q] Může být pouhý krátký textový dotaz (prompt), například „nakresli psa na louce“, sám o sobě chráněn autorským právem?
+[0] Ano, každá věta zadaná do počítače je autorským dílem.
+[x] Ne, jde o pouhou myšlenku nebo pokyn bez dostatečné míry originality a tvůrčí činnosti.
+[0] Ano, ale pouze pokud byl prompt napsán v anglickém jazyce.
+[0] Ano, pokud byl zadán do placené verze AI nástroje.
+[VYSVETLENI] Krátké a banální instrukce postrádají originalitu a tvůrčí přínos, navíc autorské právo nechrání samotné náměty, myšlenky ani obecné pokyny.
+
+[OBTIZNOST: lehká]
+[Q] Může se člověk stát autorem díla, pokud k jeho tvorbě použil AI jako pouhý nástroj?
+[x] Ano, pokud má výsledek zásadní a prokazatelný tvůrčí vklad samotného člověka.
+[0] Ne, jakékoliv zapojení AI do tvůrčího procesu okamžitě ruší autorskou ochranu.
+[0] Ano, ale pouze pokud si autor zakoupil komerční licenci AI.
+[0] Pouze pokud je AI nástroj nainstalovaný offline bez přístupu k internetu.
+[VYSVETLENI] Pokud člověk použije AI podobně jako grafický editor nebo fotoaparát a výsledné dílo je do značné míry zformováno jeho originálním zásahem (např. komplexní koláž, zásadní domalování a kompozice), ochranu získat může.
+
+[OBTIZNOST: lehká]
+[Q] Kdy vzniká autorské právo k dílu vytvořenému člověkem?
+[0] Až po oficiální registraci na Ministerstvu kultury.
+[0] Až po zaplacení správního poplatku na patentovém úřadě.
+[x] Automaticky v okamžiku, kdy je dílo vyjádřeno v jakékoli vnímatelné podobě.
+[0] V okamžiku, kdy je dílo nahráno na sociální sítě.
+[VYSVETLENI] V České republice a většině světa (na základě Bernské úmluvy) vzniká autorské právo neformálně okamžikem vzniku/vyjádření díla – není potřeba žádná registrace.
+
+[OBTIZNOST: lehká]
+[Q] Je legální použít generátor obrázků pro napodobení obecného stylu konkrétního malíře, aniž bychom kopírovali jeho konkrétní dílo?
+[x] Obecný výtvarný styl sám o sobě autorským právem chráněn není.
+[0] Ne, každý styl je registrovanou ochrannou známkou a je zakázáno jej napodobovat.
+[0] Je to trestný čin podle mezinárodního práva.
+[0] Lze to pouze se souhlasem dědiců malíře.
+[VYSVETLENI] Styl, metoda ani technika nejsou předmětem autorskoprávní ochrany (chráněno je konkrétní vyjádření, nikoliv koncept či styl). Může se však teoreticky jednat o nekalou soutěž, pokud by došlo k matení veřejnosti.
+
+[OBTIZNOST: střední]
+[Q] Co je to výjimka pro vytěžování textů a dat (TDM – Text and Data Mining) v právu EU?
+[0] Zákaz stahování jakýchkoliv dat z webových stránek.
+[x] Výjimka z autorského práva umožňující automatizovanou analýzu legálně dostupných děl k získání nových poznatků.
+[0] Povinnost platit poplatek autorovi za každé přečtení článku vyhledávačem.
+[0] Zvláštní daň uvalená na provozovatele velkých datových center.
+[VYSVETLENI] Směrnice EU o autorském právu na jednotném digitálním trhu (DSM) zavádí výjimky pro TDM, které umožňují legální analýzu dat např. pro výzkum i komerční trénování, pokud k nim má subjekt oprávněný přístup.
+
+[OBTIZNOST: střední]
+[Q] Jak mohou autoři zabránit komerčnímu vytěžování svých online děl pro trénování AI podle směrnice EU (TDM opt-out)?
+[0] Musí podat žalobu u Evropského soudního dvora.
+[0] Musí své dílo smazat z celého internetu.
+[x] Mohou vyhradit svá práva strojově čitelným způsobem (např. pomocí metadat nebo souboru robots.txt).
+[0] Autorské právo neumožňuje takové využití nijak odmítnout.
+[VYSVETLENI] Pro komerční účely platí mechanismus tzv. „opt-outu“ (článek 4 směrnice DSM) – nositelé práv mohou strojově čitelnými prostředky vyhradit, že jejich díla nesmějí být pro data mining využívána.
+
+[OBTIZNOST: střední]
+[Q] Pokud AI vygeneruje skladbu, která je téměř identická s existující chráněnou písní, jedná se o porušení autorského práva?
+[0] Ne, protože hudbu vygeneroval počítač, který nenese žádnou odpovědnost.
+[x] Ano, distribucí a užitím takové skladby dochází k neoprávněnému zásahu do autorských práv původního autora.
+[0] Pouze v případě, že původní autor udělil výslovný souhlas.
+[0] Ne, pokud se délka shoduje v méně než 60 sekundách.
+[VYSVETLENI] Zásah do autorského práva se posuzuje podle objektivního výsledku. Pokud výstup napodobuje chráněné dílo v míře zakládající plagiát, osoba šířící takový výstup může čelit žalobě bez ohledu na to, jaký nástroj použila.
+
+[OBTIZNOST: střední]
+[Q] Může se člověk platně prohlásit za autora čistého AI výstupu tím, že k němu přiloží symbol copyrightu (©)?
+[0] Ano, symbol © automaticky uděluje autorskoprávní ochranu komukoliv.
+[x] Ne, přidání symbolu nemění právní podstatu díla – bez lidského tvůrčího přínosu dílo autorskoprávně nevzniká.
+[0] Ano, pokud zaplatí registrační poplatek.
+[0] Ano, ale pouze v rámci území Spojených států amerických.
+[VYSVETLENI] Symbol © má pouze deklaratorní a informativní charakter. Pokud dílo nesplňuje pojmové znaky autorského díla (např. chybí lidská tvůrčí činnost), přidání symbolu na tom nic nezmění.
+
+[OBTIZNOST: střední]
+[Q] Kdo nese primární právní odpovědnost, pokud uživatel použije AI nástroj k vědomému vytvoření a komerčnímu šíření plagiátu chráněného díla?
+[x] Uživatel, který prompt zadal a výsledné dílo neoprávněně užil nebo šířil.
+[0] Výrobce procesoru, na kterém model běžel.
+[0] Výhradně společnost, která AI model vytrénovala.
+[0] Nikdo, technologie je v legislativě považována za vyšší moc.
+[VYSVETLENI] Za užití a šíření neoprávněných rozmnoženin odpovídá ten, kdo tato práva neoprávněně vykonává – tedy uživatel, který výstup publikuje, prodává nebo dále šíří.
+
+[OBTIZNOST: střední]
+[Q] Jak americký autorský úřad (US Copyright Office) rozhodl v případě komiksu „Zarya of the Dawn“ vytvořeného pomocí Midjourney?
+[0] Povolil plnou autorskou ochranu pro obrázky i text.
+[0] Zcela odmítl jakoukoliv ochranu pro celý komiks.
+[x] Uznal autorské právo na text a uspořádání komiksu, ale odmítl chránit samotné vygenerované obrázky.
+[0] Převedl autorská práva přímo na společnost Midjourney.
+[VYSVETLENI] Šlo o přelomové rozhodnutí: USCO uznal ochranu lidskému autorovi za výběr, uspořádání a text, ale výslovně vyloučil ochranu pro samotné snímky generované čistě z promptů.
+
+[OBTIZNOST: střední]
+[Q] Co ukládá evropský Akt o umělé inteligenci (EU AI Act) poskytovatelům generativních modelů obecného určení ohledně autorského práva?
+[x] Musí zavést politiku dodržování autorského práva a zveřejnit dostatečně podrobný souhrn obsahu použitého pro trénování.
+[0] Musí zakázat uživatelům generování jakýchkoliv textů a obrázků.
+[0] Musí odkoupit autorská práva ke všem webovým stránkám v Evropské unii.
+[0] Musí přesunout všechna svá trénovací data do veřejných knihoven.
+[VYSVETLENI] AI Act stanovuje povinnost transparentnosti – poskytovatelé modelů GPAI musí prokázat soulad s autorským právem EU a zveřejnit souhrn dat použitých k trénování.
+
+[OBTIZNOST: těžká]
+[Q] Jaký je hlavní právní argument technologických firem v USA při obhajobě trénování AI na chráněných dílech bez licence?
+[0] Že autorské právo v digitálním prostředí neplatí.
+[x] Doktrína „Fair Use“ (spravedlivé užití), konkrétně transformativní charakter využití dat.
+[0] Že servery pro trénování se nacházejí v mezinárodních vodách.
+[0] Právo na svobodu internetového vyhledávání podle prvního dodatku ústavy.
+[VYSVETLENI] V americkém právním řádu firmy (např. OpenAI, Meta) staví svou obhajobu na institutu Fair Use – argumentují, že analýza vzorců a stylů za účelem vytvoření nového funkčního systému je vysoce transformativní.
+
+[OBTIZNOST: těžká]
+[Q] Do které kategorie děl podle českého autorského zákona patří samotný zdrojový a strojový kód AI modelu?
+[0] Mezi díla vědecká nepodléhající žádné ochraně.
+[x] Je chráněn jako počítačový program (literární dílo).
+[0] Je chráněn výhradně patentem a nespadá pod autorské právo.
+[0] Patří do volných děl (public domain) okamžikem kompilace.
+[VYSVETLENI] Podle § 2 odst. 2 a § 65 autorského zákona se počítačový program chrání jako dílo literární, je-li původní v tom smyslu, že je autorovým vlastním duševním výtvorem.
+
+[OBTIZNOST: těžká]
+[Q] Proč je problematické považovat matematické váhy natrénované neuronové sítě za běžné rozmnoženiny původních autorských děl?
+[0] Protože váhy jsou uloženy v cloudu, nikoliv na pevném disku.
+[x] Váhy nereprezentují kopie konkrétních děl, ale abstraktní statistické vztahy a parametry napříč celým trénovacím korpusem.
+[0] Protože matematické matice jsou podle zákona automaticky osvobozeny od autorského práva.
+[0] Z důvodu, že binární soubory nelze podle práva považovat za data.
+[VYSVETLENI] Neuronová síť neobsahuje zkomprimované soubory děl, ale číselné váhy popisující pravděpodobnosti a vztahy. Zda samotný proces extrakce a uložení do vah představuje vytvoření odvozeného díla, je předmětem velkých mezinárodních sporů.
+
+[OBTIZNOST: těžká]
+[Q] Co je to tzv. „memorizace“ u velkých jazykových či difuzních modelů a proč představuje autorskoprávní riziko?
+[0] Schopnost modelu učit se z konverzace v reálném čase.
+[0] Ukládání dotazů uživatelů do permanentní mezipaměti.
+[x] Stav, kdy model při generování zreplikuje téměř přesnou kopii trénovacího díla (např. citace celé knihy či replika obrazu).
+[0] Automatické mazání zastaralých trénovacích dat po určité době.
+[VYSVETLENI] Pokud se model přetrénuje (overfitting) nebo narazí na silně zastoupená data, může vygenerovat téměř dokonalou kopii originálu (memorizace). Pokud uživatel takový výstup šíří, dopouští se neoprávněného užití cizího díla.
+
+[OBTIZNOST: těžká]
+[Q] Jaký je klíčový rozdíl v pojetí autorství mezi kontinentálním evropským autorským právem a angloamerickým systémem Copyright v kontextu AI?
+[x] Kontinentální právo klade důraz na neoddělitelné osobnostní vazby lidského autora, zatímco Copyright se zaměřuje více na majetková a investiční práva.
+[0] V angloamerickém právu má AI plnou právní subjektivitu, v evropském nikoliv.
+[0] Evropské právo umožňuje firmám být přímými autory, americké to zakazuje.
+[0] Mezi oběma systémy neexistuje v této oblasti žádný principiální rozdíl.
+[VYSVETLENI] Kontinentální právo vychází z monistického či dualistického pojetí osobnostních práv (droit d'auteur), která jsou nepřevoditelná a spjatá s člověkem. Systém Copyright je flexibilnější vůči investiční ochraně (např. instituty jako work made for hire), ačkoliv ani ten zatím nepřiznává autorství samotné AI.
+
+[OBTIZNOST: těžká]
+[Q] Jak se z pohledu českého autorského zákona nahlíží na dílo vytvořené bez lidského tvůrčího přínosu (např. čistý prompt generovaný náhodně skriptem)?
+[0] Je automaticky chráněno po dobu 70 let od vytvoření.
+[0] Stává se majetkem České republiky spravovaným Státním fondem kultury.
+[x] Jde o volný předmět, který nepožívá autorskoprávní ochrany (res nullius z hlediska autorského práva).
+[0] Je považováno za nelegální obsah, který musí být zničen.
+[VYSVETLENI] Pokud výtvor postrádá znaky autorského díla (zejména tvůrčí činnost fyzické osoby podle § 2 AutZ), nevznikají k němu žádná autorská práva a kdokoli jej může volně užívat bez licence.
