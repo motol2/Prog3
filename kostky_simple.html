@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hrací kostka</title>
+    <style>
+        /* CSS: Vzhled a stylování stránky */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        /* Vizuální podoba kostky */
+        .dice {
+            width: 100px;
+            height: 100px;
+            background-color: #fff;
+            border: 3px solid #333;
+            border-radius: 16px;
+            font-size: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Tlačítko */
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Hrací kostka</h1>
+        
+        <!-- HTML: Zde se bude zobrazovat hozené číslo -->
+        <div id="dice" class="dice">?</div>
+        
+        <!-- HTML: Tlačítko pro spuštění akce v JavaScriptu -->
+        <button onclick="hodKostkou()">Hodit kostkou</button>
+    </div>
+
+    <script>
+        // JAVASCRIPT: Logika aplikace
+        function hodKostkou() {
+            // 1. Vygeneruje náhodné číslo od 1 do 6
+            let cislo = Math.floor(Math.random() * 6) + 1;
+
+            // 2. Najde element kostky v HTML podle jeho ID
+            let kostkaElement = document.getElementById("dice");
+
+            // 3. Změní text uvnitř elementu na vygenerované číslo
+            kostkaElement.textContent = cislo;
+        }
+    </script>
+
+</body>
+</html>
