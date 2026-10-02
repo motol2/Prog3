@@ -1,3 +1,3 @@
 # Mykola Mandziuk
 
-[GitHub Repository](https://github.com/pepsikolya/stocks)
+[GitHub Repository](https://github.com/pepsikolya/pagesKOLJA)
