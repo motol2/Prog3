@@ -1,6 +1,0 @@
-{
-  "name": "Najdi dvojici - Memory Match",
-  "description": "Rychlá a dynamická mobilní paměťová hra s postupným zvyšováním obtížnosti, combo bonusy a gadgety.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
