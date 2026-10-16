@@ -1,0 +1,262 @@
+# https://motolquiz.pages.dev/
+# Databáze otázek pro testovací aplikaci - Téma: Programování v Pythonu - proměnné, typy, operátory (25 otázek)
+# Zdroj: Moodle test Programování 1.A 25-26 – Proměnné (export GIFT)
+# Pozn.: Vybrány pouze otázky s právě jednou správnou odpovědí. Kód je zapsán v
+#        zpětných apostrofech (`...`), víceřádkový kód je psán na jeden řádek.
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Který z následujících popisů nejlépe odpovídá proměnné v programování?
+[x] Jméno, do kterého program uloží hodnotu, kterou lze později použít nebo změnit.
+[0] Speciální typ souboru.
+[0] Vstupní klávesa.
+[0] Název funkce.
+[VYSVETLENI] Proměnná je pojmenované místo v paměti. Hodnotu do ní uložíme přiřazením (např. `x = 10`) a kdykoli později ji můžeme přečíst nebo přepsat.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaký datový typ se v Pythonu používá pro textové řetězce?
+[x] str
+[0] int
+[0] float
+[0] bool
+[VYSVETLENI] Text (např. 'ahoj') je v Pythonu typu str (string). int jsou celá čísla, float desetinná čísla a bool logické hodnoty True a False.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vrací funkce `input()` v Pythonu?
+[x] str
+[0] int
+[0] float
+[0] bool
+[VYSVETLENI] Funkce input() vždy vrací text, i když uživatel zadá číslici. Chceme-li s hodnotou počítat jako s číslem, musíme ji převést pomocí int() nebo float().
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Který operátor se v Pythonu používá pro umocňování?
+[x] **
+[0] ^
+[0] //
+[0] %
+[VYSVETLENI] Umocňuje se pomocí `**`, např. `2 ** 3` je 8. Znak `^` je v Pythonu bitová operace XOR, `//` je celočíselné dělení a `%` zbytek po dělení.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše následující příkaz? `print("Ahoj")`
+[0] "ahoj"
+[x] "Ahoj"
+[0] Ahoj
+[0] print("Ahoj")
+[VYSVETLENI] Funkce print() vypíše obsah řetězce přesně tak, jak je zapsán (včetně velikosti písmen), ale bez uvozovek. Uvozovky v kódu pouze říkají, že jde o text.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co udělá příkaz `print(2 + 3)`?
+[x] Vypíše 5.
+[0] Vypíše 23.
+[0] Nevypíše nic.
+[0] Uloží výsledek do proměnné.
+[VYSVETLENI] Čísla se sečtou a print() výsledek vypíše na obrazovku. Do proměnné se nic neukládá. Výsledek 23 by vznikl jen při spojování textů '2' a '3'.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše tento kód? `x = 5` a poté `print(x)`
+[x] 5
+[0] x
+[0] "5"
+[0] nic
+[VYSVETLENI] Do print() předáváme proměnnou x, takže se vypíše její hodnota, tedy 5. Název proměnné ani uvozovky se nevypíšou.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Která správná syntaxe zjistí, zda je x větší než 5?
+[x] x > 5
+[0] 5 or x
+[0] x or 5
+[0] x <= 5
+[VYSVETLENI] Operátor `>` porovnává, zda je levá strana větší než pravá. Výsledkem je True nebo False. `<` a `<=` testují opačné nerovnosti a `or` je logické NEBO, ne porovnání.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše příkaz `print(3 > 2)`?
+[x] True
+[0] False
+[0] nic
+[0] 0
+[VYSVETLENI] Porovnání `3 > 2` je pravdivé, a proto má hodnotu True (typ bool). Python v tomto případě nevypíše číslo 0 ani nic jiného.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaký je výsledek výrazu `4 < 1`?
+[x] False
+[0] True
+[0] 4
+[0] 1
+[VYSVETLENI] Čtyři není menší než jedna, takže porovnání dává False. Výsledkem porovnávacího operátoru je vždy hodnota typu bool, nikoli jeden z porovnávaných operandů.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Který z těchto výrazů využívá logický operátor NEBO?
+[x] a or b
+[0] a && b
+[0] a | b
+[0] a + b
+[VYSVETLENI] V Pythonu se logické NEBO zapisuje klíčovým slovem `or`. Zápis `&&` v Pythonu neexistuje (je z jazyků typu C či Java), `|` je bitové OR a `+` sčítání.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše Python? `print(2 * 3)`
+[x] 6
+[0] 23
+[0] 5
+[0] nic
+[VYSVETLENI] Operátor `*` násobí čísla, takže výsledek je 6. Hodnota 5 by byl součet a 23 by vzniklo pouze spojením textů.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše tento příkaz? `print("Hello " + "World")`
+[x] Hello World
+[0] Hello+World
+[0] Hello
+[0] "Hello World"
+[VYSVETLENI] Operátor `+` u řetězců je spojí do jednoho (konkatenace). Za slovem Hello je mezera, proto výsledek obsahuje mezeru mezi slovy. Uvozovky se při výpisu nezobrazí.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co se stane po spuštění příkazu `print()`?
+[x] Vypíše prázdný řádek.
+[0] Vyhodí chybu.
+[0] Vypíše None.
+[0] Nevypíše nic.
+[VYSVETLENI] Funkce print() bez argumentů je platná a vypíše pouze znak konce řádku, tedy prázdný řádek. Chyba nenastane a None se nevypíše.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vrátí výraz `5 == 5`?
+[x] True
+[0] False
+[0] 5
+[0] 0
+[VYSVETLENI] Operátor `==` porovnává, zda se dvě hodnoty rovnají. Protože se rovnají, vrátí True. Pozor na rozdíl: jedno `=` je přiřazení, dvě `==` jsou porovnání.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co znamená klíčové slovo `and` v Pythonu?
+[x] logické A
+[0] bitový NOT OR
+[0] přiřazení
+[0] sčítání
+[VYSVETLENI] Výraz `a and b` je pravdivý jen tehdy, když jsou pravdivé oba operandy. Přiřazení se zapisuje `=` a sčítání `+`.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše příkaz `print(True and False)`?
+[x] False
+[0] True
+[0] 1
+[0] True and False
+[VYSVETLENI] Operátor `and` vyžaduje, aby byly pravdivé oba operandy. Jeden z nich je False, proto je celý výraz False.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše příkaz `print(True or False)`?
+[0] False
+[x] True
+[0] 0
+[0] žádný výsledek
+[VYSVETLENI] Operátor `or` je pravdivý, pokud je pravdivý alespoň jeden z operandů. Zde je jedním z nich True, takže výsledek je True.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vypíše Python? `print(10 - 3*3)`
+[x] 1
+[0] 21
+[0] -1
+[0] 10 - 3*3
+[VYSVETLENI] Násobení má přednost před odčítáním, takže se nejdřív spočítá 3*3 = 9 a potom 10 - 9 = 1. Výsledek 21 by vznikl, kdyby se nejprve odečetlo.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Který zápis je platný řetězec v Pythonu?
+[x] "Hello"
+[0] Hello
+[0] [Hello]
+[0] Hello()
+[VYSVETLENI] Řetězec se v Pythonu zapisuje do uvozovek (jednoduchých nebo dvojitých). Bez nich by Python považoval Hello za název proměnné, hranaté závorky vytvářejí seznam a `Hello()` je volání funkce.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše tento příkaz? `print(2 == 3)`
+[x] False
+[0] True
+[0] 1
+[0] nic
+[VYSVETLENI] Čísla 2 a 3 se nerovnají, takže porovnání dává hodnotu False.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Který výraz je pravdivý?
+[x] True or False
+[0] False and False
+[0] False or False
+[0] True and False
+[VYSVETLENI] Výraz s `or` je pravdivý, když je pravdivý aspoň jeden operand, zatímco výraz s `and` vyžaduje oba. Jediný výraz s alespoň jednou hodnotou True spojenou pomocí `or` je `True or False`.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vypíše Python? `x = 5/2` a poté `print(type(x))`
+[x] <class 'float'>
+[0] <class 'int'>
+[0] <class 'str'>
+[0] <class 'bool'>
+[0] <class 'dict'>
+[VYSVETLENI] Operátor `/` vždy vrací desetinné číslo, tedy typ float (zde 2.5). Celé číslo bychom dostali až celočíselným dělením `//`.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vypíše Python poté, co uživatel zadá vstup? `cislo = input("zadej číslo: ")` a poté `print(type(cislo))`
+[0] <class 'int'>
+[x] <class 'str'>
+[0] <class 'bool'>
+[0] <class 'dict'>
+[VYSVETLENI] Funkce input() vrací vždy řetězec, ať uživatel napíše cokoli. Proto je typ proměnné cislo str, a pokud s ní chceme počítat, musíme ji převést pomocí int() nebo float().
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaký je datový typ výsledku výrazu `5/2` v Pythonu?
+[x] float
+[0] str
+[0] bool
+[0] dict
+[VYSVETLENI] Běžné dělení `/` vrací v Pythonu vždy float, i když je výsledek celé číslo (např. `4/2` je 2.0). Celočíselné dělení `//` by vrátilo int.
