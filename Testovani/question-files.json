@@ -1,10 +1,10 @@
 [
-  "databaze_otazek_ai_act.txt",
-  "databaze_otazek_studenti.txt",
-  "AutorskePravo.txt",
-  "AIaGDPR.txt",
-  "AutonomniVozidla.txt",
-  "AIveSkole.txt",
-  "AgentniProgramovani.txt",
+  "AI_studenti.txt",
+  "funkce.txt",
+  "OOP.txt",
+  "PEP8.txt",
+  "retezce.txt",
+  "seznamy.txt",
+  "slovniky.txt",
   "MetodyStrojovehoUceni.txt"
 ]
