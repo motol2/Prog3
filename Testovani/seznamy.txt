@@ -1,0 +1,213 @@
+# Databáze otázek pro testovací aplikaci - Téma: Programování v Pythonu - seznamy, tuple a množiny (20 otázek)
+# Zdroj: Moodle test Programování 1.A 25-26 – Seznamy, Tuple (export GIFT)
+# Pozn.: Vybrány pouze otázky s právě jednou správnou odpovědí. Původně číselné
+#        otázky (s doplňováním výsledku) byly převedeny na výběr z možností a
+#        k nim doplněny věrohodné špatné odpovědi. Kód je zapsán ve zpětných
+#        apostrofech (`...`), víceřádkový kód je psán na jeden řádek.
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jak vytvoříš seznam (list) tří prvků 'a', 'b', 'c'?
+[x] `['a', 'b', 'c']`
+[0] `('a', 'b', 'c')`
+[0] `{'a', 'b', 'c'}`
+[0] `'a', 'b', 'c'`
+[0] `<<'a', 'b', 'c'>>`
+[VYSVETLENI] Seznam se v Pythonu zapisuje do hranatých závorek. Kulaté závorky vytvářejí tuple, složené množinu (set) a zápis `<<...>>` v Pythonu neexistuje. Hodnoty oddělené čárkami úplně bez závorek vytvoří také tuple.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše Python? `zviratka = ['pes','kočka','králík']` a poté `print(zviratka[1])`
+[x] kočka
+[0] pes
+[0] králík
+[0] None
+[VYSVETLENI] Indexuje se od nuly: index 0 je 'pes', index 1 je 'kočka' a index 2 je 'králík'.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Které z následujících tvrzení je pravda o metodě `append`?
+[x] Přidá prvek na konec seznamu.
+[0] Vrací nový seznam.
+[0] Odebere prvek.
+[0] Seřadí seznam.
+[VYSVETLENI] Metoda append() změní původní seznam tím, že na jeho konec přidá jeden prvek. Nic nevrací (vrací None), takže nevzniká nový seznam. Odebírá se pomocí pop() nebo remove(), řadí se pomocí sort().
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co se vypíše po provedení tohoto kódu? `lst = [1,2,3]`, `lst.append(4)`, `print(lst)`
+[0] [1, 2, 3]
+[0] [1, 2, 3, [4]]
+[x] [1, 2, 3, 4]
+[0] [4, 1, 2, 3]
+[VYSVETLENI] Metoda append() přidává prvek na konec seznamu, takže 4 skončí za trojkou. Na začátek by se přidávalo pomocí insert(0, 4).
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co udělá příkaz `pop()` u seznamu?
+[0] Vrátí první prvek bez odstranění.
+[0] Přidá prvek na začátek.
+[x] Odebere a vrátí poslední prvek seznamu.
+[0] Vymaže celý seznam.
+[VYSVETLENI] Metoda pop() bez argumentu odebere poslední prvek a vrátí ho jako výsledek. S argumentem (např. `pop(0)`) odebere prvek na daném indexu. Celý seznam se maže pomocí clear().
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Který výraz zkontroluje, zda je 'pes' v seznamu `zviratka`?
+[0] `zviratka in 'pes'`
+[0] `zviratka.contains('pes')`
+[x] `'pes' in zviratka`
+[0] `zviratka.has('pes')`
+[VYSVETLENI] Operátor `in` se zapisuje ve tvaru „prvek in kolekce“ a vrací True nebo False. Metody contains() ani has() seznamy v Pythonu nemají.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vrátí funkce `len()` pro seznam `[10,20,30,40]`?
+[0] 3
+[x] 4
+[0] 40
+[0] 0
+[VYSVETLENI] Funkce len() vrací počet prvků, ne jejich hodnoty. Seznam má čtyři prvky. Hodnota 40 je poslední prvek, ne jejich počet.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Po provedení kódu `cisla = [5, 10, 15, 20, 25]` a `index = cisla.index(15)` je v proměnné `index` uloženo:
+[0] 1
+[0] 3
+[x] 2
+[0] 15
+[VYSVETLENI] Metoda index() vrací pozici prvku, nikoli jeho hodnotu. Indexuje se od nuly: číslo 5 má index 0, 10 má index 1 a 15 má index 2.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše příkaz `print(seznam[-1])`, pokud `seznam = [1, 1, 2, 3, 5]`?
+[0] 1
+[0] 3
+[x] 5
+[0] Chybu IndexError.
+[VYSVETLENI] Záporný index počítá od konce: `-1` je poslední prvek, `-2` předposlední atd. Chyba by nastala až u indexu mimo rozsah seznamu.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vypíše následující kód? `a = [3,1,2]`, `a.sort()`, `print(a)`
+[0] [3, 1, 2]
+[0] [2, 3, 1]
+[x] [1, 2, 3]
+[0] [1, 3, 2]
+[VYSVETLENI] Metoda sort() seřadí seznam vzestupně přímo na místě (změní původní seznam). Po jejím zavolání proto print(a) vypíše seřazené hodnoty.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká je délka seznamu `poddata` po provedení kódu `data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]` a `poddata = data[2:8]`?
+[0] 5
+[0] 7
+[x] 6
+[0] 8
+[VYSVETLENI] Řez `data[2:8]` obsahuje prvky od indexu 2 včetně do indexu 8 vyjma, tedy 3, 4, 5, 6, 7 a 8. Počet prvků je 8 − 2 = 6.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká hodnota bude v proměnné `vysledek` po provedení kódu `matice = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]` a `vysledek = matice[1][2]`?
+[0] 2
+[0] 5
+[0] 8
+[x] 6
+[VYSVETLENI] Výraz `matice[1]` je druhý vnitřní seznam `[4, 5, 6]`. Z něj `[2]` vybere třetí prvek, tedy 6. První index určuje řádek, druhý sloupec.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jakou hodnotu bude mít proměnná `tri` po provedení kódu `cisla = (1, 2, 3, 3, 4, 3, 5, 3, 6)` a `tri = cisla.count(3)`?
+[0] 3
+[x] 4
+[0] 2
+[0] 9
+[VYSVETLENI] Metoda count() vrací, kolikrát se hodnota v tuple vyskytuje. Číslo 3 se v něm nachází čtyřikrát. Hodnota 9 je celkový počet prvků tuple.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Kolik prvků má množina (set) `mnozina = {1, 2, 3, 3, 4, 3, 5, 3, 6}`?
+[0] 9
+[0] 5
+[x] 6
+[0] 7
+[VYSVETLENI] Množina neobsahuje duplicity, takže se opakující trojky počítají jen jednou. Zůstanou unikátní hodnoty 1, 2, 3, 4, 5 a 6.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká je délka seznamu po provedení kódu `seznam = [1, 2, 3, 4, 5]`, `seznam.append(6)`, `seznam.extend([7, 8])` a `seznam.pop()`?
+[0] 6
+[0] 8
+[x] 7
+[0] 9
+[VYSVETLENI] Append přidá jeden prvek (6 prvků), extend přidá dva další (8 prvků) a pop() jeden prvek odebere. Výsledná délka je 7.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaká je konečná délka seznamu po kódu `seznam = [10, 20, 30]`, `seznam.insert(1, 15)`, `seznam.remove(30)`, `seznam.extend([40, 50])` a `seznam.pop(0)`?
+[0] 3
+[0] 5
+[x] 4
+[0] 6
+[VYSVETLENI] Postup: insert dá `[10, 15, 20, 30]`, remove(30) odstraní hodnotu 30 a vznikne `[10, 15, 20]`, extend přidá 40 a 50 a pop(0) odebere první prvek. Zbyde `[15, 20, 40, 50]`, tedy 4 prvky.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Kolik prvků bude mít množina `prunik` po provedení kódu `cisla = {1, 2, 3, 3, 4, 3}` a `prunik = cisla.intersection({1, 2, 30})`?
+[0] 1
+[0] 3
+[x] 2
+[0] 4
+[VYSVETLENI] Množina `cisla` je ve skutečnosti `{1, 2, 3, 4}`. Průnik obsahuje jen prvky společné oběma množinám, tedy 1 a 2. Číslo 30 v první množině není.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Kolik prvků bude mít množina `prunik` po provedení kódu `cisla = {1, 2, 3, 3, 4, 3}` a `prunik = cisla & {0, 1, 2, 3, 4} & {1, 2, 3}`?
+[0] 2
+[x] 3
+[0] 4
+[0] 5
+[VYSVETLENI] Operátor `&` je průnik množin. Z `{1, 2, 3, 4}` a `{0, 1, 2, 3, 4}` zůstane `{1, 2, 3, 4}` a průnik s `{1, 2, 3}` dá `{1, 2, 3}`, tedy 3 prvky.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Kolik prvků bude mít množina `sjednoceni` po provedení kódu `cisla = {1, 2, 3, 3, 4, 3}` a `sjednoceni = cisla.union({1, 2, 3})`?
+[0] 3
+[0] 6
+[x] 4
+[0] 9
+[VYSVETLENI] Množina `cisla` je `{1, 2, 3, 4}` a všechny prvky druhé množiny už obsahuje. Sjednocení tedy nic nového nepřidá a zůstanou 4 prvky. Hodnota 9 je počet všech čísel zapsaných v obou množinách, ale množina duplicity neuchovává.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Kolik prvků bude mít množina `sjednoceni` po provedení kódu `cisla = {1, 2, 3, 3, 2, 1}` a `sjednoceni = cisla | {1, 2, 3, 4, 5} | {1, 2, 3}`?
+[0] 3
+[0] 4
+[0] 8
+[x] 5
+[VYSVETLENI] Operátor `|` je sjednocení množin. Všechny hodnoty se pohybují mezi 1 a 5 a duplicity se sloučí, takže výsledkem je `{1, 2, 3, 4, 5}`, tedy 5 prvků.

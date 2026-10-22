@@ -1,0 +1,183 @@
+# Databáze otázek pro testovací aplikaci - Téma: Programování v Pythonu - slovníky (17 otázek)
+# Zdroj: Moodle test Programování 2.A 25-26 – Slovníky (export GIFT)
+# Pozn.: Zdrojový test obsahuje většinou otázky s více správnými odpověďmi, ty zde
+#        nejsou. Použity jsou číselné a krátké textové otázky s jedinou správnou
+#        odpovědí, které byly převedeny na výběr z možností a k nim doplněny
+#        věrohodné špatné odpovědi. Kód je zapsán ve zpětných apostrofech (`...`),
+#        víceřádkový kód je psán na jeden řádek.
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Kolik klíčů obsahuje následující slovník? `ovoce = {"jablko": 5, "hruška": 3, "pomeranč": 8}` a `len(ovoce)`
+[0] 2
+[x] 3
+[0] 8
+[0] 16
+[VYSVETLENI] Funkce len() u slovníku vrací počet klíčů (dvojic klíč–hodnota), nikoli součet hodnot. Slovník má tři klíče: jablko, hruška a pomeranč.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše následující kód? `sklad = {"jablko": 5, "banán": 10}`, `sklad["jablko"] = sklad["jablko"] + 3`, `print(sklad["jablko"])`
+[0] 3
+[0] 5
+[x] 8
+[0] 13
+[VYSVETLENI] Přiřazením do existujícího klíče se původní hodnota přepíše. Na pravé straně se nejdřív přečte stará hodnota 5, přičte se 3 a výsledek 8 se uloží zpět pod klíč „jablko“.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jakou hodnotu vrátí následující kód? `ovoce = {"jablko": 5, "hruška": 3}` a `print(ovoce.get("meruňka", 0))`
+[0] None
+[x] 0
+[0] KeyError
+[0] meruňka
+[VYSVETLENI] Metoda get() vrací hodnotu klíče, a pokud klíč neexistuje, vrátí druhý argument (zde 0). Bez druhého argumentu by vrátila None. Chyba KeyError nastane až při přístupu pomocí hranatých závorek, tedy `ovoce["meruňka"]`.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Kolik klíčů bude obsahovat slovník po provedení kódu? `brzdne_drahy = {"tramvaj": 48, "autobus": 25, "metro": 50}`, `brzdne_drahy["kamion"] = 30` a `len(brzdne_drahy)`
+[0] 3
+[x] 4
+[0] 5
+[0] 30
+[VYSVETLENI] Přiřazením do dosud neexistujícího klíče „kamion“ se ve slovníku vytvoří nová dvojice. K původním třem klíčům tak přibude čtvrtý.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaká bude hodnota proměnné `vysledek` po provedení kódu? `delky = {"A": 5, "B": 4, "C": 8, "D": 3}` a `vysledek = sum(delky.values())`
+[0] 4
+[0] 12
+[0] 17
+[x] 20
+[VYSVETLENI] Metoda values() vrací všechny hodnoty slovníku a funkce sum() je sečte: 5 + 4 + 8 + 3 = 20. Klíče „A“ až „D“ se do součtu nezapočítávají.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Kolik unikátních hodnot obsahuje slovník? `cisla = {"a": 5, "b": 3, "c": 5, "d": 7}`, `unikatni = len(set(cisla.values()))` a `print(unikatni)`
+[0] 2
+[x] 3
+[0] 4
+[0] 5
+[VYSVETLENI] Hodnoty jsou 5, 3, 5 a 7. Převod na množinu odstraní duplicity, takže zůstanou jen 5, 3 a 7. Počet hodnot slovníku (včetně duplicit) by byl 4.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Kolik znaků vypíše poslední řádek? `text = "abracadabra"`, `pouzite = ""`, `for letter in text: if letter not in pouzite: pouzite += letter` a `print(len(pouzite))`
+[0] 4
+[x] 5
+[0] 6
+[0] 11
+[VYSVETLENI] Do řetězce `pouzite` se každé písmeno přidá jen při prvním výskytu: a, b, r, c, d. Vznikne „abrcd“ o délce 5. Původní text má 11 znaků.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vypíše poslední řádek? `text = "motol"`, `pouzite = ""`, `for letter in text: if letter not in pouzite: pouzite += letter` a `print(pouzite)`
+[0] motol
+[0] mot
+[x] motl
+[0] ltom
+[VYSVETLENI] Řetězec obsahuje první použití každého písmene v původním pořadí. Druhé „o“ se přeskočí, protože už je v řetězci `pouzite`, a výsledek je „motl“.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaký je výsledek funkce `training()`? `def training(activities, lengths): result = 0`, `for activity in activities: result += lengths.get(activity, 0)`, `return result` a poté `print(training("ABBA", {"A": 5, "B": 3}))`
+[0] 4
+[0] 8
+[0] 11
+[x] 16
+[VYSVETLENI] Cyklus prochází jednotlivé znaky řetězce „ABBA“ a pro každý přičte hodnotu ze slovníku: 5 + 3 + 3 + 5 = 16. Hodnota 8 by vznikla, kdyby se každé písmeno počítalo jen jednou.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Kolik znaků (včetně oddělovače `|`) bude mít výsledek? `morse = {"A": ".-", "B": "-...", "C": "-.-."}`, funkce `to_morse(text)` s proměnnou `result = ''`, cyklem `for pismeno in text: result += morse.get(pismeno) + '|'` a `return result`, a poté `len(to_morse("ABC"))`
+[0] 3
+[0] 10
+[0] 11
+[x] 13
+[VYSVETLENI] Ke každému písmenu se připojí jeho kód a znak `|`: „.-|“ má 3 znaky, „-...|“ má 5 a „-.-.|“ má 5. Dohromady 3 + 5 + 5 = 13. Hodnota 10 je součet délek kódů bez oddělovačů.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše tento kód? `zak = {"jmeno": "Eva", "vek": 16}` a `print("jmeno" in zak)`
+[0] False
+[x] True
+[0] Eva
+[0] KeyError
+[VYSVETLENI] Operátor `in` u slovníku hledá mezi klíči. Klíč „jmeno“ ve slovníku je, proto výsledek je True. Výraz `"Eva" in zak` by vrátil False, protože „Eva“ je hodnota, ne klíč.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co se stane po provedení kódu `ovoce = {"jablko": 5, "hruška": 3}` a `print(ovoce["meruňka"])`?
+[0] Vypíše se None.
+[0] Vypíše se 0.
+[0] Do slovníku se přidá klíč „meruňka“.
+[x] Program skončí chybou KeyError.
+[VYSVETLENI] Při čtení přes hranaté závorky musí klíč existovat, jinak Python vyvolá KeyError. Bezpečné čtení s náhradní hodnotou umožňuje metoda get(), např. `ovoce.get("meruňka", 0)`.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vypíše tento kód? `body = {"Eva": 10, "Petr": 7}`, `x = body.pop("Petr")` a `print(x, len(body))`
+[0] Petr 1
+[0] 7 2
+[x] 7 1
+[0] {'Petr': 7} 1
+[VYSVETLENI] Metoda pop() odstraní klíč ze slovníku a vrátí jeho hodnotu, tedy 7. Ve slovníku pak zůstane jen jedna dvojice („Eva“: 10).
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vypíše tento kód? `text = "motol"`, `pocty = {}`, `for pismeno in text: pocty[pismeno] = pocty.get(pismeno, 0) + 1` a `print(pocty)`
+[x] {'m': 1, 'o': 2, 't': 1, 'l': 1}
+[0] {'m': 1, 'o': 1, 't': 1, 'l': 1}
+[0] {'m': 1, 'o': 2, 't': 1, 'o': 2, 'l': 1}
+[0] Program skončí chybou KeyError.
+[VYSVETLENI] Metoda get() vrátí dosavadní počet, nebo 0 u písmene, které ve slovníku ještě není, a k němu se přičte 1. Písmeno „o“ se objeví dvakrát, ale klíč může být ve slovníku jen jednou, proto má hodnotu 2. KeyError by nastal při zápisu `pocty[pismeno] += 1`.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká hodnota se vypíše? `text = "abracadabra"`, `pocty = {}`, `for pismeno in text: pocty[pismeno] = pocty.get(pismeno, 0) + 1` a `print(pocty["a"])`
+[0] 1
+[0] 2
+[x] 5
+[0] 11
+[VYSVETLENI] Slovník počítá výskyty jednotlivých písmen. Písmeno „a“ se ve slově „abracadabra“ vyskytuje pětkrát. Hodnota 11 je délka celého slova.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co vypíše tento kód? `d = {"a": 1, "b": 2, "a": 3}` a `print(d)`
+[0] {'a': 1, 'b': 2, 'a': 3}
+[0] {'a': 1, 'b': 2}
+[x] {'a': 3, 'b': 2}
+[0] Program skončí chybou, klíč se opakuje.
+[VYSVETLENI] Klíče ve slovníku jsou jedinečné. Když se stejný klíč zapíše vícekrát, platí poslední hodnota, takže „a“ má hodnotu 3. Klíč přitom zůstane na místě, kde byl zapsán poprvé.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co vypíše tento kód? `d = {"a": 1, "b": 2}`, `d["a"] = 3`, `d["c"] = d["a"] + d["b"]` a `print(len(d), d["c"])`
+[0] 2 3
+[0] 3 3
+[0] 2 5
+[x] 3 5
+[VYSVETLENI] Přiřazení `d["a"] = 3` přepíše existující hodnotu, nový klíč nevzniká. Klíč „c“ je nový a dostane hodnotu 3 + 2 = 5. Slovník má tedy 3 klíče.

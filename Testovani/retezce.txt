@@ -1,0 +1,212 @@
+# Databáze otázek pro testovací aplikaci - Téma: Programování v Pythonu - řetězce (20 otázek)
+# Zdroj: Moodle test Programování 1.A 25-26 – Řetězce (export XML)
+# Pozn.: Vybrány pouze otázky s právě jednou správnou odpovědí. Původně číselné a
+#        krátké textové otázky (s doplňováním výsledku) byly převedeny na výběr
+#        z možností a k nim doplněny věrohodné špatné odpovědi. Kód je zapsán ve
+#        zpětných apostrofech (`...`), víceřádkový kód je psán na jeden řádek.
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jakou vestavěnou funkci použijete k získání délky řetězce `'abc'`?
+[0] `size`
+[x] `len`
+[0] `length`
+[0] `count`
+[VYSVETLENI] Délku řetězce (stejně jako seznamu nebo tuple) vrací funkce `len()`. Funkce `length()` ani `size()` v Pythonu neexistují a `count()` je metoda, která počítá výskyty podřetězce.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaké písmeno přidáte před otevírací uvozovky řetězce v příkazu `print("Mňau! Já jsem {jmeno} a miluju {jidlo}!")`, aby proměnné ve složených závorkách byly dosazeny (f-string)?
+[0] `r`
+[0] `b`
+[x] `f`
+[0] `u`
+[VYSVETLENI] Předpona `f` vytvoří formátovaný řetězec (f-string), ve kterém se výrazy ve složených závorkách nahradí svými hodnotami. Předpona `r` označuje surový řetězec (raw), `b` bajty a `u` je pozůstatek z Pythonu 2, v Pythonu 3 nic nemění.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaká je délka řetězce? `len('game over')`
+[0] 8
+[x] 9
+[0] 10
+[0] 2
+[VYSVETLENI] Řetězec má osm písmen a mezeru, která se počítá také jako znak. Dohromady 9 znaků.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše následující kód? `text = "Java je zajímavá"`, `text = text.replace("Java", "Python")`, `print(text)`
+[0] Java je Python
+[0] Python Python zajímavá
+[0] Java je zajímavá
+[x] Python je zajímavá
+[VYSVETLENI] Metoda replace() vrátí nový řetězec, ve kterém je „Java“ nahrazena slovem „Python“. Výsledek se uloží zpět do proměnné `text`, takže ho print() vypíše.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaký je výsledek tohoto kódu? `text = "Ahoj Světe"` a `print(text.lower())`
+[0] AHOJ SVĚTE
+[0] Ahoj Světe
+[x] ahoj světe
+[0] ahoj Světe
+[VYSVETLENI] Metoda lower() převede všechna písmena na malá, a to včetně písmen s diakritikou. Velká písmena by vznikla metodou upper().
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše následující kód? `jmeno = "  Karel  "` a `print(len(jmeno.strip()))`
+[0] 9
+[0] 7
+[0] 8
+[x] 5
+[VYSVETLENI] Metoda strip() odstraní mezery na začátku a na konci, takže zůstane „Karel“ s pěti znaky. Původní řetězec má s mezerami délku 9.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Kolik slov obsahuje následující věta po rozdělení? `veta = "Python je programovací jazyk"`, `slova = veta.split()`, `len(slova)`
+[0] 3
+[x] 4
+[0] 5
+[0] 28
+[VYSVETLENI] Metoda split() bez argumentu rozdělí řetězec podle mezer na seznam slov: `["Python", "je", "programovací", "jazyk"]`. Funkce len() pak vrátí počet prvků seznamu. Hodnota 28 je délka původního řetězce.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaký index má začátek podřetězce "gram" v textu "programování"? `text = "programování"` a `index = text.find("gram")`
+[0] 2
+[x] 3
+[0] 4
+[0] -1
+[VYSVETLENI] Znaky se indexují od nuly: p = 0, r = 1, o = 2 a „gram“ začíná písmenem g na indexu 3. Hodnota -1 by se vrátila, kdyby se podřetězec v textu nenacházel.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaká je délka řetězce po nahrazení? `text = "Python"`, `text = text.replace("o", "**")`, `len(text)`
+[0] 5
+[0] 6
+[x] 7
+[0] 8
+[VYSVETLENI] Jedno písmeno „o“ se nahradí dvěma hvězdičkami, takže délka vzroste z 6 na 7 (Pyth**n).
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaká je délka výsledného řetězce? `vysledek = 'Ahoj' + ' ' + 'světe'` a `len(vysledek)`
+[0] 3
+[0] 9
+[x] 10
+[0] 11
+[VYSVETLENI] Operátor `+` spojí tři řetězce: čtyři znaky, mezeru a pět znaků. Dohromady 4 + 1 + 5 = 10.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vypíše následující kód? `slovo = "Python"` a `print(slovo[::-1])`
+[0] Python
+[0] nohty
+[0] n
+[x] nohtyP
+[VYSVETLENI] Řez s krokem -1 prochází řetězec od konce k začátku, takže se obrátí pořadí všech znaků. Hodnota „n“ by vznikla výrazem `slovo[-1]`.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vypíše následující kód? `slovo = "Python"` a `print(slovo[1:4])`
+[0] Py
+[0] thon
+[0] ython
+[x] yth
+[VYSVETLENI] Řez `[1:4]` bere znaky od indexu 1 včetně do indexu 4 vyjma, tedy indexy 1, 2 a 3 (y, t, h).
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká je délka výsledného řetězce? `veta = "Слава Україні"`, `slova = veta.split()`, `vysledek = "".join(slova)`, `delka = len(vysledek)`
+[0] 11
+[x] 12
+[0] 13
+[0] 2
+[VYSVETLENI] Metoda split() vytvoří dvě slova a join() je spojí bez oddělovače, tedy bez mezery. Slovo „Слава“ má 5 písmen a „Україні“ 7, dohromady 12. Délka původní věty včetně mezery je 13.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká je hodnota proměnné `vysledek` po provedení kódu? `text = "   Creeper   "`, `text = text.strip()`, `vysledek = len(text)`
+[0] 3
+[0] 10
+[0] 13
+[x] 7
+[VYSVETLENI] Metoda strip() odstraní mezery na obou koncích řetězce, takže zůstane „Creeper“ se sedmi znaky. Hodnota 13 je délka původního řetězce s mezerami.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká je délka výsledného řetězce? `text = "Ahoj"`, `vysledek = ""`, `for znak in text: vysledek += znak * 2` a `len(vysledek)`
+[0] 4
+[0] 6
+[x] 8
+[0] 12
+[VYSVETLENI] V každém průchodu cyklu se ke `vysledek` připojí aktuální znak zdvojený (A → „AA“, h → „hh“, ...). Každý ze čtyř znaků tak přispěje dvěma znaky, dohromady 8 (AAhhoojj).
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaký index se vypíše pro písmeno „h“ v řetězci „Python“? `text = "Python"`, `for i, znak in enumerate(text): if znak == "h": print(i)`
+[0] 2
+[x] 3
+[0] 4
+[0] 5
+[VYSVETLENI] Funkce enumerate() dává dvojice (index, znak) a indexy začínají od nuly: P = 0, y = 1, t = 2, h = 3. Hodnota 4 by vznikla při počítání od jedničky.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká bude hodnota proměnné `vysledek` po provedení kódu? `text = "Craft table"` a `vysledek = text.count("a")`
+[0] 0
+[0] 1
+[x] 2
+[0] 3
+[VYSVETLENI] Metoda count() vrací počet výskytů podřetězce. Písmeno „a“ se v textu nachází dvakrát: jednou ve slově „Craft“ a jednou ve slově „table“.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaká je délka řetězce? `len('Hello \t Steve')`
+[0] 12
+[x] 13
+[0] 14
+[0] 16
+[VYSVETLENI] Sekvence `\t` představuje jediný znak (tabulátor). Počítá se 5 písmen slova Hello, mezera, tabulátor, mezera a 5 písmen slova Steve: 5 + 1 + 1 + 1 + 5 = 13.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaká je délka řetězce s tabulátory? `len('a\tb\tc')`
+[0] 3
+[x] 5
+[0] 7
+[0] 11
+[VYSVETLENI] Escape sekvence `\t` je v řetězci jediný znak, ač se při zápisu skládá ze dvou. Řetězec obsahuje tři písmena a dva tabulátory, dohromady 5 znaků.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Kolik písmen „a“ obsahuje následující řetězec? `text = "programování"` a `pocet = text.count("a")`
+[0] 0
+[x] 1
+[0] 2
+[0] 3
+[VYSVETLENI] Metoda count() rozlišuje znaky přesně: „á“ s čárkou je pro Python jiný znak než „a“. Písmeno „a“ bez diakritiky je v řetězci jen jednou, v části „gram“.

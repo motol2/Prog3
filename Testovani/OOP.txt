@@ -1,0 +1,212 @@
+# Databáze otázek pro testovací aplikaci - Téma: Programování v Pythonu - objektově orientované programování (20 otázek)
+# Zdroj: Moodle test Programování 2.A 25-26 – OOP (export GIFT)
+# Pozn.: Vybrány pouze otázky s právě jednou správnou odpovědí. Původně číselné
+#        otázky (s doplňováním výsledku) byly převedeny na výběr z možností a
+#        k nim doplněny věrohodné špatné odpovědi. Kód je zapsán ve zpětných
+#        apostrofech (`...`), víceřádkový kód je psán na jeden řádek.
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je objektově orientované programování (OOP)?
+[0] Programovací jazyk určený pouze pro vytváření objektových webových aplikací.
+[x] Programování pomocí objektů (třeba Auto, Pes), které mají vlastnosti (barva, jméno) a něco umí.
+[0] Metoda pro psaní kódu bez použití funkcí.
+[0] Způsob programování založený pouze na strukturovaném programování.
+[VYSVETLENI] OOP je programovací styl, ne jazyk. Program se skládá z objektů, které drží data (atributy) a umí s nimi pracovat (metody). Funkce se přitom používají dál, jen jsou součástí tříd jako metody.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaké jsou tři základní pilíře objektově orientovaného programování?
+[0] Abstrakce, kompilace a interpretace.
+[0] Konstanty, operátory a knihovny.
+[x] Zapouzdření (encapsulation), dědičnost (inheritance) a polymorfismus (polymorphism).
+[0] Proměnné, funkce a cykly.
+[VYSVETLENI] Zapouzdření chrání data objektu, dědičnost umožňuje znovupoužití kódu a polymorfismus dovoluje zacházet s různými objekty jednotným způsobem. Některé učebnice uvádějí jako čtvrtý pilíř ještě abstrakci, kompilace a interpretace ale s OOP nesouvisí. Ostatní možnosti jsou obecné pojmy programování.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaký je rozdíl mezi třídou a objektem?
+[0] Třída je objekt s veřejnými metodami.
+[0] Objekt je abstraktní koncept, třída je jeho implementace.
+[x] Třída je šablona (blueprint), objekt je konkrétní instance třídy.
+[0] Třída a objekt jsou synonyma.
+[VYSVETLENI] Třída popisuje, jaké atributy a metody objekty budou mít (například třída Pes). Z jedné třídy lze vytvořit libovolně mnoho objektů, každý s vlastními hodnotami atributů (Alík, Rex).
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaká je role konstruktoru `__init__()` ve třídě?
+[0] Metoda pro zničení objektu a uvolnění paměti.
+[0] Funkce pro kontrolu správnosti dat.
+[0] Metoda pro výpis informací o objektu.
+[x] Metoda, která se automaticky spustí při vytvoření nového objektu a nastaví jeho počáteční vlastnosti.
+[VYSVETLENI] Při volání `Hrac("Karel", 10)` Python vytvoří nový objekt a zavolá na něm `__init__()`. Ta typicky uloží argumenty do atributů pomocí `self`.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaký je rozdíl mezi metodou a funkcí v kontextu OOP?
+[0] Metoda je rychlejší než funkce.
+[0] Funkce může mít parametry, metoda ne.
+[x] Metoda je funkce definovaná uvnitř třídy a pracuje s daty objektu.
+[0] Metoda a funkce jsou totožné pojmy.
+[VYSVETLENI] Metoda je funkce patřící třídě a její první parametr `self` odkazuje na objekt, na kterém byla zavolána. Parametry mohou mít metody i funkce a rychlost se tím neliší.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] K čemu slouží dědičnost (inheritance) v OOP?
+[0] Umožňuje vytvořit více objektů najednou.
+[0] Slouží k ochraně dat před neoprávněným přístupem.
+[x] Umožňuje vytvořit novou třídu na základě existující třídy a zdědit její vlastnosti a metody.
+[0] Zajišťuje automatické uvolnění paměti.
+[VYSVETLENI] Potomek převezme atributy a metody rodiče a může je rozšířit nebo přepsat (např. Pes a Kocka dědí od třídy Zvire). Ochranu dat řeší zapouzdření a paměť uvolňuje správce paměti.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co znamená princip zapouzdření (encapsulation) v OOP?
+[0] Vytvoření více objektů ze stejné třídy.
+[0] Spojení více tříd do jedné nadtřídy.
+[x] Objekt si „střeží“ své důležité údaje a ostatní s ním mohou pracovat jen přes povolené metody.
+[0] Zápis kódu vnořených cyklů do kompaktní formy.
+[VYSVETLENI] Zapouzdření skrývá vnitřní stav objektu a zpřístupňuje ho jen kontrolovaným způsobem. Tak například nikdo nemůže nastavit zůstatek účtu na záporné číslo, pokud to metoda nedovolí.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co představuje polymorfismus v objektově orientovaném programování?
+[0] Možnost vytvořit více konstruktorů v jedné třídě.
+[0] Schopnost třídy dědit z více nadtříd současně.
+[x] Schopnost objektů různých tříd reagovat na stejné volání metody různými způsoby.
+[0] Automatická konverze datových typů.
+[VYSVETLENI] Stejným voláním, např. `zvire.ozvi_se()`, přimějeme psa k štěkání a kočku k mňoukání. Volající kód nemusí znát konkrétní třídu objektu.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co znamenají přístupové modifikátory (access modifiers) jako public, private a protected?
+[0] Určují datový typ proměnných.
+[x] Určují viditelnost a přístupnost atributů a metod třídy z různých částí programu.
+[0] Specifikují rychlost vykonávání metod.
+[0] Definují pořadí volání metod.
+[VYSVETLENI] Modifikátory řídí, odkud lze k atributu nebo metodě přistupovat. Python je nemá jako klíčová slova, ale používá konvenci: jedno podtržítko `_x` znamená „chráněné“ a dvě podtržítka `__x` „soukromé“.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co se vypíše po spuštění tohoto kódu? `class Hrac:` s metodou `__init__(self, jmeno, body)`, která uloží `self.jmeno = jmeno` a `self.skore = body`, s metodou `vypis(self)`, která provede `print(f"{self.jmeno}: {self.skore} b")`, a poté `p1 = Hrac("Karel", 10)` a `p1.vypis()`
+[x] Karel: 10 b
+[0] self.jmeno: self.skore b
+[0] Karel: body b
+[0] {self.jmeno}: {self.skore} b
+[VYSVETLENI] V f-řetězci se výrazy ve složených závorkách nahradí hodnotami atributů objektu, tedy jménem „Karel“ a skóre 10. Přesný text `self.jmeno` ani `body` se nevypíše.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co se vypíše po provedení kódu? `class Kniha:` s metodou `__init__(self, nazev, autor)`, která uloží `self.titul = nazev` a `self.autor = autor`, a poté `k = Kniha("R.U.R.", "Karel Čapek")` a `print(k.titul)`
+[0] Karel Čapek
+[0] nazev
+[x] R.U.R.
+[0] k.titul
+[VYSVETLENI] Atribut se jmenuje `titul` a konstruktor do něj uloží hodnotu parametru `nazev`, tedy „R.U.R.“. Jméno parametru `nazev` se na objektu vůbec nevytváří.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaký bude výstup následujícího kódu? `class Kotatko:` s metodou `zamnoukej(self)`, která provede `print(f"{self.jmeno}: Mňau!")`, a poté `mourek = Kotatko()`, `mourek.jmeno = 'Mourek'` a `mourek.zamnoukej()`
+[0] Mňau!
+[0] Kotatko: Mňau!
+[x] Mourek: Mňau!
+[0] AttributeError: 'Kotatko' object has no attribute 'jmeno'
+[VYSVETLENI] Atribut lze v Pythonu přidat k objektu i dodatečně přiřazením mimo třídu. Před voláním metody už `mourek.jmeno` existuje, takže se použije jeho hodnota.
+
+---
+
+[OBTIZNOST: střední]
+[Q] V programu máme seznam `zvirata = [Pes("Alík"), Kocka("Micka")]`. Obě třídy dědí od třídy `Zvire` a obě mají vlastní implementaci metody `ozvi_se()`. Co se vypíše při spuštění cyklu `for zvire in zvirata: zvire.ozvi_se()`?
+[0] Oba objekty vypíší „Zvire vydává zvuk“.
+[0] Program skončí chybou.
+[x] Každý objekt se ozve po svém (Alík zaštěká, Micka zamňouká).
+[0] Vypíše se pouze „Alík: Haf haf!“.
+[VYSVETLENI] Python vybere metodu podle skutečné třídy objektu, ne podle třídy rodiče. Je to polymorfismus: cyklus volá stejnou metodu, ale pes a kočka zareagují každý po svém.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Ve třídě `BankovniUcet` je definován privátní atribut `__zustatek`. Co se vypíše po spuštění kódu? `konto = BankovniUcet(5000)` a `print(konto.vypis())`, kde `vypis(self)` vrací `self.__zustatek`
+[0] AttributeError
+[0] 0
+[0] zustatek
+[x] 5000
+[VYSVETLENI] K soukromému atributu se uvnitř třídy přistupuje normálně, a proto metoda `vypis()` hodnotu 5000 vrátí. Soukromý je atribut jen pro přímý přístup zvenku.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká bude hodnota atributu `zustatek` objektu `prasatko` po provedení kódu? `class Pokladnicka:` s konstruktorem `self.zustatek = 50`, metodou `pridej(self, castka)` s příkazem `self.zustatek += castka`, a poté `prasatko = Pokladnicka()`, `prasatko.pridej(100)` a `print(prasatko.zustatek)`
+[0] 50
+[0] 100
+[x] 150
+[0] TypeError
+[VYSVETLENI] Konstruktor nastaví počáteční zůstatek na 50. Operátor `+=` pak přičte částku 100, takže výsledek je 150. Hodnota 100 by vznikla, kdyby metoda zůstatek přepsala.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká bude hodnota atributu `rychlost` po vytvoření objektu `papousek = Lokomotiva("477.0", 100)` a příkazu `print(papousek.rychlost)`, pokud konstruktor nastaví `self.jmeno = jmeno`, `self.max_v = max_rychlost` a `self.rychlost = 0`? Metoda `zrychli()` se nevolá.
+[0] 100
+[0] 477.0
+[x] 0
+[0] None
+[VYSVETLENI] Konstruktor nastaví aktuální rychlost vždy na 0. Maximální rychlost 100 se ukládá do jiného atributu, `max_v`, a rychlost se změní až zavoláním metody `zrychli()`.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co se vypíše po spuštění tohoto kódu? `class Hrac:` s metodou `__init__(self, jmeno, body)`, která uloží `self.jmeno = jmeno` a `self.skore = body`, s metodou `vypis(self)` a poté `p1 = Hrac("Karel")` a `p1.vypis()`
+[0] Karel: 10 b
+[0] self.jmeno: self.skore b
+[0] Karel: body b
+[x] TypeError
+[VYSVETLENI] Konstruktor vyžaduje dva argumenty (`jmeno` a `body`), ale předali jsme jen jeden. Python proto vyvolá TypeError ještě při vytváření objektu a metoda `vypis()` se nikdy nespustí.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaký bude výstup následujícího kódu? `class Kotatko:` s metodou `zamnoukej(self)`, která provede `print(f"{self.jmeno}: Mňau!")`, a poté `mourek = Kotatko()` a `mourek.zamnoukej()`
+[0] Mourek: Mňau!
+[0] Mňau!
+[0] Kotatko: Mňau!
+[x] AttributeError: 'Kotatko' object has no attribute 'jmeno'
+[VYSVETLENI] Třída nemá konstruktor, který by atribut `jmeno` vytvořil, a ani jsme ho nepřiřadili zvenčí. Metoda se tak snaží přečíst neexistující atribut a Python vyvolá AttributeError.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Ve třídě `BankovniUcet` je definován privátní atribut `__zustatek`. Co se vypíše po spuštění kódu? `konto = BankovniUcet(5000)` a `print(konto.__zustatek)`
+[0] 5000
+[x] AttributeError
+[0] 0
+[0] zustatek
+[VYSVETLENI] Python u atributů začínajících dvěma podtržítky přejmenuje jméno na `_BankovniUcet__zustatek` (name mangling). Zvenčí tak atribut `__zustatek` neexistuje a vznikne AttributeError. Správný způsob je přistupovat k hodnotě přes metodu třídy.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaká bude výsledná hodnota atributu `rychlost` po zavolání `papousek.zrychli(150)` u objektu `papousek = Lokomotiva("477.0", 100)`, pokud metoda `zrychli(self, nova_rychlost)` nastaví rychlost na `nova_rychlost`, je-li `nova_rychlost <= self.max_v`, jinak na `self.max_v`?
+[0] 150
+[0] 0
+[0] 50
+[x] 100
+[VYSVETLENI] Požadovaná rychlost 150 je větší než maximum 100, proto se provede větev `else` a rychlost se nastaví na `max_v`, tedy 100. Lokomotiva tedy nemůže překročit své maximum.

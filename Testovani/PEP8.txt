@@ -1,0 +1,151 @@
+# Databáze otázek pro testovací aplikaci - Téma: Programování v Pythonu - styl kódu PEP 8 (14 otázek)
+# Zdroj: Moodle test Programování 2.A 25-26 – PEP 8 (export GIFT)
+# Pozn.: Všechny otázky ve zdroji mají právě jednu správnou odpověď, proto byly
+#        převedeny všechny. Kód je zapsán ve zpětných apostrofech (`...`), víceřádkový
+#        kód je psán na jeden řádek (odřádkování je označeno znakem „⏎“).
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Který z následujících názvů proměnných je správně podle PEP 8?
+[0] `pocetBodu`
+[0] `PočetBodů`
+[x] `pocet_bodu`
+[0] `PocetBodu`
+[VYSVETLENI] Proměnné a funkce se podle PEP 8 pojmenovávají malými písmeny a slova se oddělují podtržítkem (snake_case). Zápisy `pocetBodu` (camelCase) a `PocetBodu` (CapWords) se v Pythonu používají jinde, například pro třídy.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jak by měla být pojmenována konstanta podle PEP 8?
+[0] `max_pokus`
+[0] `maxPokus`
+[x] `MAX_POKUS`
+[0] `Max_Pokus`
+[VYSVETLENI] Konstanty se píší velkými písmeny a slova se oddělují podtržítkem. Python konstanty nehlídá, ale podle velkých písmen programátor pozná, že hodnotu nemá měnit.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Pro co se v Pythonu používá CamelCase (např. `MojeTrida`)?
+[0] Pro názvy funkcí.
+[0] Pro názvy proměnných.
+[x] Pro názvy tříd.
+[0] Pro konstanty.
+[VYSVETLENI] Názvy tříd se píší ve stylu CapWords: každé slovo začíná velkým písmenem a bez oddělovačů. Funkce a proměnné používají snake_case a konstanty velká písmena s podtržítky.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Kolika mezerami se odsazuje kód v Pythonu podle PEP 8?
+[0] 2 mezerami
+[x] 4 mezerami
+[0] 8 mezerami
+[0] 1 tabulátorem
+[VYSVETLENI] Jedna úroveň odsazení odpovídá čtyřem mezerám. Tabulátory se nedoporučují, a pokud se v jednom bloku nejednoznačně míchají s mezerami, Python 3 skončí chybou TabError.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaká je doporučená maximální délka řádku podle PEP 8?
+[0] 50 znaků
+[0] 100 znaků
+[x] 79 znaků
+[0] 120 znaků
+[VYSVETLENI] Řádky se mají omezit na 79 znaků, aby se kód dal pohodlně číst vedle sebe v několika oknech. U dlouhých komentářů a dokumentačních řetězců se doporučuje dokonce 72 znaků.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Který z následujících názvů je nejlépe popisný podle PEP 8?
+[0] `p`
+[0] `x`
+[0] `tmp`
+[x] `pocet_studentu`
+[VYSVETLENI] Název má říkat, co hodnota znamená. Jednopísmenné názvy a obecné názvy jako `tmp` čtenáři nic neříkají. Výjimkou jsou krátké pomocné proměnné, například `i` v cyklu.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Který zápis volání funkce je správný podle PEP 8?
+[0] `funkce(a,b,c)`
+[x] `funkce(a, b, c)`
+[0] `funkce( a, b, c )`
+[0] `funkce (a, b, c)`
+[VYSVETLENI] Za čárkou se píše jedna mezera, před čárkou žádná. Mezery se nedávají ani těsně za otevírací závorku a před zavírací, ani mezi název funkce a otevírací závorku.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Který zápis je správně podle PEP 8?
+[0] `x=5+3`
+[0] `x= 5+3`
+[x] `x = 5 + 3`
+[0] `x =5 + 3`
+[VYSVETLENI] Okolo operátoru přiřazení se vždy píše po jedné mezeře z každé strany, a to stejně na obou stranách. U jednoduchých aritmetických výrazů se mezery okolo operátorů také doporučují. PEP 8 dovoluje mezery vynechat jen u operátorů s vyšší prioritou, např. `x = a*2 - 1`.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Který zápis seznamu je správně podle PEP 8?
+[0] `seznam = [1,2,3,4,5]`
+[x] `seznam = [1, 2, 3, 4, 5]`
+[0] `seznam=[1, 2, 3, 4, 5]`
+[0] `seznam = [ 1, 2, 3, 4, 5 ]`
+[VYSVETLENI] Za každou čárkou následuje mezera a po hranatých závorkách se mezery nepíší. Okolo `=` jsou mezery, takže je správný pouze zápis s jednou mezerou za čárkou.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Který způsob importu je správný podle PEP 8?
+[0] `import math, random, sys`
+[x] `import math` ⏎ `import random` ⏎ `import sys`
+[0] `import math; import random; import sys`
+[0] `from math import *`
+[VYSVETLENI] Každý import patří na samostatný řádek, což se lépe čte a kontroluje. Hvězdičkový import `from math import *` se nedoporučuje, protože zanáší do programu neznámé názvy a může přepsat již existující.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Kolik prázdných řádků by mělo být mezi dvěma funkcemi na nejvyšší úrovni podle PEP 8?
+[0] 1 prázdný řádek
+[x] 2 prázdné řádky
+[0] 3 prázdné řádky
+[0] Žádný prázdný řádek
+[VYSVETLENI] Funkce a třídy na nejvyšší úrovni se oddělují dvěma prázdnými řádky. Metody uvnitř třídy se oddělují jedním prázdným řádkem.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Proč se nedoporučuje používat diakritiku v názvech proměnných?
+[0] Protože Python ji nepodporuje.
+[0] Protože to zpomaluje program.
+[x] Kvůli kompatibilitě a čitelnosti kódu.
+[0] Protože to způsobuje chyby.
+[VYSVETLENI] Python 3 diakritiku v identifikátorech povoluje a ke zpomalení ani chybám nevede. Kód ale často sdílejí lidé s různými klávesnicemi a editory, a proto se používá jen ASCII, nejlépe s anglickými názvy.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jak se správně píše inline komentář podle PEP 8?
+[0] `x = 5 #komentář`
+[0] `x = 5# komentář`
+[x] `x = 5  # komentář`
+[0] `x = 5   #komentář`
+[VYSVETLENI] Inline komentář se od kódu odděluje alespoň dvěma mezerami a znak `#` je následován jednou mezerou před textem. Zápis bez mezery za `#` nebo s jednou mezerou před ním je proti doporučení.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jak se správně porovnává s hodnotou `None` podle PEP 8?
+[0] `if x == None:`
+[x] `if x is None:`
+[0] `if x === None:`
+[0] `if None == x:`
+[VYSVETLENI] `None` existuje v programu jen jednou, a proto se porovnává identita operátorem `is`. Operátor `==` lze u vlastních tříd předefinovat a výsledek by se mohl lišit. Operátor `===` Python vůbec nemá a zápis je syntaktická chyba.

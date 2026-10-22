@@ -1,0 +1,212 @@
+# Databáze otázek pro testovací aplikaci - Téma: Programování v Pythonu - funkce, *args, **kwargs a výjimky (20 otázek)
+# Zdroj: Moodle test Programování 2.A 25-26 – Funkce (export GIFT)
+# Pozn.: Vybrány pouze otázky s právě jednou správnou odpovědí. Původně číselné
+#        otázky (s doplňováním výsledku) byly převedeny na výběr z možností a
+#        k nim doplněny věrohodné špatné odpovědi. Kód je zapsán ve zpětných
+#        apostrofech (`...`), víceřádkový kód je psán na jeden řádek.
+# Formát:
+# [OBTIZNOST: lehká | střední | těžká]
+# [Q] Text otázky
+# [x] Správná odpověď
+# [0] Špatná odpověď
+# [VYSVETLENI] Vysvětlení správné odpovědi
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vypíše tento kód? `def funkce(x): return x * 2` a poté `print(funkce(3))`
+[0] 3
+[0] 5
+[x] 6
+[0] None
+[VYSVETLENI] Funkce vrátí dvojnásobek argumentu, tedy 3 * 2 = 6, a print() tuto vrácenou hodnotu vypíše. None by se vypsalo jen tehdy, kdyby funkce neměla příkaz return.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co umožňuje použití `*args` ve funkci?
+[x] Předat libovolný počet pozičních argumentů.
+[0] Předat libovolný počet klíčových argumentů.
+[0] Vytvořit seznam defaultních hodnot.
+[0] Zachytit všechny výjimky.
+[VYSVETLENI] Hvězdička před názvem parametru sesbírá všechny další poziční argumenty do tuple. Klíčové argumenty (pojmenované při volání) sbírá až `**kwargs`.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co dělá funkce `isinstance()`?
+[0] Vytvoří novou instanci třídy.
+[0] Změní typ proměnné.
+[x] Ověří, zda je proměnná daného typu.
+[0] Vypíše všechny instance v programu.
+[VYSVETLENI] Volání `isinstance(x, int)` vrátí True, pokud je x typu int (nebo jeho potomka), jinak False. Hodnotu ani typ proměnné nemění.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je účelem typových hintů (např. `a: int`) v Pythonu?
+[0] Vynucují správný datový typ při běhu programu.
+[0] Automaticky konvertují typy proměnných.
+[0] Zabraňují všem chybám v programu.
+[x] Pomáhají čitelnosti kódu a nástrojům pro kontrolu.
+[VYSVETLENI] Typové hinty jsou jen nápověda pro programátory a nástroje (editor, mypy). Python je za běhu nekontroluje, takže funkci s `a: int` můžeš zavolat i s textem.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Kdy se používá `raise TypeError()`?
+[0] Když chceme zastavit program.
+[0] Když chceme převést typ proměnné.
+[x] Když funkce dostane argument nesprávného typu.
+[0] Když chceme vypsat chybovou hlášku.
+[VYSVETLENI] TypeError je výjimka určená pro situaci, kdy hodnota má nevhodný typ. Hodí se ve funkci, která ověří typ argumentu pomocí isinstance() a zjistí, že nesedí.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co se stane, když uživatel zadá text "ahoj" do tohoto kódu? `try:` `cislo = int(input("Zadej číslo: "))` `print("Úspěch!")` `except ValueError:` `print("Chyba vstupu")`
+[0] Vypíše se "Úspěch!".
+[x] Vypíše se "Chyba vstupu".
+[0] Program spadne s chybou ValueError.
+[0] Nevypíše se nic.
+[VYSVETLENI] Funkce int() nedokáže převést text "ahoj" na číslo, a proto vyvolá ValueError. Blok except tuto výjimku zachytí, takže program nespadne a vypíše se chybová hláška. Příkaz print("Úspěch!") se už neprovede.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vrací metoda `kwargs.items()`?
+[0] Pouze klíče (názvy argumentů).
+[0] Pouze hodnoty argumentů.
+[x] Dvojice (klíč, hodnota) pro každý argument.
+[0] Počet argumentů.
+[VYSVETLENI] Metoda items() u slovníku vrací dvojice (klíč, hodnota), které lze procházet cyklem `for klic, hodnota in kwargs.items():`. Samotné klíče vrací keys(), hodnoty values() a počet prvků len().
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaký je rozdíl mezi `*args` a `**kwargs`?
+[0] `*args` jsou řetězce, `**kwargs` jsou čísla.
+[0] `*args` jsou povinné, `**kwargs` nepovinné.
+[x] `*args` vytváří tuple, `**kwargs` vytváří dictionary.
+[0] Žádný rozdíl, jsou to synonyma.
+[VYSVETLENI] Funkce dostane všechny nadbytečné poziční argumenty v tuple `args` a všechny nadbytečné pojmenované argumenty ve slovníku `kwargs` (klíč je název argumentu). Ani jeden z nich není povinný.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Které pořadí parametrů ve funkci je správné?
+[0] `**kwargs` → `*args` → poziční → pojmenované
+[0] poziční → pojmenované → `*args` → `**kwargs`
+[x] poziční → `*args` → pojmenované → `**kwargs`
+[0] `*args` → poziční → `**kwargs` → pojmenované
+[VYSVETLENI] Například `def f(a, b, *args, c=0, **kwargs)`: nejdřív běžné poziční parametry, pak `*args`, poté parametry zadávané pouze jménem a nakonec `**kwargs`, který musí být vždy poslední.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Která z těchto možností správně zachytí více typů výjimek?
+[0] `except [ValueError, TypeError, IndexError]:`
+[x] `except (ValueError, TypeError, IndexError):`
+[0] `except ValueError and TypeError:`
+[0] `except ValueError or TypeError:`
+[VYSVETLENI] Více typů výjimek se zapisuje jako tuple v kulatých závorkách. Zápisy s `and` nebo `or` Python vyhodnotí jako logický výraz a zachytily by jen jednu z výjimek. Seznam v hranatých závorkách použít nelze, při zachytávání by skončil chybou TypeError.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co funkce vypíše? `def vypis_info(**kwargs):` `for klic in kwargs.keys(): print(klic, end=', ')` a poté `vypis_info(jmeno="Petr", vek=30, mesto="Praha")`
+[0] `Petr, 30, Praha, `
+[x] `jmeno, vek, mesto, `
+[0] `jmeno=Petr, vek=30, mesto=Praha, `
+[0] Nevypíše nic, protože kwargs nelze procházet cyklem.
+[VYSVETLENI] Parametr `kwargs` je slovník a metoda keys() vrací jeho klíče, tedy názvy argumentů zadaných při volání. Díky `end=', '` se za každým klíčem vypíše čárka a mezera. Hodnoty by vypsalo values(), dvojice items().
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vypíše tento kód? `def obsah(a, b):` `if not (isinstance(a, int) and isinstance(b, int)): return "Chyba"` `return a * b` a poté `print(obsah(5, "3"))`
+[0] 15
+[0] 33333
+[0] TypeError
+[x] Chyba
+[VYSVETLENI] Druhý argument je řetězec "3", takže `isinstance(b, int)` je False a celá podmínka platí. Funkce vrátí text "Chyba" ještě před násobením. Bez kontroly by `5 * "3"` vytvořilo řetězec 33333.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaký je výsledek? `def prumer(*cisla): return sum(cisla) / len(cisla)` a poté `print(prumer(10, 20, 30, 40))`
+[0] 100
+[0] 25
+[x] 25.0
+[0] None
+[VYSVETLENI] Součet čísel je 100 a počet 4. Dělení `/` vrací v Pythonu vždy float, takže se vypíše 25.0, nikoli 25.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaký je výsledek? `def multiply(*nums, factor=2): return sum(nums) * factor` a poté `multiply(3, 4, 5, factor=3)`
+[0] 12
+[0] 24
+[0] 60
+[x] 36
+[VYSVETLENI] Čísla 3, 4 a 5 skončí v tuple `nums`, jejich součet je 12. Parametr za `*nums` lze zadat jen jménem a my ho nastavili na 3, takže 12 * 3 = 36. Hodnota 24 by vznikla s výchozím factor=2.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vypíše volání funkce na poslední řádce? `def vypis(k, l, **data): print(f"k = {k}, data = {data}")` a poté `vypis(2, l=4, predmet='OMG', rocnik=3)`
+[0] `k = 2, data = {'l': 4, 'predmet': 'OMG', 'rocnik': 3}`
+[0] `k = 2, data = {}`
+[x] `k = 2, data = {'predmet': 'OMG', 'rocnik': 3}`
+[0] Program skončí chybou TypeError.
+[VYSVETLENI] Argument `l=4` odpovídá pojmenovanému parametru `l`, takže se do `data` nedostane. Slovník `data` zachytí jen nadbytečné pojmenované argumenty, tedy `predmet` a `rocnik`.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Jaká bude hodnota `args` při volání `mix(1, 2, 3, 4, 5, c=10, x=100)` u funkce `def mix(a, b, *args, c=0, **kwargs): print(args)`?
+[0] (1, 2)
+[0] (1, 2, 3, 4, 5)
+[x] (3, 4, 5)
+[0] (10, 100)
+[VYSVETLENI] Čísla 1 a 2 se přiřadí parametrům `a` a `b`. Zbývající poziční argumenty 3, 4 a 5 sesbírá `*args` do tuple. Hodnoty `c=10` a `x=100` jsou pojmenované, takže do `args` nepatří.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jakou hodnotu bude mít `x` po provedení kódu? `try: x = 10 / 0` `except ZeroDivisionError: x = 0` `finally: x = x + 1`
+[0] 0
+[x] 1
+[0] Vyhodí se neošetřená výjimka.
+[0] x nebude definováno.
+[VYSVETLENI] Dělení nulou vyvolá ZeroDivisionError, blok except nastaví x na 0. Blok finally se provede vždy, takže x se zvýší o 1 a výsledná hodnota je 1.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jaká bude hodnota `count` po provedení kódu? `count = 0` `try: count += 1; raise ValueError()` `except ValueError: count += 2` `finally: count += 3`
+[0] 3
+[0] 4
+[0] 5
+[x] 6
+[VYSVETLENI] V bloku try se přičte 1 a vyvolá se ValueError, v bloku except se přičtou 2 a blok finally přičte vždy ještě 3. Dohromady 1 + 2 + 3 = 6.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Co vypíše tento kód? `def deleni(a, b): if b == 0: raise ValueError("Nulou nelze dělit!")` `return a / b` `try: vysledek = deleni(10, 0)` `except ValueError: vysledek = 0` a nakonec `print(vysledek)`
+[x] 0
+[0] Nulou nelze dělit!
+[0] None
+[0] Program skončí chybou ValueError.
+[VYSVETLENI] Funkce vyvolá ValueError, protože b je 0, a příkaz přiřazení v try se tak nedokončí. Blok except výjimku zachytí a nastaví `vysledek = 0`, takže se vypíše 0. Text hlášky se nikde nevypisuje.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Kolikrát proběhne tělo smyčky, pokud uživatel zadá postupně "abc", "12.5" a "10"? `while True:` `try: cislo = int(input("Zadej celé číslo: "))` `print("Hotovo!")` `break` `except ValueError: print("Zkus znovu")`
+[0] 1×
+[0] 2×
+[x] 3×
+[0] Nekonečněkrát.
+[VYSVETLENI] Text "abc" vyvolá ValueError, protože ho nelze převést na číslo, a "12.5" také (int() nepřevede řetězec s desetinnou tečkou). Až "10" je platné celé číslo, vypíše se "Hotovo!" a příkaz break smyčku ukončí. Dohromady proběhly tři průchody.
