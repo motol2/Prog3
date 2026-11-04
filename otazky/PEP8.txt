@@ -1,4 +1,4 @@
-# Databáze otázek pro testovací aplikaci - Téma: Programování v Pythonu - styl kódu PEP 8 (14 otázek)
+# Databáze otázek pro testovací aplikaci - Téma: Programování v Pythonu - styl kódu PEP 8 (14 otázek) Pokus jestli uklada
 # Zdroj: Moodle test Programování 2.A 25-26 – PEP 8 (export GIFT)
 # Pozn.: Všechny otázky ve zdroji mají právě jednu správnou odpověď, proto byly
 #        převedeny všechny. Kód je zapsán ve zpětných apostrofech (`...`), víceřádkový
@@ -74,30 +74,30 @@
 
 [OBTIZNOST: střední]
 [Q] Který zápis volání funkce je správný podle PEP 8?
-[0] funkce(a,b,c)
-[x] funkce(a, b, c)
-[0] funkce( a, b, c )
-[0] funkce (a, b, c)
+[0] `funkce(a,b,c)`
+[x] `funkce(a, b, c)`
+[0] `funkce( a, b, c )`
+[0] `funkce (a, b, c)`
 [VYSVETLENI] Za čárkou se píše jedna mezera, před čárkou žádná. Mezery se nedávají ani těsně za otevírací závorku a před zavírací, ani mezi název funkce a otevírací závorku.
 
 ---
 
 [OBTIZNOST: střední]
 [Q] Který zápis je správně podle PEP 8?
-[0] x=5+3
-[0] x= 5+3
-[x] x = 5 + 3
-[0] x =5 + 3
+[0] `x=5+3`
+[0] `x= 5+3`
+[x] `x = 5 + 3`
+[0] `x =5 + 3`
 [VYSVETLENI] Okolo operátoru přiřazení se vždy píše po jedné mezeře z každé strany, a to stejně na obou stranách. U jednoduchých aritmetických výrazů se mezery okolo operátorů také doporučují. PEP 8 dovoluje mezery vynechat jen u operátorů s vyšší prioritou, např. `x = a*2 - 1`.
 
 ---
 
 [OBTIZNOST: střední]
 [Q] Který zápis seznamu je správně podle PEP 8?
-[0] seznam = [1,2,3,4,5]
-[x] seznam = [1, 2, 3, 4, 5]
-[0] seznam=[1, 2, 3, 4, 5]
-[0] seznam = [ 1, 2, 3, 4, 5 ]
+[0] `seznam = [1,2,3,4,5]`
+[x] `seznam = [1, 2, 3, 4, 5]`
+[0] `seznam=[1, 2, 3, 4, 5]`
+[0] `seznam = [ 1, 2, 3, 4, 5 ]`
 [VYSVETLENI] Za každou čárkou následuje mezera a po hranatých závorkách se mezery nepíší. Okolo `=` jsou mezery, takže je správný pouze zápis s jednou mezerou za čárkou.
 
 ---
@@ -134,10 +134,10 @@
 
 [OBTIZNOST: těžká]
 [Q] Jak se správně píše inline komentář podle PEP 8?
-[0] x = 5 #komentář
-[0] x = 5# komentář
-[x] x = 5  # komentář
-[0] x = 5   #komentář
+[0] `x = 5 #komentář`
+[0] `x = 5# komentář`
+[x] `x = 5  # komentář`
+[0] `x = 5   #komentář`
 [VYSVETLENI] Inline komentář se od kódu odděluje alespoň dvěma mezerami a znak `#` je následován jednou mezerou před textem. Zápis bez mezery za `#` nebo s jednou mezerou před ním je proti doporučení.
 
 ---
