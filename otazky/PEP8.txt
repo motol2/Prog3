@@ -94,10 +94,10 @@
 
 [OBTIZNOST: střední]
 [Q] Který zápis seznamu je správně podle PEP 8?
-[0] `seznam = [1,2,3,4,5]`
+[0] `seznam=[1,2,3,4,5]`
 [x] `seznam = [1, 2, 3, 4, 5]`
 [0] `seznam=[1, 2, 3, 4, 5]`
-[0] `seznam = [ 1, 2, 3, 4, 5 ]`
+[0] `seznam = [_1, 2, 3, 4, 5_]`
 [VYSVETLENI] Za každou čárkou následuje mezera a po hranatých závorkách se mezery nepíší. Okolo `=` jsou mezery, takže je správný pouze zápis s jednou mezerou za čárkou.
 
 ---
