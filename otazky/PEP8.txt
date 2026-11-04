@@ -76,8 +76,8 @@
 [Q] Který zápis volání funkce je správný podle PEP 8?
 [0] `funkce(a,b,c)`
 [x] `funkce(a, b, c)`
-[0] `funkce( a, b, c )`
-[0] `funkce (a, b, c)`
+[0] `funkce(_a, b, c_)`
+[0] `funkce /a, b, c/`
 [VYSVETLENI] Za čárkou se píše jedna mezera, před čárkou žádná. Mezery se nedávají ani těsně za otevírací závorku a před zavírací, ani mezi název funkce a otevírací závorku.
 
 ---
@@ -133,11 +133,11 @@
 ---
 
 [OBTIZNOST: těžká]
-[Q] Jak se správně píše inline komentář podle PEP 8?
-[0] `x = 5 #komentář`
-[0] `x = 5# komentář`
-[x] `x = 5  # komentář`
-[0] `x = 5   #komentář`
+[Q] Kolika mezerami se odděluje inline komentář podle PEP 8?
+[0] čtyřma mezerama
+[0] žádnou mezerou
+[x] dvěma mezerama
+[0] inline komentář nepoužíváme
 [VYSVETLENI] Inline komentář se od kódu odděluje alespoň dvěma mezerami a znak `#` je následován jednou mezerou před textem. Zápis bez mezery za `#` nebo s jednou mezerou před ním je proti doporučení.
 
 ---
