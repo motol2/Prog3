@@ -1,4 +1,4 @@
-# Databáze otázek pro testovací aplikaci - Téma: Programování v Pythonu - styl kódu PEP 8 (14 otázek) Pokus jestli uklada
+# Databáze otázek pro testovací aplikaci - Téma: Programování v Pythonu - styl kódu PEP 8 (14 otázek)
 # Zdroj: Moodle test Programování 2.A 25-26 – PEP 8 (export GIFT)
 # Pozn.: Všechny otázky ve zdroji mají právě jednu správnou odpověď, proto byly
 #        převedeny všechny. Kód je zapsán ve zpětných apostrofech (`...`), víceřádkový
@@ -134,10 +134,10 @@
 
 [OBTIZNOST: těžká]
 [Q] Jak se správně píše inline komentář podle PEP 8?
-[0] x = 5 #komentář
-[0] x = 5# komentář
-[x] x = 5  # komentář
-[0] x = 5   #nějakýkomentář
+[0] `x = 5 #komentář`
+[0] `x = 5# komentář`
+[x] `x = 5  # komentář`
+[0] `x = 5   #komentář`
 [VYSVETLENI] Inline komentář se od kódu odděluje alespoň dvěma mezerami a znak `#` je následován jednou mezerou před textem. Zápis bez mezery za `#` nebo s jednou mezerou před ním je proti doporučení.
 
 ---
