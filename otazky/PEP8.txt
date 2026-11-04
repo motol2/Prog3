@@ -137,7 +137,7 @@
 [0] x = 5 #komentář
 [0] x = 5# komentář
 [x] x = 5  # komentář
-[0] x = 5   #komentář
+[0] x = 5   #nějakýkomentář
 [VYSVETLENI] Inline komentář se od kódu odděluje alespoň dvěma mezerami a znak `#` je následován jednou mezerou před textem. Zápis bez mezery za `#` nebo s jednou mezerou před ním je proti doporučení.
 
 ---
