@@ -318,7 +318,7 @@ three.js je nad rámec toho, co většina třídy použila.
 ## 25. Evelina Andriienko — 3 b
 
 - <https://xandrevochk4.github.io/dice-study/>
-
+ - <https://xandrevochk4.github.io/2048-hra/>
 Odevzdána pouze kostka: volba počtu kostek (1–3), počítadlo hodů, průměr a vynulování.
 Funguje bez chyb a je přehledná.
 
