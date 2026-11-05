@@ -319,11 +319,11 @@ three.js je nad rámec toho, co většina třídy použila.
 
 - <https://xandrevochk4.github.io/dice-study/>
  - <https://xandrevochk4.github.io/2048-hra/>
+ - 
 Odevzdána pouze kostka: volba počtu kostek (1–3), počítadlo hodů, průměr a vynulování.
 Funguje bez chyb a je přehledná.
 
-**Ke zlepšení:** chybí vlastní aplikace. Statistika hodů ukazuje, že tě zajímá práce
-s daty — to je dobré východisko pro druhou úlohu.
+**Ke zlepšení:** pozdní odevzdání, hra nefunguje
 
 ## 26. Michael Bartuněk — 2 b
 
