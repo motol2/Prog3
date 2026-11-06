@@ -243,17 +243,6 @@
 ---
 
 [OBTIZNOST: střední]
-[Q] Proč nemusí být správnost (accuracy) spolehlivou metrikou kvality klasifikátoru?
-[0] Protože počítá pouze chybovost u regresních úloh.
-[x] Protože u výrazně nevyvážených dat může naivní model dosahovat vysoké správnosti, i když menšinovou třídu vůbec nepozná.
-[0] Protože její hodnota přesahuje rozsah od 0 do 100 %.
-[0] Protože ji nelze vypočítat z matice záměn.
-[VYSVETLENI] Pokud je v datech 95 % jedné třídy, model předpovídající vždy tuto třídu bude mít správnost 95 %, ačkoliv má nulovou schopnost detekovat druhou třídu.
-
-
----
-
-[OBTIZNOST: střední]
 [Q] Jak se nazývá fáze, ve které zjišťujeme schopnost modelu generalizovat na nových, doposud neviděných datech?
 [0] Trénovací fáze.
 [0] Anotační fáze.
@@ -280,16 +269,6 @@
 [0] Najít optimální nadrovinu rozdělující dvě označené třídy.
 [0] Trénovat neuronovou síť pomocí zpětné propagace.
 [VYSVETLENI] K-means je algoritmus učení bez učitele (clustering/shlukování), který shlukuje datové body kolem K těžišť (centroidů).
-
----
-
-[OBTIZNOST: těžká]
-[Q] Co vyjadřuje metrika Pokrytí (Recall) při klasifikaci?
-[0] Podíl správně určených případů ze všech předpovědí celkově.
-[0] Podíl skutečně pozitivních případů z těch, které model označil za pozitivní.
-[x] Podíl úspěšně zachycených pozitivních případů ze všech skutečně pozitivních případů v datech.
-[0] Průměrnou odchylku predikce od střední hodnoty.
-[VYSVETLENI] Pokrytí (Recall) odpovídá na otázku: „Kolik ze všech reálně pozitivních případů se modelu podařilo odhalit?“
 
 ---
 
@@ -342,17 +321,6 @@
 [0] Na nastavení koeficientu učení u gradientního sestupu.
 [0] Na tom, zda byly v datech použity rozhodovací listy.
 [VYSVETLENI] Výsledek algoritmu K-means je citlivý na počáteční náhodné umístění centroidů – pro různé inicializace může skončit v jiných lokálních minima.
-
-
----
-
-[OBTIZNOST: těžká]
-[Q] Co charakterizuje logistickou regresi?
-[0] Je to neparametrická metoda pro shlukování bez učitele.
-[0] Slouží výhradně k předpovídání neomezených spojitých číselných hodnot.
-[x] Je to klasifikační model vyjadřující pravděpodobnost příslušnosti ke třídě s lineární rozhodovací hranicí.
-[0] Využívá kaskádu podmínek typu "jestliže–pak".
-[VYSVETLENI] I přes slovo "regrese" v názvu jde o lineární klasifikační model, který výstup převádí na pravděpodobnost (obvykle pomocí sigmoidní funkce).
 
 ---
 
