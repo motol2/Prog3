@@ -585,7 +585,95 @@ input.on_sound(DetectedSound.LOUD, on_sound_loud)
 2. Jak práh ovlivňuje citlivost a falešná spuštění?
 3. Jak byste program upravili, aby spínač reagoval jen na dvě tlesknutí po sobě?
 
-## Klíč: stručné odpovědi pro učitele
+---
+### Pokus: Tón A4 bez zátěže a se zátěží
+
+**Cíl:** ověřit, že tón vytvářený programově (ručním přepínáním pinu) závisí na tom, co procesor dělá, a porovnat ho s tónem bez zátěže.
+
+**Pomůcky:** micro:bit V2, piezo reproduktor nebo sluchátko, dva vodiče s krokosvorkami. Reproduktor připojte mezi P0 a GND. Sluchátka jsou mono, takže při zapojení krokosvorkami stačí připojit jen jeden měnič.
+
+**Program:** [otevřít sdílený program v MakeCode](https://makecode.microbit.org/S52076-77326-64942-01113)
+
+```python
+# Experiment: Vliv zatížení procesoru na generování tónu
+# micro:bit V2, MakeCode Python
+# Test A: tón bez zátěže
+# Test B: tón se zátěží
+#
+# Připoj piezo reproduktor mezi P0 a GND.
+
+POLOPERIODA = 1136   # mikrosekundy pro tón 440 Hz
+DOBA = 3000          # délka pokusu v ms
+
+
+def zatez():
+    # Zbytečně zaměstnáme procesor výpočty
+    s = 0
+    for i in range(100):
+        s = s + i * i
+
+
+def ton(se_zatezi):
+    start = control.millis()
+
+    while control.millis() - start < DOBA:
+
+        pins.digital_write_pin(DigitalPin.P0, 1)
+        control.wait_micros(POLOPERIODA)
+
+        pins.digital_write_pin(DigitalPin.P0, 0)
+        control.wait_micros(POLOPERIODA)
+
+        if se_zatezi:
+            zatez()
+
+    pins.digital_write_pin(DigitalPin.P0, 0)
+
+
+# ZAČÁTEK EXPERIMENTU
+
+basic.show_string("A")
+basic.pause(500)
+
+# 1. Tón bez zátěže
+ton(False)
+
+basic.pause(1000)
+
+basic.show_string("B")
+basic.pause(500)
+
+# 2. Tón se zátěží
+ton(True)
+
+basic.pause(500)
+basic.show_icon(IconNames.HAPPY)
+```
+
+**Postup:**
+
+1. Připojte reproduktor mezi P0 a GND.
+2. Nahrajte program do micro:bitu (tlačítko *Download*).
+3. Poslouchejte tón při písmenu A (bez zátěže, 3 s) a pak při písmenu B (se zátěží, 3 s).
+4. Porovnejte výšku obou tónů. Můžete použít ladičku v mobilu a tón A4 (440 Hz) porovnat s referenčním.
+5. Změňte počet průchodů cyklu ve funkci `zatez()` (například 100 na 20 a na 300) a opakujte. Zapište, jak se výška tónu mění.
+
+**Co očekávat:**
+
+- Tón A zní jako čisté A4, tedy kolem 440 Hz. Mírná odchylka je běžná, protože přepínání pinu a čtení času také něco trvají.
+- Tón B zní nižší, protože k každé periodě se přičte doba výpočtu ve funkci `zatez()`, takže perioda se prodlouží a kmitočet klesne.
+- Čím větší zátěž (víc průchodů cyklu), tím nižší tón.
+
+**Kontrolní otázky:**
+
+1. Proč má tón A zhruba kmitočet 440 Hz, když je poloperioda 1136 µs? Spočítejte f = 1 / (2 · 1136 µs).
+2. Proč se tón B liší od tónu A a proč je nižší, a ne vyšší?
+3. Proč by se hardwarově generovaný tón (PWM nebo časovač) při stejné zátěži nezměnil?
+4. Jak byste v programu zjistili, o kolik se perioda prodloužila?
+
+---
+
+## Klíč: stručné odpovědi, jaký byste měli udělat závěr
 
 Odpovědi jsou pořadím otázek u jednotlivých pokusů; kde jde o výpočet, je uveden výsledek.
 
