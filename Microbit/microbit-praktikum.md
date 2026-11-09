@@ -22,6 +22,8 @@ Praktikum obsahuje 11 krátkých pokusů, každý na zhruba 10 až 20 minut, a v
 | 6.1 | [Mikrofon](#pokus-61-hlasitost-a-vzdálenost-od-zdroje) | hlasitost a vzdálenost | metr |
 | 6.2 | [Mikrofon](#pokus-62-spínač-na-zatleskání) | spínač na zatleskání | žádné |
 
+[7 Reproduktor/sluchátka](#pokus-7-tón-a4-bez-zátěže-a-se-zátěží)
+
 [Klíč: Stručné odpovědi](#klíč-stručné-odpovědi)
 
 Pokusy s krystalem, časovači a vestavěným reproduktorem (tón 440 Hz hardwarově a programově) jsou k dispozici jako samostatné programy mimo toto praktikum.
@@ -36,7 +38,7 @@ LED matice dělá dvě věci, které jinde potřebují dvě součástky: svítí
 
 **Pomůcky:** micro:bit, baterka (stačí mobil), kousky barevné fólie nebo průhledných plastových obalů (červená, modrá, zelená), papír na zápis.
 
-**Program:**
+**Program:** [otevřít sdílený program v MakeCode](https://makecode.microbit.org/S66200-78384-30581-73313)
 
 ```python
 def on_forever():
@@ -477,12 +479,23 @@ input.on_sound(DetectedSound.LOUD, on_sound_loud)
 2. Jak práh ovlivňuje citlivost a falešná spuštění?
 3. Jak byste program upravili, aby spínač reagoval jen na dvě tlesknutí po sobě?
 
----
-### Pokus: Tón A4 bez zátěže a se zátěží
+
+### Pokus 7: Tón A4 bez zátěže a se zátěží
 
 **Cíl:** ověřit, že tón vytvářený programově (ručním přepínáním pinu) závisí na tom, co procesor dělá, a porovnat ho s tónem bez zátěže.
 
 **Pomůcky:** micro:bit V2, piezo reproduktor nebo sluchátko, dva vodiče s krokosvorkami. Reproduktor připojte mezi P0 a GND. Sluchátka jsou mono, takže při zapojení krokosvorkami stačí připojit jen jeden měnič.
+
+**Program pro vestavěný reproduktor:** [sdílený program v MakeCode](https://makecode.microbit.org/S36207-41771-09844-64967)
+
+```python
+music.set_volume(255)        # hlasitost 0 až 255
+music.play_tone(440, 2000)   # tón A4 (440 Hz) po dobu 2000 ms
+
+def on_button_a():
+    music.play_tone(440, 1000)
+input.on_button_pressed(Button.A, on_button_a)
+```
 
 **Program:** [otevřít sdílený program v MakeCode](https://makecode.microbit.org/S52076-77326-64942-01113)
 
