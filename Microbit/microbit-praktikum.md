@@ -1,7 +1,5 @@
 # micro:bit – praktikum z elektrotechniky
 
-Nov 2, 2026 · @Šárka Voráčová
-
 ## Úvod: jak s praktikem pracovat
 
 Praktikum obsahuje 11 krátkých pokusů, každý na zhruba 10 až 20 minut, a vystačí si s micro:bitem V2, USB kabelem a běžnými součástkami. Každý pokus ukazuje jednu součástku z dokumentu „micro:bit – laboratoř velikosti kreditky“ v praxi a končí kontrolními otázkami.
@@ -14,17 +12,17 @@ Praktikum obsahuje 11 krátkých pokusů, každý na zhruba 10 až 20 minut, a v
 
 | Pokus | Součástka | Co se zkoumá | Pomůcky navíc |
 | --- | --- | --- | --- |
-| 1.1 | LED matice | světelný senzor z LED | baterka, barevná fólie |
-| 1.2 | LED matice | multiplexování | tmavá místnost, mobil |
-| 2.1 | Logo a kroužky | dva druhy dotykového snímání | alobal, krokosvorky |
-| 3.1 | Piny | dělič napětí a ADC | potenciometr 10 kΩ, vodiče |
-| 3.2 | Piny | PWM a průměrné napětí | multimetr, rezistor 10 kΩ, kondenzátor 1 µF |
-| 4.1 | Akcelerometr | tíha a náklon | žádné |
-| 4.2 | Akcelerometr | volný pád | měkká podložka |
-| 5.1 | Magnetometr | pole magnetu a vzdálenost | slabý magnet, pravítko |
-| 6.1 | Teploměr | zahřívání čipu | referenční teploměr |
-| 7.1 | Mikrofon | hlasitost a vzdálenost | metr |
-| 7.2 | Mikrofon | spínač na zatleskání | žádné |
+| 1.1 | [LED matice](#pokus-11-led-jako-světelný-senzor) | světelný senzor z LED | baterka, barevná fólie |
+| 1.2 | [LED matice](#pokus-12-multiplexování-je-vidět) | multiplexování | tmavá místnost, mobil |
+| 2.1 | [Logo a kroužky](#pokus-21-kapacita-proti-odporu-kůže) | dva druhy dotykového snímání | alobal, krokosvorky |
+| 3.1 | [Akcelerometr](#pokus-31-tíha-a-náklon) | tíha a náklon | žádné |
+| 3.2 | [Akcelerometr](#pokus-32-volný-pád) | volný pád | měkká podložka |
+| 4.1 | [Magnetometr](#pokus-41-pole-magnetu-v-závislosti-na-vzdálenosti) | pole magnetu a vzdálenost | slabý magnet, pravítko |
+| 5.1 | [Teploměr](#pokus-51-zahřívání-čipu-a-rozdíl-proti-teplotě-vzduchu) | zahřívání čipu | referenční teploměr |
+| 6.1 | [Mikrofon](#pokus-61-hlasitost-a-vzdálenost-od-zdroje) | hlasitost a vzdálenost | metr |
+| 6.2 | [Mikrofon](#pokus-62-spínač-na-zatleskání) | spínač na zatleskání | žádné |
+
+[Klíč: Stručné odpovědi](#klíč-stručné-odpovědi)
 
 Pokusy s krystalem, časovači a vestavěným reproduktorem (tón 440 Hz hardwarově a programově) jsou k dispozici jako samostatné programy mimo toto praktikum.
 
@@ -172,11 +170,11 @@ basic.forever(on_forever)
 4. Proč dotykové displeje telefonů pracují i přes sklo a kroužky na pinech přes papír ne?
 
 
-## 4. Akcelerometr: tíha, náklon a volný pád
+## 3. Akcelerometr: tíha, náklon a volný pád
 
 Akcelerometr měří zrychlení v miligech: v klidu měří tíhu (1 g) a ve volném pádu téměř nulu. První pokus z toho určí náklon, druhý zachytí pád.
 
-### Pokus 4.1: Tíha a náklon
+### Pokus 3.1: Tíha a náklon
 
 **Cíl:** ukázat, že v klidu měří akcelerometr tíhu Země, a z hodnot spočítat náklon desky.
 
@@ -232,7 +230,7 @@ basic.forever(on_forever)
 3. Proč akcelerometr nepozná otáčení desky kolem svislé osy, když leží na stole?
 4. Jak micro:bit pozná gesto „zatřesení“?
 
-### Pokus 4.2: Volný pád
+### Pokus 3.2: Volný pád
 
 **Cíl:** zaznamenat pokles zrychlení při pádu a porovnat dobu pádu s výpočtem.
 
@@ -279,11 +277,11 @@ input.on_button_pressed(Button.A, on_button_a)
 3. Proč jsou astronauti na oběžné dráze v beztíži, i když tam gravitace nezmizela?
 4. K čemu se detekce pádu využívá v notebooku nebo telefonu?
 
-## 5. Magnetometr: pole magnetu a vzdálenost
+## 4. Magnetometr: pole magnetu a vzdálenost
 
 Magnetometr měří sílu magnetického pole v mikroteslách a pole magnetu slábne s třetí mocninou vzdálenosti. Pokus to ověří z naměřených dat.
 
-### Pokus 5.1: Pole magnetu v závislosti na vzdálenosti
+### Pokus 4.1: Pole magnetu v závislosti na vzdálenosti
 
 **Cíl:** změřit zemské pole a ověřit, že pole malého magnetu klesá přibližně s 1/r³.
 
@@ -333,11 +331,11 @@ basic.forever(on_forever)
 3. Proč se nemá magnet přikládat těsně k desce?
 4. Jak byste z micro:bitu a magnetu vyrobili poplachový senzor otevřených dveří?
 
-## 6. Teploměr: teplota čipu
+## 5. Teploměr: teplota čipu
 
 Teploměr v micro:bitu měří teplotu křemíku uvnitř procesoru, ne vzduchu, a proto ji pokus srovná s referenčním teploměrem.
 
-### Pokus 6.1: Zahřívání čipu a rozdíl proti teplotě vzduchu
+### Pokus 5.1: Zahřívání čipu a rozdíl proti teplotě vzduchu
 
 **Cíl:** ukázat, že údaj teploměru sleduje teplotu čipu, a změřit rozdíl proti teplotě vzduchu.
 
@@ -384,11 +382,11 @@ basic.forever(on_forever)
 3. Jak by se dal offset kompenzovat v programu?
 4. Jak se změní údaj, když program zapne rádio nebo rozsvítí celý displej, a proč?
 
-## 7. Mikrofon: hlasitost a spínač na zatleskání
+## 6. Mikrofon: hlasitost a spínač na zatleskání
 
 Mikrofon neměří výšku tónu, ale hlasitost, a z hlasitosti se dá udělat jednoduchý spínač. První pokus zkoumá hlasitost podle vzdálenosti, druhý práh spínání.
 
-### Pokus 7.1: Hlasitost a vzdálenost od zdroje
+### Pokus 6.1: Hlasitost a vzdálenost od zdroje
 
 **Cíl:** ověřit, že údaj mikrofonu klesá se vzdáleností od zdroje zvuku.
 
@@ -433,7 +431,7 @@ basic.forever(on_forever)
 3. Akustický tlak klesá s rostoucí vzdáleností zhruba jako 1/r. O kolik decibelů se sníží při zdvojnásobení vzdálenosti?
 4. Proč údaj `input.sound_level()` neumožňuje určit výšku tónu?
 
-### Pokus 7.2: Spínač na zatleskání
+### Pokus 6.2: Spínač na zatleskání
 
 **Cíl:** nastavit práh hlasitosti, při kterém tlesknutí přepne srdíčko na displeji.
 
@@ -490,15 +488,12 @@ input.on_sound(DetectedSound.LOUD, on_sound_loud)
 
 ```python
 # Experiment: Vliv zatížení procesoru na generování tónu
-# micro:bit V2, MakeCode Python
 # Test A: tón bez zátěže
 # Test B: tón se zátěží
-#
-# Připoj piezo reproduktor mezi P0 a GND.
+# Připoj piezo reproduktor/sluchátka mezi P0 a GND.
 
 POLOPERIODA = 1136   # mikrosekundy pro tón 440 Hz
 DOBA = 3000          # délka pokusu v ms
-
 
 def zatez():
     # Zbytečně zaměstnáme procesor výpočty
@@ -506,15 +501,12 @@ def zatez():
     for i in range(100):
         s = s + i * i
 
-
 def ton(se_zatezi):
     start = control.millis()
 
     while control.millis() - start < DOBA:
-
         pins.digital_write_pin(DigitalPin.P0, 1)
         control.wait_micros(POLOPERIODA)
-
         pins.digital_write_pin(DigitalPin.P0, 0)
         control.wait_micros(POLOPERIODA)
 
@@ -523,7 +515,6 @@ def ton(se_zatezi):
 
     pins.digital_write_pin(DigitalPin.P0, 0)
 
-
 # ZAČÁTEK EXPERIMENTU
 
 basic.show_string("A")
@@ -531,15 +522,12 @@ basic.pause(500)
 
 # 1. Tón bez zátěže
 ton(False)
-
 basic.pause(1000)
-
 basic.show_string("B")
 basic.pause(500)
 
 # 2. Tón se zátěží
 ton(True)
-
 basic.pause(500)
 basic.show_icon(IconNames.HAPPY)
 ```
@@ -567,7 +555,7 @@ basic.show_icon(IconNames.HAPPY)
 
 ---
 
-## Klíč: stručné odpovědi, jaký byste měli udělat závěr
+## Klíč: stručné odpovědi
 
 Odpovědi jsou pořadím otázek u jednotlivých pokusů; kde jde o výpočet, je uveden výsledek.
 
@@ -591,56 +579,43 @@ Odpovědi jsou pořadím otázek u jednotlivých pokusů; kde jde o výpočet, j
 3. Prst přidá k elektrodě kapacitu, elektroda se nabíjí pomaleji a procesor to pozná podle delší doby nabíjení.
 4. Elektrické pole prochází izolantem (sklem, papírem), ale odporové snímání potřebuje vodivý kontakt.
 
+
 **Pokus 3.1**
-
-1. 3,3 V / 1023 ≈ 3,2 mV.
-2. Přibližně 0,83 V a n ≈ 256.
-3. Napětí 5 V snížíte děličem, třeba rezistory 10 kΩ (shora) a 15 kΩ (dole): 5 V · 15 / 25 = 3 V, a měří se na spodním rezistoru.
-4. Odporová dráha potenciometru je spojitá a ADC jen zaokrouhluje na 1024 stupňů po zhruba 3 mV.
-
-**Pokus 3.2**
-
-1. Rezistor s kondenzátorem tvoří dolní propust, která z obdélníkového signálu vytvoří jeho průměr.
-2. τ = R · C = 10 kΩ · 1 µF = 10 ms. Musí být mnohem větší než perioda 1 ms, aby se kondenzátor během jedné periody příliš nenabil ani nevybil a zvlnění bylo malé.
-3. Bez filtru měří multimetr rychle se měnící napětí, takže údaj kolísá nebo je nepřesný.
-4. Stejně se řídí jas LED pásků a otáčky ventilátorů: průměrný výkon určuje střída.
-
-**Pokus 4.1**
 
 1. Gravitace působí vždy stejně, náklon jen rozděluje její vektor mezi osy, takže jeho velikost zůstává.
 2. θ = arctan(500 / 866) = 30°.
 3. Při otáčení kolem svislé osy se směr tíže nemění, proto je potřeba magnetometr nebo gyroskop.
 4. Celkové zrychlení krátce překročí zvolený práh.
 
-**Pokus 4.2**
+**Pokus 3.2**
 
 1. Akcelerometr měří sílu, kterou je držena pohyblivá hmota. Ve volném pádu padá spolu s pouzdrem, takže se nevychyluje.
 2. t = √(2 · 0,3 / 9,81) ≈ 0,25 s.
 3. Astronauti spolu se stanicí volně padají kolem Země, gravitace tam stále působí (kolem 90 % pozemské).
 4. Například k zaparkování hlaviček pevného disku nebo k rozpoznání pádu telefonu.
 
-**Pokus 5.1**
+**Pokus 4.1**
 
 1. K zemskému poli se přidávají stálá pole od magnetů, oceli a proudů na desce. Kalibrace najde jejich posun a odečte ho.
 2. Osmkrát (2³).
 3. Senzor má omezený rozsah a u silného pole se nasytí. Navíc model dipólu platí jen pro vzdálenost mnohem větší než rozměr magnetu.
 4. Magnet na křídle dveří a micro:bit u rámu. Při otevření pole klesne pod práh a program spustí alarm.
 
-**Pokus 6.1**
+**Pokus 5.1**
 
 1. Měří teplotu čipu, který se zahřívá vlastní spotřebou, ne teplotu vzduchu.
 2. Napětí na přechodu PN závisí na teplotě (asi −2 mV/K); čip ho změří a přepočítá.
 3. Odečtením offsetu zjištěného při ustáleném stavu, například `input.temperature() - OFFSET`.
 4. Zvýší se spotřeba a tím i teplo, takže údaj stoupne.
 
-**Pokus 7.1**
+**Pokus 6.1**
 
 1. Membrána nad pevnou elektrodou tvoří kondenzátor. Zvuk mění vzdálenost elektrod, a tím kapacitu, a obvod ji převede na napětí.
 2. Mikrofon i převodník mají vlastní šum a v prostředí je vždy šum pozadí.
 3. Poloviční tlak odpovídá poklesu o 6 dB.
 4. Funkce vrací jen úroveň signálu (amplitudu), ne kmitočet.
 
-**Pokus 7.2**
+**Pokus 6.2**
 
 1. Zvuk trvá a odráží se, takže práh překročí víckrát; podobně se tlačítko při stisku „zakmitává“ (debouncing).
 2. Nízký práh je citlivý, ale spouští se i od řeči; vysoký práh je odolnější, ale může tlesknutí zmeškat.
