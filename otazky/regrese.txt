@@ -1,0 +1,247 @@
+[OBTIZNOST: lehká]
+[Q] Jaký je aritmetický průměr čísel 4, 6, 8 a 10?
+[0] 6
+[x] 7
+[0] 8
+[0] 9
+[VYSVETLENI] Průměr je (4 + 6 + 8 + 10) / 4 = 7.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vyjadřuje aritmetický průměr souboru hodnot?
+[0] Největší hodnotu.
+[0] Prostřední hodnotu po seřazení.
+[x] Podíl součtu hodnot a jejich počtu.
+[0] Rozdíl největší a nejmenší hodnoty.
+[VYSVETLENI] Aritmetický průměr získáme součtem všech hodnot děleným jejich počtem.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Průměr čísel 2, 4, 6 a 8 je 5. Co se stane s průměrem, když ke každému číslu přičteme 3?
+[0] Zůstane 5.
+[0] Zvýší se na 6.
+[x] Zvýší se na 8.
+[0] Zvýší se na 12.
+[VYSVETLENI] Přičtení stejného čísla ke všem hodnotám zvýší průměr o toto číslo: 5 + 3 = 8.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Která hodnota nejvíce zvýší průměr souboru 10, 11, 12, 13, pokud ji do souboru přidáme?
+[0] 9
+[0] 12
+[0] 14
+[x] 100
+[VYSVETLENI] Hodnota 100 je výrazně vyšší než dosavadní průměr, a proto jej zvýší nejvíce.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaký je obecný tvar lineárního regresního modelu?
+[0] y = a*x^2 + b*x + c
+[x] y = a*x + b
+[0] y = a/x
+[0] y = a^x
+[VYSVETLENI] Lineární regresní model popisuje závislost pomocí přímky y = a*x + b.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co vyjadřuje koeficient a v modelu y = a*x + b?
+[0] Průsečík s osou y.
+[x] Směrnici přímky.
+[0] Počet měření.
+[0] Průměrnou chybu.
+[VYSVETLENI] Koeficient a udává změnu predikované hodnoty y při zvýšení x o jednu jednotku.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co vyjadřuje koeficient b v modelu y = a*x + b?
+[x] Hodnotu y při x = 0.
+[0] Změnu y při zvýšení x o 1.
+[0] Největší hodnotu y.
+[0] Počet bodů v grafu.
+[VYSVETLENI] Dosadíme-li x = 0, dostaneme y = b.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Model má tvar y = 2*x + 3. Jakou hodnotu předpoví pro x = 4?
+[0] 8
+[0] 9
+[x] 11
+[0] 14
+[VYSVETLENI] Dosadíme x = 4: y = 2 * 4 + 3 = 11.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Která přímka je metodou nejmenších čtverců zvolena jako nejlepší?
+[0] Ta, která prochází prvním a posledním bodem.
+[x] Ta, která minimalizuje součet čtverců reziduí.
+[0] Ta, která prochází počátkem.
+[0] Ta, která má vždy kladnou směrnici.
+[VYSVETLENI] Metoda nejmenších čtverců hledá parametry modelu tak, aby součet druhých mocnin reziduí byl co nejmenší.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co je reziduum (zbytek) při regresi?
+[x] Rozdíl mezi naměřenou a modelovou hodnotou.
+[0] Průměr všech hodnot x.
+[0] Směrnice regresní přímky.
+[0] Počet naměřených bodů.
+[VYSVETLENI] Reziduum se obvykle počítá jako skutečná (naměřená) hodnota minus predikovaná hodnota.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Naměřená hodnota je 15 a model předpovídá 12. Jaké je reziduum (naměřená minus predikovaná hodnota)?
+[0] -3
+[0] 0
+[x] 3
+[0] 27
+[VYSVETLENI] Reziduum je 15 - 12 = 3.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Model předpovídá hodnotu 20, skutečně naměříme 17. Jaké je reziduum?
+[x] -3
+[0] 3
+[0] 17
+[0] 37
+[VYSVETLENI] Reziduum je 17 - 20 = -3.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Co znamená zkratka MSE?
+[x] Mean Squared Error
+[0] Maximum Standard Estimate
+[0] Mean Statistical Equation
+[0] Model Slope Error
+[VYSVETLENI] MSE znamená průměrná kvadratická chyba.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Jak vypočítáme MSE z reziduí?
+[0] Sečteme rezidua.
+[0] Vypočítáme průměr absolutních hodnot reziduí.
+[x] Vypočítáme průměr druhých mocnin reziduí.
+[0] Vydělíme největší reziduum počtem bodů.
+[VYSVETLENI] Každé reziduum umocníme na druhou a výsledky zprůměrujeme.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Model má rezidua 1, -1 a 2. Jaké je jeho MSE?
+[0] 1
+[x] 2
+[0] 3
+[0] 4
+[VYSVETLENI] MSE = (1^2 + (-1)^2 + 2^2) / 3 = 6/3 = 2.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Model má rezidua -2, 0 a 2. Jaké je jeho MSE?
+[0] 0
+[0] 2
+[x] 8/3
+[0] 4
+[VYSVETLENI] MSE = ((-2)^2 + 0^2 + 2^2) / 3 = (4 + 0 + 4) / 3 = 8/3 ≈ 2,67.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč se v metodě nejmenších čtverců rezidua umocňují?
+[0] Aby se kladná a záporná chyba navzájem vyrušily.
+[x] Aby se chyby nezáporně sčítaly a větší chyby byly více penalizovány.
+[0] Aby MSE bylo vždy menší než 1.
+[0] Aby model procházel počátkem.
+[VYSVETLENI] Umocnění odstraní znaménko rezidua a zvýrazní vliv větších odchylek.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Dva modely jsou hodnoceny na stejných datech. Model A má MSE = 4, model B MSE = 9. Který má podle MSE menší chybu?
+[x] Model A
+[0] Model B
+[0] Oba stejně
+[0] Nelze porovnat
+[VYSVETLENI] Nižší MSE znamená menší průměrnou kvadratickou chybu na hodnocených datech.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaký je obecný tvar kvadratického regresního modelu?
+[0] y = a*x + b
+[x] y = a*x^2 + b*x + c
+[0] y = a^x
+[0] y = a/x + b
+[VYSVETLENI] Kvadratický model obsahuje člen x^2.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] Jaká křivka má graf kvadratické funkce?
+[0] Přímka
+[0] Kružnice
+[x] Parabola
+[0] Hyperbola
+[VYSVETLENI] Graf kvadratické funkce je parabola.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Kdy může být vhodnější kvadratická regrese než lineární?
+[x] Když body vykazují přibližně zakřivený trend.
+[0] Když jsou všechna x stejná.
+[0] Když máme jen jeden bod.
+[0] Vždy, protože je složitější.
+[VYSVETLENI] Kvadratický model může lépe popsat nelineární, přibližně parabolický vztah.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Model y = x^2 + 2*x + 1 předpovídá jakou hodnotu pro x = 2?
+[0] 5
+[0] 7
+[x] 9
+[0] 11
+[VYSVETLENI] Dosadíme x = 2: y = 2^2 + 2 * 2 + 1 = 9.
+
+---
+
+[OBTIZNOST: střední]
+[Q] Co platí pro parabolu y = a*x^2 + b*x + c, pokud a < 0?
+[0] Je otevřená nahoru (konvexní).
+[x] Je otevřená dolů (konkávní).
+[0] Je to přímka.
+[0] Nemá žádný vrchol.
+[VYSVETLENI] Záporný koeficient u x^2 znamená, že parabola je otevřená dolů.
+
+---
+
+[OBTIZNOST: těžká]
+[Q] Proč nemusí být model s více parametry automaticky lepší?
+[0] Protože nikdy nemůže mít menší MSE.
+[x] Protože složitější model se může příliš přizpůsobit šumu v datech.
+[0] Protože počet parametrů nemá žádný vliv.
+[0] Protože kvadratický model neumí predikovat.
+[VYSVETLENI] Složitější model může zachytit i náhodné výkyvy trénovacích dat a hůře zobecňovat.
+
+---
+
+[OBTIZNOST: lehká]
+[Q] K čemu slouží regresní model?
+[0] K přesnému proložení každého bodu.
+[x] K popisu vztahu mezi proměnnými a odhadu hodnot.
+[0] K odstranění všech odlehlých hodnot.
+[0] K seřazení dat podle velikosti.
+[VYSVETLENI] Regresní model popisuje trend nebo vztah a umožňuje odhadovat hodnoty.
